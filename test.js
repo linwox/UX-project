@@ -17,7 +17,7 @@ async function fetchHtmlUrl(api) {
 
 const api = "https://data.riksdagen.se/dokumentlista/?sok=%22bristande+vandel%22&doktyp=&rm=&from=&tom=&ts=&bet=&tempbet=&nr=&org=&iid=&avd=&webbtv=&talare=&exakt=&planering=&facets=&sort=rel&sortorder=desc&rapport=&utformat=json&a=s#soktraff";
 
-const url = fetchHtmlUrl(api);
+const url = await fetchHtmlUrl(api);
 
 async function fetchHtml(url) {
     const resp = await fetch(url);
@@ -27,8 +27,12 @@ async function fetchHtml(url) {
     }
    
     const data = await resp.text();
-
-    console.log(data);
+    
+    const strWithoutComments = data.replace(/(<!--.*?-->)/sg, "");
+    const strWithoutHTmlTags = strWithoutComments.replace(/(<([^>]+)>)/gi, "");
+    const ssss = strWithoutHTmlTags.replace(/\s+/g, " ")
+    
+    console.log(ssss);
 
 }
 

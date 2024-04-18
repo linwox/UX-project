@@ -80,9 +80,16 @@ console.log("Maggans id: " + await nameToIdMap('Magdalena Andersson'))
 async function getListOfIds() {
     const resp = await fetch(`https://data.riksdagen.se/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=sorteringsnamn&sortorder=asc&termlista=`);
     const data = await resp.json();
-    const listOfIds = data.personlista.person.map(person => person.sourceid);
+    const listOfIds = data.personlista.person.map(person => person.intressent_id);
     return listOfIds;
 }
+
+// async function getListOfIds() {
+//     const resp = await fetch(`https://data.riksdagen.se/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=sorteringsnamn&sortorder=asc&termlista=`);
+//     const data = await resp.json();
+//     const listOfIds = data.personlista.person.map(person => person.sourceid);
+//     return listOfIds;
+// }
 
 async function fetchRandomImage() {
     const listOfIds = await getListOfIds();

@@ -15,7 +15,26 @@ async function fetchIntressentId(fNamn, eNamn) {
     return intressentId;
 }
 
-// Get 
+// Get list of all politicians id numbers
+async function getListOfIds() {
+    const resp = await fetch(`https://data.riksdagen.se/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=sorteringsnamn&sortorder=asc&termlista=`);
+    const data = await resp.json();
+    console.log(data);
+    const listOfIds = data.personlista.person.map(person => person.intressent_id);
+    return listOfIds;
+}
+
+// Generate one random id number
+async function randomId() {
+    const listOfIds = await getListOfIds();
+    const randomIndex = Math.floor(Math.random() * listOfIds.length);
+    const idToFetch = listOfIds[randomIndex];
+
+    return idToFetch;
+}
+
+
+// Get list of speeches based on an id number
 async function fetchAnforandelistaAsXml(date, intressentId) {
     const anforandeSearchUrl = `https://data.riksdagen.se/anforandelista/?rm=&anftyp=Nej&d=${date}&ts=&parti=&iid=${intressentId}&sz=50&utformat=xml`;
     
@@ -106,7 +125,9 @@ const fNamn = "Annika";
 const eNamn = "Hirvonen";
 
 // Get id for politician
-const intressentId = await fetchIntressentId(fNamn, eNamn);
+// const intressentId = await fetchIntressentId(fNamn, eNamn);
+const intressentId = await randomId();
+console.log(intressentId);
 
 // Limit search result, only results after this date
 const date = "2023-04-18";

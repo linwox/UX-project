@@ -16,10 +16,15 @@ async function fetchImageWithName(fName, lName) {
     document.getElementById('image').prepend(imageElement);
 }
 
-await fetchImageWithName("Nooshi", "Dadgostar");
-await fetchImageWithName("Jimmie", "Åkesson")
-await fetchImageWithName("Magdalena", "Andersson")
-
+// await fetchImageWithName("Lorena", "Delgado_Varas")
+// await fetchImageWithName("Nooshi", "Dadgostar");
+// await fetchImageWithName("Jimmie", "Åkesson")
+// await fetchImageWithName("Magdalena", "Andersson")
+// await fetchImageWithName("Fredrik", "Ahlstedt")
+// await fetchImageWithName("Sanna", "Backeskog")
+// await fetchImageWithName("Denis", "Begic")
+// await fetchImageWithName("Lili", "André")
+// await fetchImageWithName("Jonny", "Cato")
 
 // Dessa går INTE att hämta med namn!
 // await fetchImageWithName("Ulf", "Kristersson")
@@ -43,7 +48,7 @@ async function getListOfPersons() {
 
     listOfNames.forEach(person => {
         console.log(person)
-        
+
     })
 
 }
@@ -71,21 +76,33 @@ async function nameToIdMap(name) {
 
 console.log("Maggans id: " + await nameToIdMap('Magdalena Andersson'))
 
-// Onödig metod som behöver utvecklas.
-async function fetchImageWithId(name) {
-    const idToFetch = await nameToIdMap(name)
+
+async function getListOfIds() {
+    const resp = await fetch(`https://data.riksdagen.se/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=sorteringsnamn&sortorder=asc&termlista=`);
+    const data = await resp.json();
+    const listOfIds = data.personlista.person.map(person => person.sourceid);
+    return listOfIds;
+}
+
+async function fetchRandomImage() {
+    const listOfIds = await getListOfIds();
+    const randomIndex = Math.floor(Math.random() * listOfIds.length);
+    const idToFetch = listOfIds[randomIndex];
 
     const resp = await fetch(`https://data.riksdagen.se/personlista/?iid=${idToFetch}&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=sorteringsnamn&sortorder=asc&termlista=`);
-
     const data = await resp.json();
 
     const imageUrl = data.personlista.person.bild_url_192;
+    const name = data.personlista.person.tilltalsnamn;
+    const year = data.personlista.person.fodd_ar;
+    const age = (2024 - year);
 
     const imageElement = document.createElement('img');
     imageElement.src = imageUrl;
     document.getElementById('image').prepend(imageElement);
-
+    document.getElementById('name').prepend(name + " " + age);
 }
 
-// fetchImageWithId('Magdalena Andersson')
-// fetchImageWithId('Ebba Busch')
+fetchRandomImage();
+
+

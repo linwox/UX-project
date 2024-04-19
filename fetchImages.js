@@ -112,4 +112,11 @@ async function fetchRandomImage() {
 
 fetchRandomImage();
 
+const choosenPeople = [];
+const yesButton = document.getElementById('ja');
+yesButton.addEventListener('click', () => {
+    const card = document.getElementById('card');
+    card.innerHTML = ''; // Clear existing content
+    fetchRandomImage();
+});
 

@@ -77,11 +77,17 @@ async function nameToIdMap(name) {
 console.log("Maggans id: " + await nameToIdMap('Magdalena Andersson'))
 
 
+let listOfIds
+
 async function getListOfIds() {
     const resp = await fetch(`https://data.riksdagen.se/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=sorteringsnamn&sortorder=asc&termlista=`);
     const data = await resp.json();
     const listOfIds = data.personlista.person.map(person => person.intressent_id);
     return listOfIds;
+}
+
+async function preload() {
+    listOfIds = await getListOfIds()
 }
 
 // async function getListOfIds() {
@@ -91,8 +97,11 @@ async function getListOfIds() {
 //     return listOfIds;
 // }
 
-async function fetchRandomImage() {
-    const listOfIds = await getListOfIds();
+async function fetchRandomImage(saveToList) {
+    if (listOfIds === undefined) {
+        listOfIds = await getListOfIds();
+    }
+
     const randomIndex = Math.floor(Math.random() * listOfIds.length);
     const idToFetch = listOfIds[randomIndex];
 
@@ -103,20 +112,38 @@ async function fetchRandomImage() {
     const name = data.personlista.person.tilltalsnamn;
     const year = data.personlista.person.fodd_ar;
     const age = (2024 - year);
+    const party = data.personlista.person.parti;
+    
+    document.getElementById('image').innerHTML = '';
+    document.getElementById('name').innerHTML = '';
 
     const imageElement = document.createElement('img');
     imageElement.src = imageUrl;
     document.getElementById('image').prepend(imageElement);
     document.getElementById('name').prepend(name + " " + age);
+
+    if (saveToList) {
+        choosenPeople.push({ name: name, age: age, imageUrl: imageUrl, party: party });
+
+        if (choosenPeople.length = 12){
+            console.log(choosenPeople);
+        }
+    }
 }
 
+preload()
 fetchRandomImage();
 
 const choosenPeople = [];
 const yesButton = document.getElementById('ja');
-yesButton.addEventListener('click', () => {
-    const card = document.getElementById('card');
-    card.innerHTML = ''; // Clear existing content
-    fetchRandomImage();
+yesButton.addEventListener('click',  () => {
+    fetchRandomImage(true);
 });
+
+const noButton = document.getElementById('nej');
+noButton.addEventListener('click', () => {
+    fetchRandomImage(false);
+});
+
+
 

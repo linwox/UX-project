@@ -1,20 +1,24 @@
 export default {
 
-    async randomId() {
+    async getListOfIds() {
         const resp = await fetch(`https://data.riksdagen.se/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=sorteringsnamn&sortorder=asc&termlista=`);
 
         if (!resp.ok) {
             throw new Error(resp.statusText)
         }
 
-        const data = await resp.json();
         
+        const data = await resp.json();
+
         const listOfIds = data.personlista.person.map(person => person.intressent_id);
 
-        const randomIndex = Math.floor(Math.random() * listOfIds.length);
-        const idToFetch = listOfIds[randomIndex];
+        return listOfIds;
+    },
 
-        return idToFetch;
+    async fetchImage(idToFetch) {
+        const resp = await fetch(`https://data.riksdagen.se/personlista/?iid=${idToFetch}&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=sorteringsnamn&sortorder=asc&termlista=`);
+        const data = await resp.json();
+        return data.personlista.person.bild_url_192;
     },
 
     async fetchAnforandelistaAsXml(date, intressentId) {
@@ -35,33 +39,4 @@ export default {
         return result;
     }
 
-    // async getAllTrafficAreas() {
-    //     const resp = await fetch(`${this.baseUrl}/traffic/areas?format=json&size=100`)
-    //     if (!resp.ok) {
-    //         throw new Error(resp.statusText)
-    //     }
-
-    //     const data = await resp.json()
-    //     return data?.areas ?? []
-    // },
-
-    // async getTrafficArea(latitude, longitude) {
-    //     const resp = await fetch(`${this.baseUrl}/traffic/areas?latitude=${latitude}&longitude=${longitude}&format=json`)
-    //     if (!resp.ok) {
-    //         throw new Error(resp.statusText)
-    //     }
-
-    //     const data = await resp.json()
-    //     return data?.area?.name ?? "Göteborg"
-    // },
-
-    // async getMessages(area) {
-    //     const resp = await fetch(`${this.baseUrl}/traffic/messages?trafficareaname=${area}&format=json`)
-    //     if (!resp.ok) {
-    //         throw new Error(resp.statusText)
-    //     }
-
-    //     const data = await resp.json()
-    //     return data?.messages ?? []
-    // }
 }

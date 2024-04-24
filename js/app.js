@@ -1,43 +1,46 @@
-import SverigesRadio from "./services/SverigesRadio.js"
-import TrafficMessage from "./components/TrafficMessage.js"
-import AreaSelect from "./components/AreaSelect.js"
+import RiksdagensData from "./services/RiksdagensData.js"
+import ImageCard from "./components/ImageCard.js";
 
 const app = {
     data() {
         return {
-            // latitude: undefined,
-            // longitude: undefined,
-            // area: undefined,
-            // messages: [],
-            // allAreas: undefined,
+            randomId: undefined,
+            listOfIds: [],
+            imageUrl: undefined
         }
     },
     methods: {
-        async areaSelected(area) {
-            this.messages = await SverigesRadio.getMessages(area)
+        async getRandomId() {
+            const randomIndex = Math.floor(Math.random() * this.listOfIds.length);
+            this.randomId = this.listOfIds[randomIndex];
+        }
+        ,
+        async getImage(randomId) {
+            this.imageUrl = await RiksdagensData.fetchImage(randomId);
+        }
+        ,
+        async preload() {
+            this.listOfIds = await RiksdagensData.getListOfIds();
         }
     },
     async created() {
-        if (!navigator.geolocation) {
-            this.allAreas = await SverigesRadio.getAllTrafficAreas()
-        } else {
-            navigator.geolocation.getCurrentPosition(
-                async (position) => {
-                    this.latitude = position.coords.latitude
-                    this.longitude = position.coords.longitude
-                    this.area = await SverigesRadio.getTrafficArea(this.latitude, this.longitude)
-                    this.messages = await SverigesRadio.getMessages(this.area)
-                },
-                async () => { 
-                    this.allAreas = await SverigesRadio.getAllTrafficAreas()
-                })
-        }
-    }
+        console.log("Hej");
+        await this.preload();
+        console.log(this.listOfIds);
+        await this.getRandomId();
+        console.log(this.randomId)
+        await this.getImage(this.randomId);
+        console.log(this.imageUrl)
+    },
+   
 }
+
 
 const vueApp = Vue.createApp(app)
 
-vueApp.component('traffic-message', TrafficMessage)
-vueApp.component('area-select', AreaSelect)
+vueApp.component('image-card', ImageCard)
+
+// vueApp.component('traffic-message', TrafficMessage)
+// vueApp.component('area-select', AreaSelect)
 
 vueApp.mount("#app")

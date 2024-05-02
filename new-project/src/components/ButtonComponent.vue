@@ -1,4 +1,5 @@
 <script setup>
+
 import CardView from '@/views/CardView.vue';
 import RiksdagensData from '@/services/RiksdagensData';
 </script>
@@ -21,20 +22,22 @@ export default{
   }
 
 }
+
+
 </script>
 
-
 <template>
-  <nav>
-    <ul>
-      <li><button id="ja" >Ja</button></li>
-      <li><button id="nej">Nej</button></li>
-    </ul>
-  </nav>
+    <nav>
+      <ul>
+        <li><button id="ja">Ja</button></li>
+        <li><button id="nej">Nej</button></li>
+      </ul>
+    </nav>
 </template>
 
 
 <style scoped>
+
 #ja {
   padding: 0.5rem;
   width: 3rem;
@@ -62,4 +65,5 @@ ul {
 li {
   display: inline-block;
 }
+
 </style>

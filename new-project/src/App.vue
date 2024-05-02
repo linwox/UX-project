@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import CardView from './views/CardView.vue'
+import CardView2 from './views/CardView2.vue';
 </script>
 
 <template>
@@ -14,7 +15,7 @@ import CardView from './views/CardView.vue'
   </header>
 
   <RouterView />
-  <CardView></CardView>
+  <CardView2></CardView2>
 </template>
 
 <style scoped>

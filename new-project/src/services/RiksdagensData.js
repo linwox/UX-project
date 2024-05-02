@@ -39,5 +39,22 @@ export default {
     const result = parser.parseFromString(data, 'application/xml')
 
     return result
+  },
+
+  async fetchFirstName(idToFetch) {
+    const resp = await fetch(
+      `https://data.riksdagen.se/personlista/?iid=${idToFetch}&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=sorteringsnamn&sortorder=asc&termlista=`
+    )
+    const data = await resp.json()
+    return data.personlista.person.tilltalsnamn
+  }
+  ,
+
+  async fetchAge(idToFetch) {
+    const resp = await fetch(
+      `https://data.riksdagen.se/personlista/?iid=${idToFetch}&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=sorteringsnamn&sortorder=asc&termlista=`
+    )
+    const data = await resp.json()
+    return data.personlista.person.fodd_ar
   }
 }

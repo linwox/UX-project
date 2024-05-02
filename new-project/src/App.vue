@@ -1,42 +1,11 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import CardView from './views/CardView.vue';
+import CardView from './views/CardView.vue'
 </script>
-
-<script>
-export default {
-  data() {
-    return {
-      randomId: undefined,
-      listOfIds: [],
-      imageUrl: undefined
-    }
-  },
-  methods: {
-    async getRandomId() {
-      const randomIndex = Math.floor(Math.random() * this.listOfIds.length)
-      this.randomId = this.listOfIds[randomIndex]
-    },
-    async getImage(randomId) {
-      this.imageUrl = await RiksdagensData.fetchImage(randomId)
-    },
-    async preload() {
-      this.listOfIds = await RiksdagensData.getListOfIds()
-    }
-  },
-  async created() {
-    await this.preload()
-    await this.getRandomId()
-    await this.getImage(this.randomId)
-  }
-}
-</script> 
 
 <template>
   <header>
-    <img alt="politician" class="politician" :src="imageUrl"/>
     <div class="wrapper">
-      <HelloWorld msg="Tänk att ta en kaffe med..." />
 
       <!-- <nav>
         <RouterLink to="/">Home</RouterLink>
@@ -47,8 +16,6 @@ export default {
 
   <RouterView />
   <CardView></CardView>
-  
-  
 </template>
 
 <style scoped>

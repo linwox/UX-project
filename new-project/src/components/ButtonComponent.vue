@@ -1,17 +1,15 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
-    <nav>
-      <ul>
-        <li><button id="ja">Ja</button></li>
-        <li><button id="nej">Nej</button></li>
-      </ul>
-    </nav>
+  <nav>
+    <ul>
+      <li><button id="ja">Ja</button></li>
+      <li><button id="nej">Nej</button></li>
+    </ul>
+  </nav>
 </template>
 
 <style scoped>
-
 #ja {
   padding: 0.5rem;
   width: 3rem;
@@ -39,5 +37,4 @@ ul {
 li {
   display: inline-block;
 }
-
 </style>

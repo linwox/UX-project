@@ -1,7 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import RiksdagensData from './services/RiksdagensData'
+import CardView from './views/CardView.vue';
 </script>
 
 <script>
@@ -31,7 +30,7 @@ export default {
     await this.getImage(this.randomId)
   }
 }
-</script>
+</script> 
 
 <template>
   <header>
@@ -39,14 +38,17 @@ export default {
     <div class="wrapper">
       <HelloWorld msg="Tänk att ta en kaffe med..." />
 
-      <nav>
-        <!-- <RouterLink to="/">Home</RouterLink> -->
-        <!-- <RouterLink to="/about">About</RouterLink> -->
-      </nav>
+      <!-- <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav> -->
     </div>
   </header>
 
   <RouterView />
+  <CardView></CardView>
+  
+  
 </template>
 
 <style scoped>

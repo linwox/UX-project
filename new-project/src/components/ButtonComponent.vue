@@ -1,13 +1,38 @@
-<script setup></script>
+<script setup>
+import CardView from '@/views/CardView.vue';
+import RiksdagensData from '@/services/RiksdagensData';
+</script>
+
+<script>
+export default{
+  data() {
+    return{
+      randomid: undefined
+
+
+    }
+  },
+  methods: {
+    async loadPerson(){
+      console.log("hej")
+
+    }
+  
+  }
+
+}
+</script>
+
 
 <template>
   <nav>
     <ul>
-      <li><button id="ja">Ja</button></li>
+      <li><button id="ja" >Ja</button></li>
       <li><button id="nej">Nej</button></li>
     </ul>
   </nav>
 </template>
+
 
 <style scoped>
 #ja {

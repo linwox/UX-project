@@ -23,7 +23,8 @@ export default {
       listOfIds: [],
       imageUrl: undefined,
       firstName: undefined,
-      age: undefined
+      age: undefined,
+      politicianData: Object
     }
   },
   methods: {
@@ -31,16 +32,19 @@ export default {
       const randomIndex = Math.floor(Math.random() * this.listOfIds.length)
       this.randomId = this.listOfIds[randomIndex]
     },
-    async getImage(randomId) {
-      this.imageUrl = await RiksdagensData.fetchImage(randomId)
+    async getImage() {
+      return this.politicianData.bild_url_192;
     },
     async getName(randomId) {
-      this.firstName = await RiksdagensData.fetchFirstName(randomId)
+      return this.politicianData.tilltalsnamn;
     },
     async getAge(randomId) {
-      const yearBorn = await RiksdagensData.fetchAge(randomId)
-      const yearNow = 2024
-      this.age = yearNow - yearBorn
+      const yearBorn = this.politicianData.fodd_ar;
+      const yearNow = 2024;
+      return yearNow - yearBorn;
+    },
+    async getPoliticianData(randomId) {
+      this.politicianData = await RiksdagensData.fetchPoliticianData(randomId)
     },
     async preload() {
       this.listOfIds = await RiksdagensData.getListOfIds()
@@ -49,9 +53,10 @@ export default {
   async created() {
     await this.preload()
     await this.getRandomId()
-    await this.getImage(this.randomId)
-    await this.getName(this.randomId)
-    await this.getAge(this.randomId)
+    await this.getPoliticianData(this.randomId)
+    this.imageUrl = await this.getImage()
+    this.firstName = await this.getName()
+    this.age = await this.getAge()
   }
 }
 </script>
@@ -81,5 +86,4 @@ export default {
   font-family: Courier, monospace;
   margin: auto;
 }
-
 </style>

@@ -10,6 +10,7 @@
       <p>{{ age }}</p>
         <RouterLink to="/government">Se din regering</RouterLink>
     </main>
+
 </template>
 
 <script>
@@ -24,9 +25,9 @@
 
 <style>
 .main {
-    width: 30rem;
-    height: 40rem;
-    border: 1px solid black;
-    padding: 1rem;
+  width: 30rem;
+  height: 40rem;
+  border: 1px solid black;
+  padding: 1rem;
 }
 </style>

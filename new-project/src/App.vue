@@ -1,21 +1,28 @@
+
+
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import CardView from './views/CardView.vue'
-import CardView2 from './views/CardView2.vue';
+import CardView2 from './views/CardView2.vue'
+import StartView from './views/StartView.vue';
 </script>
 
 <template>
+  <!-- <StartView></StartView> -->
   <header>
-    <div class="wrapper">
-      <!-- <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav> -->
-    </div>
+      <nav>
+        <RouterLink to="/">Start</RouterLink>
+        <RouterLink to="/choice">Choice</RouterLink>
+        <RouterLink to="/card">Image</RouterLink>
+        <RouterLink to="/quote">Quote</RouterLink>
+        <RouterLink to="/result">Result</RouterLink>
+        <RouterLink to="/pick_minister">Ministers</RouterLink>
+        <RouterLink to="/government">Government</RouterLink>
+      </nav>
   </header>
 
   <RouterView />
-  <CardView2></CardView2>
+  <!-- <CardView2></CardView2> -->
 </template>
 
 <style scoped>

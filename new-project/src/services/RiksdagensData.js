@@ -40,6 +40,5 @@ export default {
     const result = parser.parseFromString(data, 'application/xml')
 
     return result
-  },
-
+  }
 }

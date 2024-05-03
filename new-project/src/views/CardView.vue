@@ -33,15 +33,15 @@ export default {
       this.randomId = this.listOfIds[randomIndex]
     },
     async getImage() {
-      return this.politicianData.bild_url_192;
+      return this.politicianData.bild_url_192
     },
     async getName(randomId) {
-      return this.politicianData.tilltalsnamn;
+      return this.politicianData.tilltalsnamn
     },
     async getAge(randomId) {
-      const yearBorn = this.politicianData.fodd_ar;
-      const yearNow = 2024;
-      return yearNow - yearBorn;
+      const yearBorn = this.politicianData.fodd_ar
+      const yearNow = 2024
+      return yearNow - yearBorn
     },
     async getPoliticianData(randomId) {
       this.politicianData = await RiksdagensData.fetchPoliticianData(randomId)

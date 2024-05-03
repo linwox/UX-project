@@ -75,6 +75,9 @@ export default {
         // Only reload image, name, and age
         await this.loadImageAndData()
       }
+    },
+    async getSelectedIds() {
+      return this.selectedIds;
     }
   },
   async created() {

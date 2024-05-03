@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-    <main class="main">
+    <main  class="main">
         <h2>Ministerpost</h2>
         <div>Välj vem som ska ha posten</div>
       

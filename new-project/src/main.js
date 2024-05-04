@@ -7,26 +7,6 @@ import { createPinia } from 'pinia'
 
 const app = createApp(App)
 
-
-
-// HAMPUS EXEMPEL (här anropas updateEvents-metoden):
-// const app = {
-//     computed: {
-//         ...Pinia.mapStores(useEventsStore)
-//     },
-//     components: {
-//         HighestSeverity,
-//         EventList,
-//         SeverityCount
-//     },
-//     created() {
-//         this.eventsStore.updateEvents()
-//     }
-// }
-
-
-
-
 app.use(router)
 app.use(createPinia())
 

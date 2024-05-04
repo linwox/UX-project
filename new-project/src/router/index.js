@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import StartView from '../views/StartView.vue'
 
 const router = createRouter({
@@ -18,7 +17,7 @@ const router = createRouter({
     {
       path: '/card',
       name: 'card',
-      component: () => import('../views/CardView2.vue')
+      component: () => import('../views/CardView.vue')
     },
     {
       path: '/quote',

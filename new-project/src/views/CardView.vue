@@ -1,6 +1,6 @@
 <script setup>
-import RiksdagensData from '../services/RiksdagensData'
 import ButtonComponent from '@/components/ButtonComponent.vue'
+import RiksdagensData from '../services/RiksdagensData'
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import ButtonComponent from '@/components/ButtonComponent.vue'
       <img alt="politician" id="image" :src="imageUrl" />
       <p>{{ firstName }}</p>
       <p>{{ age }}</p>
-      <ButtonComponent></ButtonComponent>
+      <ButtonComponent @answer="handleAnswer"></ButtonComponent>
     </div>
   </header>
 </template>
@@ -24,8 +24,12 @@ export default {
       imageUrl: undefined,
       firstName: undefined,
       age: undefined,
-      politicianData: Object
+      politicianData: Object,
+      selectedIds: []
     }
+  },
+  components: {
+    ButtonComponent
   },
   methods: {
     async getRandomId() {
@@ -48,15 +52,38 @@ export default {
     },
     async preload() {
       this.listOfIds = await RiksdagensData.getListOfIds()
+    },
+
+    async loadImageAndData() {
+      await this.getRandomId()
+      await this.getPoliticianData(this.randomId)
+      this.imageUrl = await this.getImage()
+      this.firstName = await this.getName()
+      this.age = await this.getAge()
+    },
+    async handleAnswer(answer) {
+      if (answer === 'yes') {
+        // Reload image, name, and age
+        await this.loadImageAndData()
+
+        // Add randomId to the list
+        // Assuming you have a list in your data called `selectedIds`
+        this.selectedIds.push(this.randomId)
+        console.log(this.randomId)
+      } else if (answer === 'no') {
+        // Only reload image, name, and age
+        await this.loadImageAndData()
+      }
+    },
+    async getSelectedIds() {
+      return this.selectedIds
     }
   },
   async created() {
+    // Preload data
     await this.preload()
-    await this.getRandomId()
-    await this.getPoliticianData(this.randomId)
-    this.imageUrl = await this.getImage()
-    this.firstName = await this.getName()
-    this.age = await this.getAge()
+    // Load initial image and data
+    await this.loadImageAndData()
   }
 }
 </script>

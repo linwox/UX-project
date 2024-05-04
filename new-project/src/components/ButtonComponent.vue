@@ -1,31 +1,22 @@
-<script setup>
-import CardView from '@/views/CardView.vue'
-import RiksdagensData from '@/services/RiksdagensData'
-</script>
+<template>
+  <div>
+    <button @click="handleYesClick">Yes</button>
+    <button @click="handleNoClick">No</button>
+  </div>
+</template>
 
 <script>
 export default {
-  data() {
-    return {
-      randomid: undefined
-    }
-  },
   methods: {
-    async loadPerson() {
-      console.log('hej')
+    handleYesClick() {
+      this.$emit('answer', 'yes') // Emit 'yes' when Yes button is clicked
+    },
+    handleNoClick() {
+      this.$emit('answer', 'no') // Emit 'no' when No button is clicked
     }
   }
 }
 </script>
-
-<template>
-  <nav>
-    <ul>
-      <li><button id="ja">Ja</button></li>
-      <li><button id="nej">Nej</button></li>
-    </ul>
-  </nav>
-</template>
 
 <style scoped>
 #ja {

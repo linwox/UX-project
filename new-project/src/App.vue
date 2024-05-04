@@ -1,12 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import CardView from './views/CardView.vue'
-import CardView2 from './views/CardView2.vue'
-import StartView from './views/StartView.vue'
 </script>
 
 <template>
-  <!-- <StartView></StartView> -->
   <header>
     <nav>
       <RouterLink to="/">Start</RouterLink>
@@ -20,7 +16,6 @@ import StartView from './views/StartView.vue'
   </header>
 
   <RouterView />
-  <!-- <CardView2></CardView2> -->
 </template>
 
 <style scoped>

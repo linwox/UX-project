@@ -1,5 +1,5 @@
 <script setup>
-import ButtonComponent2 from '@/components/ButtonComponent2.vue'
+import ButtonComponent from '@/components/ButtonComponent.vue'
 import RiksdagensData from '../services/RiksdagensData'
 </script>
 
@@ -7,7 +7,7 @@ import RiksdagensData from '../services/RiksdagensData'
   <header>
     <div class="wrapper">
       <div>Ett tokigt citat</div>
-      <ButtonComponent2 @answer="handleAnswer"></ButtonComponent2>
+      <ButtonComponent @answer="handleAnswer"></ButtonComponent>
     </div>
   </header>
 </template>
@@ -26,7 +26,7 @@ export default {
     }
   },
   components: {
-    ButtonComponent2
+    ButtonComponent
   },
   methods: {
     async getRandomId() {

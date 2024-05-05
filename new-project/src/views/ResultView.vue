@@ -1,17 +1,12 @@
 <script setup>
 import { useSelectedStore } from '@/stores/selected'
+import { mapStores } from 'pinia'
 </script>
 
 <script>
 export default {
   computed: {
-    ...Pinia.mapStores(useSelectedStore),
-    // Ett sätt att komma åt sin action
-    ...Pinia.mapState(useSelectedStore, ['selectedIds'])
-  },
-  // Ett annat sätt att komma åt sin action
-  methods: {
-    ...Pinia.mapActions(useSelectedStore, ['selectedIds'])
+    ...mapStores(useSelectedStore, ['selectedIds'])
   }
 }
 </script>
@@ -21,6 +16,7 @@ export default {
     <h2>Resultat</h2>
     <div>
       <p>% vilka partier man fick</p>
+      <!-- Hämta ut selectedIds från storen (som hämtar från CardView) -->
       <p>{{ selectedStore.selectedIds }}</p>
     </div>
     <RouterLink to="/pick_minister">Dela ut ministerposter</RouterLink>

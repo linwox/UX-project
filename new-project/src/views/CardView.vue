@@ -27,6 +27,7 @@ export default {
       imageUrl: undefined,
       firstName: undefined,
       age: undefined,
+      party: undefined,
       politicianData: Object
       // selectedIds: []
     }
@@ -35,29 +36,32 @@ export default {
     ButtonComponent
   },
   computed: {
-    ...mapStores(useSelectedStore, ['selectedIds'])
+    ...mapStores(useSelectedStore, ['selectedPersons'])
   },
   methods: {
+    async preload() {
+      this.listOfIds = await RiksdagensData.getListOfIds()
+    },
     async getRandomId() {
       const randomIndex = Math.floor(Math.random() * this.listOfIds.length)
       this.randomId = this.listOfIds[randomIndex]
     },
+    async getPoliticianData(randomId) {
+      this.politicianData = await RiksdagensData.fetchPoliticianData(randomId)
+    },
     async getImage() {
       return this.politicianData.bild_url_192
     },
-    async getName(randomId) {
+    async getName() {
       return this.politicianData.tilltalsnamn
     },
-    async getAge(randomId) {
+    async getAge() {
       const yearBorn = this.politicianData.fodd_ar
       const yearNow = 2024
       return yearNow - yearBorn
     },
-    async getPoliticianData(randomId) {
-      this.politicianData = await RiksdagensData.fetchPoliticianData(randomId)
-    },
-    async preload() {
-      this.listOfIds = await RiksdagensData.getListOfIds()
+    async getParty() {
+      return this.politicianData.parti
     },
     async loadImageAndData() {
       await this.getRandomId()
@@ -65,6 +69,7 @@ export default {
       this.imageUrl = await this.getImage()
       this.firstName = await this.getName()
       this.age = await this.getAge()
+      this.party = await this.getParty()
     },
     async handleAnswer(answer) {
       if (answer === 'yes') {
@@ -74,19 +79,15 @@ export default {
         // Add randomId to the list
         // Assuming you have a list in your data called `selectedIds`
         // this.selectedIds.push(this.randomId)
-        this.selectedStore.addSelectedId(this.randomId)
-        if (this.selectedStore.selectedIds.length >= 12){
-          router.push('pick_minister');
+        this.selectedStore.addSelectedPersonData(this.firstName, this.age, this.party)
+        if (this.selectedStore.selectedPersons.size >= 12) {
+          router.push('pick_minister')
         }
-        console.log(this.randomId)
       } else if (answer === 'no') {
         // Only reload image, name, and age
         await this.loadImageAndData()
       }
     },
-    async getSelectedIds() {
-      return this.selectedIds
-    }
   },
   async created() {
     // Preload data

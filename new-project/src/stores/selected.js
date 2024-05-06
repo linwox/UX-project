@@ -2,18 +2,12 @@ import { defineStore } from 'pinia'
 
 export const useSelectedStore = defineStore('selected', {
   state: () => ({
-    // Vi skapar en array som går att nå överallt
-    selectedIds: []
+    selectedPersons: new Set(),
   }),
   actions: {
-    // Vi hämtar arrayen från CardView och för över allt i den till den globala arrayen
-    // updateSelectedIds() {
-    //   CardView.getSelectedIds().then((selectedIds) => {
-    //     selectedIds.forEach((i) => this.selectedIds.push(i))
-    //   })
-    // },
-    addSelectedId(id) {
-      this.selectedIds.push(id)
-    }
+    addSelectedPersonData(firstName, age, party) {
+      const person = {firstName, age, party}
+      this.selectedPersons.add(person)
+    },
   }
 })

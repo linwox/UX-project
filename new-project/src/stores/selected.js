@@ -7,10 +7,13 @@ export const useSelectedStore = defineStore('selected', {
   }),
   actions: {
     // Vi hämtar arrayen från CardView och för över allt i den till den globala arrayen
-    updateSelectedIds() {
-      CardView.getSelectedIds().then((selectedIds) => {
-        selectedIds.forEach((i) => this.selectedIds.push(i))
-      })
+    // updateSelectedIds() {
+    //   CardView.getSelectedIds().then((selectedIds) => {
+    //     selectedIds.forEach((i) => this.selectedIds.push(i))
+    //   })
+    // },
+    addSelectedId(id) {
+      this.selectedIds.push(id)
     }
   }
 })

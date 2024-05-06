@@ -1,6 +1,8 @@
 <script setup>
 import ButtonComponent from '@/components/ButtonComponent.vue'
 import RiksdagensData from '../services/RiksdagensData'
+import { useSelectedStore } from '@/stores/selected'
+import { mapStores } from 'pinia'
 </script>
 
 <template>
@@ -24,12 +26,15 @@ export default {
       imageUrl: undefined,
       firstName: undefined,
       age: undefined,
-      politicianData: Object,
-      selectedIds: []
+      politicianData: Object
+      // selectedIds: []
     }
   },
   components: {
     ButtonComponent
+  },
+  computed: {
+    ...mapStores(useSelectedStore, ['selectedIds'])
   },
   methods: {
     async getRandomId() {
@@ -53,7 +58,6 @@ export default {
     async preload() {
       this.listOfIds = await RiksdagensData.getListOfIds()
     },
-
     async loadImageAndData() {
       await this.getRandomId()
       await this.getPoliticianData(this.randomId)
@@ -68,7 +72,8 @@ export default {
 
         // Add randomId to the list
         // Assuming you have a list in your data called `selectedIds`
-        this.selectedIds.push(this.randomId)
+        // this.selectedIds.push(this.randomId)
+        this.selectedStore.addSelectedId(this.randomId)
         console.log(this.randomId)
       } else if (answer === 'no') {
         // Only reload image, name, and age

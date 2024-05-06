@@ -79,7 +79,7 @@ export default {
         // Add randomId to the list
         // Assuming you have a list in your data called `selectedIds`
         // this.selectedIds.push(this.randomId)
-        this.selectedStore.addSelectedPersonData(this.firstName, this.age, this.party, this.imageUrl)
+        this.selectedStore.addSelectedPersonData(this.randomId, this.firstName, this.age, this.party, this.imageUrl)
         if (this.selectedStore.selectedPersons.size >= 12) {
           router.push('pick_minister')
         }

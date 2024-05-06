@@ -3,6 +3,7 @@ import ButtonComponent from '@/components/ButtonComponent.vue'
 import RiksdagensData from '../services/RiksdagensData'
 import { useSelectedStore } from '@/stores/selected'
 import { mapStores } from 'pinia'
+import router from '@/router'
 </script>
 
 <template>
@@ -74,6 +75,9 @@ export default {
         // Assuming you have a list in your data called `selectedIds`
         // this.selectedIds.push(this.randomId)
         this.selectedStore.addSelectedId(this.randomId)
+        if (this.selectedStore.selectedIds.length >= 12){
+          router.push('pick_minister');
+        }
         console.log(this.randomId)
       } else if (answer === 'no') {
         // Only reload image, name, and age

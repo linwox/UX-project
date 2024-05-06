@@ -20,7 +20,8 @@
   padding: 1rem;
   /* background-image: url(../assets/swipe_riks.png); */
   background-size: cover;
-  background-color: aqua;
+  background-color: rgb(253, 253, 253);
+  color: black;
 }
 
 #tagline {

@@ -1,12 +1,12 @@
 <script setup>
-import { useSelectedStore } from '@/stores/selected'
+import { useStatsStore } from '@/stores/selected'
 import { mapStores } from 'pinia'
 </script>
 
 <script>
 export default {
   computed: {
-    ...mapStores(useSelectedStore, ['selectedPersons'])
+    ...mapStores(useStatsStore, ['partyCounts'])
   }
 }
 </script>
@@ -17,6 +17,9 @@ export default {
     <div>
       <p>% vilka partier man fick</p>
       <!-- Hämta ut selectedIds från storen (som hämtar från CardView) -->
+      <p>
+        
+      </p>
       <p>{{ selectedStore.selectedPersons }}</p>
     </div>
     <RouterLink to="/pick_minister">Dela ut ministerposter</RouterLink>

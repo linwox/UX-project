@@ -10,36 +10,40 @@ export const useStatsStore = defineStore('stats', {
     kd_count: 0,
     m_count: 0,
     sd_count: 0,
-    partyCounts: [v_count, s_count, mp_count, l_count, c_count, kd_count, m_count, sd_count]
   }),
   actions: {
     countParty(party) {
       switch (party) {
         case 'V':
-          this.v_count++;
-          break;
+          this.v_count++
+          break
         case 'S':
-          this.s_count++;
-          break;
+          this.s_count++
+          break
         case 'MP':
-          this.mp_count++;
-          break;
+          this.mp_count++
+          break
         case 'L':
-          this.l_count++;
-          break;
+          this.l_count++
+          break
         case 'C':
-          this.c_count++;
-          break;
+          this.c_count++
+          break
         case 'KD':
-          this.kd_count++;
-          break;
+          this.kd_count++
+          break
         case 'M':
-          this.m_count++;
-          break;
+          this.m_count++
+          break
         case 'SD':
-          this.sd_count++;
-          break;
+          this.sd_count++
+          break
       }
+    }
+  },
+  getters: {
+    partyCounts() {
+      return [this.v_count, this.s_count, this.mp_count, this.l_count, this.c_count, this.kd_count, this.m_count, this.sd_count]
     }
   }
 })

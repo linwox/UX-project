@@ -2,6 +2,7 @@
 import ButtonComponent from '@/components/ButtonComponent.vue'
 import RiksdagensData from '../services/RiksdagensData'
 import { useSelectedStore } from '@/stores/selected'
+import { useStatsStore } from '@/stores/stats'
 import { mapStores } from 'pinia'
 import router from '@/router'
 </script>
@@ -29,14 +30,13 @@ export default {
       age: undefined,
       party: undefined,
       politicianData: Object
-      // selectedIds: []
     }
   },
   components: {
     ButtonComponent
   },
   computed: {
-    ...mapStores(useSelectedStore, ['selectedPersons'])
+    ...mapStores(useSelectedStore, useStatsStore)
   },
   methods: {
     async preload() {
@@ -79,7 +79,14 @@ export default {
         // Add randomId to the list
         // Assuming you have a list in your data called `selectedIds`
         // this.selectedIds.push(this.randomId)
-        this.selectedStore.addSelectedPersonData(this.randomId, this.firstName, this.age, this.party, this.imageUrl)
+        this.selectedStore.addSelectedPersonData(
+          this.randomId,
+          this.firstName,
+          this.age,
+          this.party,
+          this.imageUrl
+        )
+        this.statsStore.countParty(this.party)
         if (this.selectedStore.selectedPersons.size >= 12) {
           router.push('pick_minister')
         }
@@ -87,7 +94,7 @@ export default {
         // Only reload image, name, and age
         await this.loadImageAndData()
       }
-    },
+    }
   },
   async created() {
     // Preload data

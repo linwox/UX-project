@@ -6,7 +6,7 @@ import { mapStores } from 'pinia'
 <script>
 export default {
   computed: {
-    ...mapStores(useStatsStore, ['partyCounts'])
+    ...mapStores(useStatsStore)
   }
 }
 </script>

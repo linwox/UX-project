@@ -1,5 +1,6 @@
 <script setup>
 import ButtonComponent from '@/components/ButtonComponent.vue'
+import { generateQuote } from '@/lib/QuoteManager.js'
 import RiksdagensData from '../services/RiksdagensData'
 import { useSelectedStore } from '@/stores/selected'
 import { useStatsStore } from '@/stores/stats'
@@ -69,91 +70,9 @@ export default {
       return this.politicianData.parti
     },
 
-    async collectAnforandeUrls(anforandeListaXml) {
-      const anforandeUrlList = [];
-      const anforandeUrlElements = await anforandeListaXml.getElementsByTagName("anforande_url_html");
-
-      for (const element of anforandeUrlElements) {
-        const url = element.textContent.trim();
-        anforandeUrlList.push(url);
-      }
-
-      return anforandeUrlList;
-    },
-
-    async collectAnforandeText(url) {
-      // Get speeches as html from API
-      const data = await RiksdagensData.fetchSpeechesAsHtml(url);
-
-      // Clean up the text from html tags
-      const strWithoutComments = data.replace(/(<!--.*?-->)/sg, "");
-      const strWithoutHTmlTags = strWithoutComments.replace(/(<([^>]+)>)/gi, "");
-      const strHtml = strWithoutHTmlTags.replace(/\s+/g, " ");
-
-      // Remove meta data for speech
-      const regex = /\((\b[A-Z]+\b)\)/;
-      const match = strHtml.match(regex);
-
-      if (match && match.index !== undefined) {
-        const result = strHtml.substring(match.index + match[0].length).trim();
-        return result;
-      } else {
-        console.log("Error cleaning text"); // Hantera bättre!
-      }
-    },
-
-    async collectAnforandenIntoArray(anforandeUrlList) {
-      const anforandeTexts = [];
-
-      for (const url of anforandeUrlList) {
-        const anforande = await this.collectAnforandeText(url);
-        anforandeTexts.push(anforande);
-      }
-
-      return anforandeTexts;
-    },
-
-    async speechesToSentences(anforandeTexts) {
-      const sentences = [];
-
-      for (const anforande of anforandeTexts) {
-        const sentencesPerSpeach = anforande.split(".");
-        for (const sentence of sentencesPerSpeach) {
-          sentences.push(sentence.trim() + ".");
-        }
-      }
-
-      return sentences;
-    },
-
     async getQuote() {
-      const anforandelistaXml = await RiksdagensData.fetchAnforandelistaAsXml('2023-01-01', this.randomId);
-
-      const anforandeUrlList = await this.collectAnforandeUrls(anforandelistaXml);
-
-      const anforandeTexts = await this.collectAnforandenIntoArray(anforandeUrlList);
-
-      const sentences = await this.speechesToSentences(anforandeTexts);
-
-      const keyPhrases = ["jag tycker", "tycker jag", "jag anser", "anser jag", "jag menar", "menar jag",
-        "enligt min mening", "vi tycker", "tycker vi", "vi anser", "anser vi", "vi menar",
-        "menar vi", "det bör", "bör det", "det måste", "måste det", "vi måste", "måste vi",
-        "lösning", "förändring", "ändras", "förbättras", "det är viktigt att", "det är bra att"];
-
-      let filteredSentences = [];
-
-      for (const keyPhrase of keyPhrases) {
-        const sentenceWithKeyPhrase = sentences.filter(sentence => sentence.toLowerCase().includes(keyPhrase.toLowerCase()));
-        filteredSentences = filteredSentences.concat(sentenceWithKeyPhrase);
-      }
-
-      if (filteredSentences.length > 0) {
-        const randomIndex = Math.floor(Math.random() * filteredSentences.length)
-        return filteredSentences[randomIndex]
-      }
-      else {
-        console.log("No matching quotes")
-      }
+      this.quote = await generateQuote(this.randomId)
+      return this.quote
     },
 
     async loadImageAndData() {
@@ -178,17 +97,18 @@ export default {
           this.firstName,
           this.age,
           this.party,
-          this.imageUrl
+          this.imageUrl,
+          // this.quote
         )
         this.statsStore.countParty(this.party)
         if (this.selectedStore.selectedPersons.size >= 12) {
-          router.push('pick_minister')
+          this.$router.push('pick_minister')
         }
       } else if (answer === 'no') {
         // Only reload image, name, and age
         await this.loadImageAndData()
       }
-    }
+    },
   },
 
   async created() {
@@ -196,8 +116,6 @@ export default {
     await this.preload()
     // Load initial image and data
     await this.loadImageAndData()
-
-    await this.getQuote()
   }
 }
 </script>

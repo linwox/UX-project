@@ -15,12 +15,9 @@ export default {
   <main class="main">
     <h2>Ministerpost</h2>
     <div>Välj vem som ska ha posten</div>
-    <div v-for="person of selectedStore.selectedPersons"> 
-    
-      <img :src="person.imageUrl" class="">
+    <div v-for="person of selectedStore.selectedPersons">
+      <img :src="person.imageUrl" class="" />
       <p>{{ person.age }}</p>
-    
-    
     </div>
 
     <RouterLink to="/government">Se din regering</RouterLink>

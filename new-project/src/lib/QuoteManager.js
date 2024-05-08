@@ -2,8 +2,7 @@ import RiksdagensData from '../services/RiksdagensData'
 
 async function collectAnforandeUrls(anforandeListaXml) {
   const anforandeUrlList = []
-  const anforandeUrlElements =
-    await anforandeListaXml.getElementsByTagName('anforande_url_html')
+  const anforandeUrlElements = await anforandeListaXml.getElementsByTagName('anforande_url_html')
 
   for (const element of anforandeUrlElements) {
     const url = element.textContent.trim()

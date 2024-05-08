@@ -1,7 +1,7 @@
 <script setup>
 import { useStatsStore } from '@/stores/stats'
 import { mapStores } from 'pinia'
-import PieChart from '../components/PieChart.vue';
+import PieChart from '../components/PieChart.vue'
 </script>
 
 <template>

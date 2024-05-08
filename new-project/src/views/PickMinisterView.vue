@@ -1,41 +1,67 @@
 <script setup>
 import { useSelectedStore } from '@/stores/selected'
 import { mapStores } from 'pinia'
-import { useStatsStore } from '@/stores/stats'
 </script>
 
 <script>
 export default {
+  data() {
+    return {
+      ministers: new Map([["Statsminister", undefined],
+      ["Finansminister", undefined],
+      ["Jämställdhetsminister", undefined],
+      ["Klimatminister", undefined],
+      ["Sjukvårdsminister", undefined],
+      ["Kulturminister", undefined],
+      ["Skolminister", undefined],
+      ["Justitieminister", undefined],
+      ["Försvarsminister", undefined],
+      ["Utrikesminister", undefined],
+      ["Migrationsminister", undefined],
+      ["Landsbygdsminister", undefined]]),
+    }
+  },
   computed: {
     ...mapStores(useSelectedStore, ['selectedPersons'])
+  },
+  methods: {
+
+    selectMinister() {
+      const things = document.getElementsByClassName("carousel-item")
+      for (const elem of things) {
+        console.log(elem.getBoundingClientRect(), elem.dataset.item)
+      }
+    }
   }
 }
 </script>
 
 <template>
-  
-    <h2>Ministerpost</h2>
-    <div>Välj vem som ska ha posten</div>
 
-    <div class="ml-14 w-72 carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
-    <div v-for="person of selectedStore.selectedPersons" class="carousel-item">
-      <div>
-        <img v-bind:src="person.imageUrl" class="rounded-box border-2" />
-        <div class="block align-bottom">{{ person.firstName }} {{ person.age}}</div>
-        <p class="content-center"> 
-           <button class="p-2 rounded border-2">Välj</button> 
-        </p>
+  <h2 class="flex items-center justify-center mt-3">Ministerpost</h2>
+  <div class="flex items-center justify-center mt-3">Välj vem som ska ha posten</div>
+  <!-- <div class="flex items-center justify-center mt-3" v-for="minister of ministerLabels"> {{ minister }} </div> -->
+  <div class="flex items-center justify-center mt-3">
+    <div class=" w-72 carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
+      <div v-for="person of selectedStore.selectedPersons" class="carousel-item ml-8 l" :data-item="person.id">
+        <div>
+          <img v-bind:src="person.imageUrl" class="rounded-box border-2" />
+          <div class="block align-bottom">{{ person.firstName }} {{ person.age }}</div>
+          <p class="flex items-center justify-center content-center">
+          </p>
+        </div>
       </div>
-      </div>
-
     </div>
+    <div>
+    </div>
+  </div>
+  <div class="flex items-center justify-center mt-2">
 
-<div>
+    <button class=" p-2 rounded border-2" @click="selectMinister">Välj</button>
+  </div>
+  <RouterLink class="flex items-center justify-center mt-5" to="/government">Se din regering</RouterLink>
 
-  <RouterLink to="/government">Se din regering</RouterLink>
-</div>
 
-  
 </template>
 
 <!-- <style>

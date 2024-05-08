@@ -7,12 +7,27 @@ import { mapStores } from 'pinia'
 export default {
   data() {
     return {
-      ministers: new Map(),
-      ministerLabels: ["Statsminister", "Finansminister", "Jämställdhetsminister", "Klimatminister", "Sjukvårdsminister", "Kulturminister", "Skolminister", "Justitieminister", "Försvarsminister", "Utrikesminister", "Migrationsminister", "Landsbygdsminister" ]
+      ministers: new Map([["Statsminister", undefined],
+                          ["Finansminister", undefined],
+                          ["Jämställdhetsminister", undefined],
+                          ["Klimatminister", undefined],
+                          ["Sjukvårdsminister", undefined],
+                          ["Kulturminister", undefined],
+                          ["Skolminister", undefined],
+                          ["Justitieminister", undefined],
+                          ["Försvarsminister", undefined],
+                          ["Utrikesminister", undefined],
+                          ["Migrationsminister", undefined],
+                          ["Landsbygdsminister", undefined]]),
     }
   },
   computed: {
     ...mapStores(useSelectedStore, ['selectedPersons'])
+  },
+  methods: {
+    setMinister(key, id) {
+      this.ministers.set(key, id)
+    }
   }
 }
 </script>
@@ -21,7 +36,7 @@ export default {
 
   <h2 class="flex items-center justify-center mt-3">Ministerpost</h2>
   <div class="flex items-center justify-center mt-3">Välj vem som ska ha posten</div>
-  <div class="flex items-center justify-center mt-3" v-for="minister of ministerLabels"> {{ minister }} </div>
+  <!-- <div class="flex items-center justify-center mt-3" v-for="minister of ministerLabels"> {{ minister }} </div> -->
   <div class="flex items-center justify-center mt-3">
     <div class=" w-72 carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
       <div v-for="person of selectedStore.selectedPersons" class="carousel-item ml-8 l">

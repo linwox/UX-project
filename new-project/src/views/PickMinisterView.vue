@@ -16,6 +16,7 @@ export default {
   
     <h2>Ministerpost</h2>
     <div>Välj vem som ska ha posten</div>
+
     <div class="ml-14 w-72 carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
     <div v-for="person of selectedStore.selectedPersons" class="carousel-item">
       <div>
@@ -26,6 +27,7 @@ export default {
         </p>
       </div>
       </div>
+
     </div>
 
 <div>

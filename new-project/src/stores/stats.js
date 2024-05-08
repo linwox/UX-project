@@ -9,7 +9,7 @@ export const useStatsStore = defineStore('stats', {
     c_count: 0,
     kd_count: 0,
     m_count: 0,
-    sd_count: 0,
+    sd_count: 0
   }),
   actions: {
     countParty(party) {
@@ -43,7 +43,16 @@ export const useStatsStore = defineStore('stats', {
   },
   getters: {
     partyCounts() {
-      return [this.v_count, this.s_count, this.mp_count, this.l_count, this.c_count, this.kd_count, this.m_count, this.sd_count]
+      return [
+        this.v_count,
+        this.s_count,
+        this.mp_count,
+        this.l_count,
+        this.c_count,
+        this.kd_count,
+        this.m_count,
+        this.sd_count
+      ]
     }
   }
 })

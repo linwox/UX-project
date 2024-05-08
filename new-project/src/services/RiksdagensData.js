@@ -40,5 +40,17 @@ export default {
     const result = parser.parseFromString(data, 'application/xml')
 
     return result
+  },
+
+  async fetchSpeechesAsHtml(url) {
+    const resp = await fetch(url)
+
+    if (!resp.ok) {
+      throw new Error(`${resp.status} ${resp.statusText}`)
+    }
+
+    const data = await resp.text()
+
+    return data
   }
 }

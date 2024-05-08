@@ -1,6 +1,7 @@
 <script setup>
 import { useSelectedStore } from '@/stores/selected'
 import { mapStores } from 'pinia'
+import { useStatsStore } from '@/stores/stats'
 </script>
 
 <script>
@@ -12,26 +13,34 @@ export default {
 </script>
 
 <template>
-  <main class="main">
+  
     <h2>Ministerpost</h2>
     <div>Välj vem som ska ha posten</div>
-    <div v-for="person of selectedStore.selectedPersons"> 
-    
-      <img :src="person.imageUrl" class="">
-      <p>{{ person.age }}</p>
-    
-    
+    <div class="ml-14 w-72 carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
+    <div v-for="person of selectedStore.selectedPersons" class="carousel-item">
+      <div>
+        <img v-bind:src="person.imageUrl" class="rounded-box border-2" />
+        <div class="block align-bottom">{{ person.firstName }} {{ person.age}}</div>
+        <p class="content-center"> 
+           <button class="p-2 rounded border-2">Välj</button> 
+        </p>
+      </div>
+      </div>
     </div>
 
-    <RouterLink to="/government">Se din regering</RouterLink>
-  </main>
+<div>
+
+  <RouterLink to="/government">Se din regering</RouterLink>
+</div>
+
+  
 </template>
 
-<style>
+<!-- <style>
 .main {
   width: 30rem;
   height: 40rem;
   border: 1px solid black;
   padding: 1rem;
 }
-</style>
+</style> -->

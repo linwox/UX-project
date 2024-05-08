@@ -20,7 +20,7 @@
   padding: 1rem;
   /* background-image: url(../assets/swipe_riks.png); */
   background-size: cover;
-  background-color: rgb(253, 253, 253);
+  background-color: rgb(255, 255, 255);
   color: black;
 }
 

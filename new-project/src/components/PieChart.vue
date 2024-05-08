@@ -31,13 +31,13 @@
             data: statsStore.partyCounts,
             backgroundColor: [
               'red',
-              'blue',
+              'hotpink',
               'green',
-              'yellow',
+              'cyan',
               'purple',
               'orange',
-              'pink',
-              'cyan'
+              'blue',
+              'yellow'
             ]
           }]
         },

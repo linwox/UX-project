@@ -1,11 +1,16 @@
 <script setup>
 import { useSelectedStore } from '@/stores/selected'
 import { mapStores } from 'pinia'
-import { useStatsStore } from '@/stores/stats'
 </script>
 
 <script>
 export default {
+  data() {
+    return {
+      ministers: new Map(),
+      ministerLabels: ["Statsminister", "Finansminister", "Jämställdhetsminister", "Klimatminister", "Sjukvårdsminister", "Kulturminister", "Skolminister", "Justitieminister", "Försvarsminister", "Utrikesminister", "Migrationsminister", "Landsbygdsminister" ]
+    }
+  },
   computed: {
     ...mapStores(useSelectedStore, ['selectedPersons'])
   }
@@ -13,29 +18,28 @@ export default {
 </script>
 
 <template>
-  
-    <h2>Ministerpost</h2>
-    <div>Välj vem som ska ha posten</div>
 
-    <div class="ml-14 w-72 carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
-    <div v-for="person of selectedStore.selectedPersons" class="carousel-item">
-      <div>
-        <img v-bind:src="person.imageUrl" class="rounded-box border-2" />
-        <div class="block align-bottom">{{ person.firstName }} {{ person.age}}</div>
-        <p class="content-center"> 
-           <button class="p-2 rounded border-2">Välj</button> 
-        </p>
+  <h2 class="flex items-center justify-center mt-3">Ministerpost</h2>
+  <div class="flex items-center justify-center mt-3">Välj vem som ska ha posten</div>
+  <div class="flex items-center justify-center mt-3" v-for="minister of ministerLabels"> {{ minister }} </div>
+  <div class="flex items-center justify-center mt-3">
+    <div class=" w-72 carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
+      <div v-for="person of selectedStore.selectedPersons" class="carousel-item ml-8 l">
+        <div>
+          <img v-bind:src="person.imageUrl" class="rounded-box border-2" />
+          <div class="block align-bottom">{{ person.firstName }} {{ person.age }}</div>
+          <p class="flex items-center justify-center content-center">
+            <button class=" p-2 rounded border-2">Välj</button>
+          </p>
+        </div>
       </div>
-      </div>
-
     </div>
+    <div>
+    </div>
+  </div>
+  <RouterLink class="flex items-center justify-center mt-5" to="/government">Se din regering</RouterLink>
 
-<div>
 
-  <RouterLink to="/government">Se din regering</RouterLink>
-</div>
-
-  
 </template>
 
 <!-- <style>

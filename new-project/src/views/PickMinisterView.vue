@@ -13,6 +13,14 @@ export default {
   },
   computed: {
     ...mapStores(useSelectedStore, ['selectedPersons'])
+  },
+  methods: {
+    selectMinister() {
+      const things = document.getElementsByClassName("carousel-item")
+      for (const elem of things) {
+        console.log(elem.getBoundingClientRect(), elem.dataset.item)
+      }
+    }
   }
 }
 </script>
@@ -24,18 +32,21 @@ export default {
   <div class="flex items-center justify-center mt-3" v-for="minister of ministerLabels"> {{ minister }} </div>
   <div class="flex items-center justify-center mt-3">
     <div class=" w-72 carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
-      <div v-for="person of selectedStore.selectedPersons" class="carousel-item ml-8 l">
+      <div v-for="person of selectedStore.selectedPersons" class="carousel-item ml-8 l" :data-item="person.id">
         <div>
           <img v-bind:src="person.imageUrl" class="rounded-box border-2" />
           <div class="block align-bottom">{{ person.firstName }} {{ person.age }}</div>
           <p class="flex items-center justify-center content-center">
-            <button class=" p-2 rounded border-2">Välj</button>
           </p>
         </div>
       </div>
     </div>
     <div>
     </div>
+  </div>
+  <div class="flex items-center justify-center mt-2">
+
+    <button class=" p-2 rounded border-2" @click="selectMinister">Välj</button>
   </div>
   <RouterLink class="flex items-center justify-center mt-5" to="/government">Se din regering</RouterLink>
 

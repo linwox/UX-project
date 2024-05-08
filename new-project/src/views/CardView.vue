@@ -11,10 +11,24 @@ import router from '@/router'
   <header>
     <div class="wrapper">
       <h3>Tänk att ta en kaffe med...</h3>
-      <img alt="politician" id="image" :src="imageUrl" />
+      <div class="card w-96 bg-base-100 shadow-xl">
+        <figure class="px-10 pt-10">
+          <img :src="imageUrl" alt="Politician"
+            class="rounded-xl" />
+        </figure>
+        <div class="card-body items-center text-center">
+          <h2 class="card-title"></h2>
+          <p>{{ firstName }} {{ age }}</p>
+          <div class="card-actions">
+            <button @answer="handleAnswer" @click="handleYesClick" class="btn btn-primary">Ja</button>
+            <button @answer="handleAnswer" @click="handleNoClick" class="btn btn-secondary">Nej</button>
+          </div>
+        </div>
+      </div>
+      <!-- <img alt="politician" id="image" :src="imageUrl" />
       <p>{{ firstName }}</p>
-      <p>{{ age }}</p>
-      <ButtonComponent @answer="handleAnswer"></ButtonComponent>
+      <p>{{ age }}</p> -->
+      <!-- <ButtonComponent @answer="handleAnswer"></ButtonComponent> -->
     </div>
   </header>
 </template>
@@ -33,12 +47,31 @@ export default {
     }
   },
   components: {
-    ButtonComponent
+    // ButtonComponent
   },
   computed: {
     ...mapStores(useSelectedStore, useStatsStore)
   },
   methods: {
+    async handleYesClick() {
+      // this.$emit('answer', 'yes') // Emit 'yes' when Yes button is clicked
+      await this.loadImageAndData()
+      this.selectedStore.addSelectedPersonData(
+          this.randomId,
+          this.firstName,
+          this.age,
+          this.party,
+          this.imageUrl
+        )
+        this.statsStore.countParty(this.party)
+        if (this.selectedStore.selectedPersons.size >= 12) {
+          router.push('pick_minister')
+        }
+    },
+    async handleNoClick() {
+      // this.$emit('answer', 'no') // Emit 'no' when No button is clicked
+      await this.loadImageAndData()
+    },
     async preload() {
       this.listOfIds = await RiksdagensData.getListOfIds()
     },
@@ -71,30 +104,30 @@ export default {
       this.age = await this.getAge()
       this.party = await this.getParty()
     },
-    async handleAnswer(answer) {
-      if (answer === 'yes') {
-        // Reload image, name, and age
-        await this.loadImageAndData()
+    // async handleAnswer(answer) {
+    //   if (answer === 'yes') {
+    //     // Reload image, name, and age
+    //     await this.loadImageAndData()
 
-        // Add randomId to the list
-        // Assuming you have a list in your data called `selectedIds`
-        // this.selectedIds.push(this.randomId)
-        this.selectedStore.addSelectedPersonData(
-          this.randomId,
-          this.firstName,
-          this.age,
-          this.party,
-          this.imageUrl
-        )
-        this.statsStore.countParty(this.party)
-        if (this.selectedStore.selectedPersons.size >= 12) {
-          router.push('pick_minister')
-        }
-      } else if (answer === 'no') {
-        // Only reload image, name, and age
-        await this.loadImageAndData()
-      }
-    }
+    //     // Add randomId to the list
+    //     // Assuming you have a list in your data called `selectedIds`
+    //     // this.selectedIds.push(this.randomId)
+    //     this.selectedStore.addSelectedPersonData(
+    //       this.randomId,
+    //       this.firstName,
+    //       this.age,
+    //       this.party,
+    //       this.imageUrl
+    //     )
+    //     this.statsStore.countParty(this.party)
+    //     if (this.selectedStore.selectedPersons.size >= 12) {
+    //       router.push('pick_minister')
+    //     }
+    //   } else if (answer === 'no') {
+    //     // Only reload image, name, and age
+    //     await this.loadImageAndData()
+    //   }
+    // }
   },
   async created() {
     // Preload data
@@ -105,7 +138,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<!-- <style scoped>
 .wrapper {
   padding: 1rem;
   display: flexbox;
@@ -130,4 +163,4 @@ export default {
   font-family: Courier, monospace;
   margin: auto;
 }
-</style>
+</style> -->

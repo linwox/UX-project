@@ -43,14 +43,14 @@ export default {
   },
 
   async fetchSpeechesAsHtml(url) {
-    const resp = await fetch(url);
+    const resp = await fetch(url)
 
     if (!resp.ok) {
-      throw new Error(`${resp.status} ${resp.statusText}`);
+      throw new Error(`${resp.status} ${resp.statusText}`)
     }
 
-    const data = await resp.text();
+    const data = await resp.text()
 
-    return data;
+    return data
   }
 }

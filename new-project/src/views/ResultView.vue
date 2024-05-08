@@ -1,12 +1,17 @@
 <script setup>
 import { useStatsStore } from '@/stores/stats'
 import { mapStores } from 'pinia'
+import PieChart from '../components/PieChart.vue';
 </script>
 
 <script>
 export default {
   computed: {
     ...mapStores(useStatsStore)
+  },
+
+  components: {
+    PieChart
   }
 }
 </script>
@@ -15,9 +20,8 @@ export default {
   <main class="main">
     <h2>Resultat</h2>
     <div>
-      <p>% vilka partier man fick</p>
-      <p></p>
-      <p>{{ statsStore.partyCounts }}</p>
+      <pie-chart></pie-chart>
+      <!-- <p>{{ statsStore.partyCounts }}</p> -->
     </div>
     <RouterLink to="/pick_minister">Dela ut ministerposter</RouterLink>
   </main>

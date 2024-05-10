@@ -97,7 +97,7 @@ export default {
           this.firstName,
           this.age,
           this.party,
-          this.imageUrl,
+          this.imageUrl
           // this.quote
         )
         this.statsStore.countParty(this.party)
@@ -108,7 +108,7 @@ export default {
         // Only reload image, name, and age
         await this.loadImageAndData()
       }
-    },
+    }
   },
 
   async created() {

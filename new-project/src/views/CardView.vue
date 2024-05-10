@@ -13,15 +13,18 @@ import router from '@/router'
       <h3>Tänk att ta en kaffe med...</h3>
       <div class="card w-96 bg-base-100 shadow-xl">
         <figure class="px-10 pt-10">
-          <img :src="imageUrl" alt="Politician"
-            class="rounded-xl" />
+          <img :src="imageUrl" alt="Politician" class="rounded-xl" />
         </figure>
         <div class="card-body items-center text-center">
           <h2 class="card-title"></h2>
           <p>{{ firstName }} {{ age }}</p>
           <div class="card-actions">
-            <button @answer="handleAnswer" @click="handleYesClick" class="btn btn-primary">Ja</button>
-            <button @answer="handleAnswer" @click="handleNoClick" class="btn btn-secondary">Nej</button>
+            <button @answer="handleAnswer" @click="handleYesClick" class="btn btn-primary">
+              Ja
+            </button>
+            <button @answer="handleAnswer" @click="handleNoClick" class="btn btn-secondary">
+              Nej
+            </button>
           </div>
         </div>
       </div>
@@ -57,16 +60,16 @@ export default {
       // this.$emit('answer', 'yes') // Emit 'yes' when Yes button is clicked
       await this.loadImageAndData()
       this.selectedStore.addSelectedPersonData(
-          this.randomId,
-          this.firstName,
-          this.age,
-          this.party,
-          this.imageUrl
-        )
-        this.statsStore.countParty(this.party)
-        if (this.selectedStore.selectedPersons.size >= 12) {
-          router.push('pick_minister')
-        }
+        this.randomId,
+        this.firstName,
+        this.age,
+        this.party,
+        this.imageUrl
+      )
+      this.statsStore.countParty(this.party)
+      if (this.selectedStore.selectedPersons.size >= 12) {
+        router.push('pick_minister')
+      }
     },
     async handleNoClick() {
       // this.$emit('answer', 'no') // Emit 'no' when No button is clicked
@@ -128,12 +131,35 @@ export default {
     //     await this.loadImageAndData()
     //   }
     // }
+    // Add randomId to the list
+    // Assuming you have a list in your data called `selectedIds`
+    // this.selectedIds.push(this.randomId)
+    //       this.selectedStore.addSelectedPersonData(
+    //         this.randomId,
+    //         this.firstName,
+    //         this.age,
+    //         this.party,
+    //         this.imageUrl
+    //       )
+    //       this.statsStore.countParty(this.party)
+    //       if (this.selectedStore.selectedPersons.size >= 12) {
+    //         this.$router.push('pick_minister')
+    //       }
+    //     } else if (answer === 'no') {
+    //       // Only reload image, name, and age
+    //       await this.loadImageAndData()
+    //     }
+    //   }
+    // },
   },
   async created() {
     // Preload data
+    console.log("hej")
     await this.preload()
     // Load initial image and data
+    console.log("hej")
     await this.loadImageAndData()
+    console.log("hej")
   }
 }
 </script>

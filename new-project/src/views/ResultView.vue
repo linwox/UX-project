@@ -18,17 +18,17 @@ import PieChart from '../components/PieChart.vue'
 <script>
 export default {
   computed: {
-    ...mapStores(useStatsStore),
+    ...mapStores(useStatsStore)
   },
 
   components: {
     PieChart
-  }, 
+  },
 
   methods: {
     showStats() {
       const partyNames = ['V', 'S', 'MP', 'L', 'C', 'KD', 'M', 'SD']
-      partyNames.forEach(party => {
+      partyNames.forEach((party) => {
         const count = this.statsStore[`${party.toLowerCase()}_count`]
         console.log(`${party}: ${count}`)
         return party, count

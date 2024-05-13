@@ -40,21 +40,22 @@ export default {
               'blue',
               'yellow'
             ]
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'bottom',
-            },
-            title: {
-              display: true,
-              text: 'Party Counts'
-            }
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          },
+          title: {
+            display: true,
+            text: 'Party Counts'
           }
         }
-      })
+      }
+    })
   }
 }
 </script>

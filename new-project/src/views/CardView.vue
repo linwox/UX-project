@@ -1,5 +1,4 @@
 <script setup>
-import ButtonComponent from '@/components/ButtonComponent.vue'
 import RiksdagensData from '../services/RiksdagensData'
 import { useSelectedStore } from '@/stores/selected'
 import { useStatsStore } from '@/stores/stats'
@@ -106,7 +105,7 @@ export default {
       this.firstName = await this.getName()
       this.age = await this.getAge()
       this.party = await this.getParty()
-    },
+    }
     // async handleAnswer(answer) {
     //   if (answer === 'yes') {
     //     // Reload image, name, and age
@@ -154,12 +153,9 @@ export default {
   },
   async created() {
     // Preload data
-    console.log("hej")
     await this.preload()
     // Load initial image and data
-    console.log("hej")
     await this.loadImageAndData()
-    console.log("hej")
   }
 }
 </script>

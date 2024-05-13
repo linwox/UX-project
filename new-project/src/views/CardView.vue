@@ -67,7 +67,7 @@ export default {
         this.imageUrl
       )
       this.statsStore.countParty(this.party)
-      if (this.selectedStore.selectedPersons.size >= 12) {
+      if (this.selectedStore.selectedPersons.length >= 12) {
         router.push('pick_minister')
       }
     },

@@ -56,7 +56,7 @@ export default {
   <div class="flex items-center justify-center mt-3">Välj vem som ska ha posten</div>
   <!-- <div class="flex items-center justify-center mt-3" v-for="minister of ministerLabels"> {{ minister }} </div> -->
   <div class="flex items-center justify-center mt-3">
-    <div class="w-72 carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
+    <div class="w- carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
 
       <!-- <div v-for="person of selectedStore.selectedPersons" class="carousel-item ml-8 l" :data-item="person.id">
         <div>
@@ -65,11 +65,12 @@ export default {
           <p class="flex items-center justify-center content-center">
           </p> -->
 
-      <div
+      <!-- <div
         v-for="person of selectedStore.selectedPersons"
         class="carousel-item ml-8 l"
         :data-item="person.id"
-      >
+      > -->
+      d
         <select
           id="minister_post"
           v-model="ministerPost"
@@ -105,7 +106,7 @@ export default {
         </div>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
   <div class="flex items-center justify-center mt-2">
     <button class="p-2 rounded border-2" @click="selectMinister">Välj</button>
   </div>

@@ -7,22 +7,7 @@ import { mapStores } from 'pinia'
 export default {
   data() {
     return {
-      ministers: new Map([
-        ['prime', undefined],
-        ['finance', undefined],
-        ['equality', undefined],
-        ['climate', undefined],
-        ['health', undefined],
-        ['culture', undefined],
-        ['school', undefined],
-        ['justice', undefined],
-        ['defence', undefined],
-        ['foreign', undefined],
-        ['migration', undefined],
-        ['rural', undefined]
-      ]),
-      ministerPost: undefined,
-      randomId: undefined
+      ministerPost: undefined
     }
   },
   computed: {
@@ -35,8 +20,9 @@ export default {
         console.log(elem.getBoundingClientRect(), elem.dataset.item)
       }
     },
-    setMinister() {
-      this.ministers.set(this.ministerPost, this.randomId)
+    setMinister(ministerPost, id) {
+      const index = this.selectedStore.selectedPersons.findIndex(obj => obj.id === id)
+      this.selectedStore.selectedPersons[index].ministerPost = ministerPost
     },
     getMinisterPostValue() {
       const e = document.getElementById('minister_post')
@@ -79,19 +65,19 @@ export default {
           <div>
             <img :src="person.imageUrl" alt="politician" class="rounded-box border-2" />
             <div class="block align-bottom">{{ person.firstName }} {{ person.age }}</div>
+            <!-- Här ska vi skriva ut vilken ministerpost man valt och ta bort knappen -->
             <p class="flex items-center justify-center content-center">
-              {{ ministerPost }}
+              {{  }}
             </p>
             <p class="flex items-center justify-center content-center">
-              <button class="p-2 rounded border-2" @click="setMinister">Välj</button>
+              <button class="p-2 rounded border-2" @click="setMinister(ministerPost, person.id)">Välj</button>
             </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="flex items-center justify-center mt-2">
-    <button class="p-2 rounded border-2" @click="selectMinister">Välj</button>
-  </div>
-  <RouterLink class="flex items-center justify-center mt-5" to="/government">Se din regering</RouterLink>
+  <RouterLink class="flex items-center justify-center mt-5" to="/government"
+    >Se din regering</RouterLink
+  >
 </template>

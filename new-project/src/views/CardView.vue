@@ -56,17 +56,17 @@ export default {
   },
   methods: {
     async handleYesClick() {
-
       this.selectedStore.addSelectedPersonData(
         this.randomId,
         this.firstName,
         this.age,
         this.party,
-        this.imageUrl
+        this.imageUrl,
+        undefined
       )
       // this.$emit('answer', 'yes') // Emit 'yes' when Yes button is clicked
       await this.loadImageAndData()
-      
+
       this.statsStore.countParty(this.party)
       if (this.selectedStore.selectedPersons.length >= 4) {
         router.push('pick_minister')

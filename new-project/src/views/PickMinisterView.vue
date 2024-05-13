@@ -33,6 +33,17 @@ export default {
       const e = document.getElementById('minister_post')
       const text = e.target.options[e.target.selectedIndex].text
       return text
+    },
+    hideButton(id) {
+      // Set buttonPressed to true for the specific person
+      const index = this.selectedStore.selectedPersons.findIndex(obj => obj.id === id)
+      this.selectedStore.selectedPersons[index].buttonPressed = true;
+    },
+    handleButtonClick(ministerPost, id) {
+      this.setMinister(ministerPost, id);
+      
+      this.hideButton(id);
+
     }
   }
 }
@@ -67,10 +78,10 @@ export default {
             <div class="block align-bottom">{{ person.firstName }} {{ person.age }}</div>
             <!-- Här ska vi skriva ut vilken ministerpost man valt och ta bort knappen -->
             <p class="flex items-center justify-center content-center">
-              {{  }}
-            </p>
-            <p class="flex items-center justify-center content-center">
-              <button class="p-2 rounded border-2" @click="setMinister(ministerPost, person.id)">Välj</button>
+              <button class="p-2 rounded border-2" v-if="!person.buttonPressed" @click="handleButtonClick(ministerPost, person.id)">Välj</button>
+              <p class="flex items-center justify-center content-center"
+                v-else>{{ person.ministerPost }}
+              </p>
             </p>
           </div>
         </div>

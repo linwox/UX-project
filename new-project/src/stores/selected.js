@@ -5,8 +5,8 @@ export const useSelectedStore = defineStore('selected', {
     selectedPersons: []
   }),
   actions: {
-    addSelectedPersonData(id, firstName, age, party, imageUrl, ministerPost) {
-      const person = { id, firstName, age, party, imageUrl, ministerPost }
+    addSelectedPersonData(id, firstName, age, party, imageUrl, ministerPost, buttonPressed) {
+      const person = { id, firstName, age, party, imageUrl, ministerPost, buttonPressed }
       this.selectedPersons.push(person)
     }
   }

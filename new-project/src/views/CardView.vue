@@ -62,7 +62,8 @@ export default {
         this.age,
         this.party,
         this.imageUrl,
-        undefined
+        undefined, 
+        false
       )
       // this.$emit('answer', 'yes') // Emit 'yes' when Yes button is clicked
       await this.loadImageAndData()

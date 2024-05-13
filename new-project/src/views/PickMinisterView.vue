@@ -70,7 +70,7 @@ export default {
         class="carousel-item ml-8 l"
         :data-item="person.id"
       > -->
-      d
+      
         <select
           id="minister_post"
           v-model="ministerPost"

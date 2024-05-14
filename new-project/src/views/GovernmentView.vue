@@ -1,10 +1,26 @@
-<script setup></script>
+<script setup>
+import { useSelectedStore } from '@/stores/selected'
+import { mapStores } from 'pinia'
+</script>
+
+<script>
+export default {
+  computed: {
+    ...mapStores(useSelectedStore)
+  },
+  methods: {
+    resetSelectedStore() {
+      this.selectedStore.selectedPersons = []
+    }
+  }
+}
+</script>
 
 <template>
   <main class="main">
     <h2>Regeringen!</h2>
     <div>Alla har roliga hattar!</div>
-    <RouterLink to="/">Start</RouterLink>
+    <RouterLink to="/" @click="resetSelectedStore">Start over</RouterLink>
   </main>
 </template>
 

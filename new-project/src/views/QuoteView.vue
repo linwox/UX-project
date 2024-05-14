@@ -5,7 +5,6 @@ import RiksdagensData from '../services/RiksdagensData'
 import { useSelectedStore } from '@/stores/selected'
 import { useStatsStore } from '@/stores/stats'
 import { mapStores } from 'pinia'
-import router from '@/router'
 </script>
 
 <template>

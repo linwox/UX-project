@@ -11,7 +11,7 @@ import PieChart from '../components/PieChart.vue'
       <pie-chart></pie-chart>
       <p>{{ statsStore.partyCounts }}</p>
     </div>
-    <RouterLink to="/pick_minister">Dela ut ministerposter</RouterLink>
+    <RouterLink to="/government">Se din regering</RouterLink>
   </main>
 </template>
 

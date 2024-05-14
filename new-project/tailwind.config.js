@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx,vue}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage:{
+        'swipe-riks': "url('../assets/swipe_riks.png')"
+      }
+    },
   },
   plugins: [require('daisyui')]
 }

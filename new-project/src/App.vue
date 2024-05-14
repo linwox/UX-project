@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header>
+  <!-- <header>
     <nav>
       <RouterLink to="/">Start</RouterLink>
       <RouterLink to="/choice">Choice</RouterLink>
@@ -13,12 +13,12 @@ import { RouterLink, RouterView } from 'vue-router'
       <RouterLink to="/pick_minister">Ministers</RouterLink>
       <RouterLink to="/government">Government</RouterLink>
     </nav>
-  </header>
+  </header> -->
 
   <RouterView />
 </template>
 
-<style scoped>
+<!-- <style scoped>
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -80,4 +80,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>
+</style> -->

@@ -5,14 +5,12 @@ import PieChart from '../components/PieChart.vue'
 </script>
 
 <template>
-  <main class="main">
     <h2>Resultat</h2>
     <div>
       <pie-chart></pie-chart>
       <p>{{ statsStore.partyCounts }}</p>
     </div>
     <RouterLink to="/government">Se din regering</RouterLink>
-  </main>
 </template>
 
 <script>

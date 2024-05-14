@@ -1,11 +1,9 @@
 <script setup></script>
 
 <template>
-  <main class="main">
     <p>Välj din regering utifrån bilder eller citat:</p>
     <button class="choice" @click="$router.push('card')">Bilder</button>
     <button class="choice" @click="$router.push('quote')">Citat</button>
-  </main>
 </template>
 
 <script></script>

@@ -18,35 +18,36 @@ export default {
 </script>
 
 <template>
-  <main class="main">
     <h2>Regeringen!</h2>
     <div>Alla har roliga hattar!</div>
-    <div v-for="person of selectedStore.selectedPersons" :key="person">
-      <label class="swap swap-flip text-9xl">
-        <!-- this hidden checkbox controls the state -->
-        <input type="checkbox" />
+    <div class="grid grid-cols-3 gap-4">
 
-        <div class="swap-off">
-          <div class="card w-96 bg-base-100 shadow-xl">
-            <figure class="px-10 pt-10">
-              <img :src="person.imageUrl" alt="Politician" class="rounded-xl" />
-            </figure>
-          </div>
-        </div>
+      <div v-for="person of selectedStore.selectedPersons" :key="person">
+        <label class="swap swap-flip text-9xl">
+          <!-- this hidden checkbox controls the state -->
+          <input type="checkbox" />
 
-        <div class="swap-on">
-          <div class="card w-96 bg-base-100 shadow-xl">
-            <div class="card-body items-center text-center">
-              <h2 class="card-title"></h2>
-              <p>{{ person.firstName }} {{ person.age }} {{ person.party }}</p>
+          <div class="swap-off">
+            <div class="card w-40 h-56 bg-base-100 shadow-xl">
+              <img :src="person.imageUrl" alt="Politician" class="p-3 rounded-3xl" />
             </div>
           </div>
-        </div>
 
-      </label>
+          <div class="swap-on">
+            <div class="card w-40 h-56 bg-base-100 shadow-xl">
+              <div class="card-body items-center text-center">
+                <h2 class="card-title"></h2>
+                <p>{{ person.firstName }}</p>
+                <p>{{ person.age }}</p>
+                <p>{{ person.party }}</p>
+              </div>
+            </div>
+          </div>
+        </label>
+      </div>
+
     </div>
     <RouterLink to="/" @click="resetSelectedStore">Start over</RouterLink>
-  </main>
 </template>
 
 <script></script>

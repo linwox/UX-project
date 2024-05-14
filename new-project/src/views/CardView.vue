@@ -69,7 +69,7 @@ export default {
       await this.loadImageAndData()
 
       this.statsStore.countParty(this.party)
-      if (this.selectedStore.selectedPersons.length >= 4) {
+      if (this.selectedStore.selectedPersons.length >= 12) {
         router.push('pick_minister')
       }
     },

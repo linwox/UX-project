@@ -46,6 +46,13 @@ export default {
       options: {
         responsive: true,
         plugins: {
+          datalabels: {
+            display: true,
+            formatter: (value) => {
+              // if (value < 5) return '';
+              return value + '%'
+            }
+          },
           legend: {
             position: 'bottom'
           },

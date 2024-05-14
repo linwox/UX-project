@@ -2,6 +2,7 @@
 import { useStatsStore } from '@/stores/stats'
 import { mapStores } from 'pinia'
 import PieChart from '../components/PieChart.vue'
+import { useSelectedStore } from '@/stores/selected'
 </script>
 
 <template>
@@ -16,7 +17,7 @@ import PieChart from '../components/PieChart.vue'
 <script>
 export default {
   computed: {
-    ...mapStores(useStatsStore)
+    ...mapStores(useStatsStore, useSelectedStore)
   },
 
   components: {
@@ -29,9 +30,11 @@ export default {
       partyNames.forEach((party) => {
         const count = this.statsStore[`${party.toLowerCase()}_count`]
         console.log(`${party}: ${count}`)
+        const percentage = Math.round(count / 7 * 100)
+        console.log(`${percentage}%`)
         return party, count
       })
-    }
+    }, 
   },
   mounted() {
     this.showStats()

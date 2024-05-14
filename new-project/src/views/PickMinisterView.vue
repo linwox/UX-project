@@ -9,18 +9,18 @@ export default {
     return {
       ministerPost: undefined,
       posts: [
-        "Statsminister",
-        "Finansminister",
-        "Jämställdhetsminister",
-        "Klimatminister",
-        "Sjukvårdminister",
-        "Kulturminister",
-        "Skolminister",
-        "Justitieminister",
-        "Försvarsminister",
-        "Utrikesminister",
-        "Migrationsminister",
-        "Landsbygdsminister"
+        'Statsminister',
+        'Finansminister',
+        'Jämställdhetsminister',
+        'Klimatminister',
+        'Sjukvårdminister',
+        'Kulturminister',
+        'Skolminister',
+        'Justitieminister',
+        'Försvarsminister',
+        'Utrikesminister',
+        'Migrationsminister',
+        'Landsbygdsminister'
       ]
     }
   },
@@ -35,7 +35,7 @@ export default {
       }
     },
     setMinister(ministerPost, id) {
-      const index = this.selectedStore.selectedPersons.findIndex(obj => obj.id === id)
+      const index = this.selectedStore.selectedPersons.findIndex((obj) => obj.id === id)
       this.selectedStore.selectedPersons[index].ministerPost = ministerPost
     },
     getMinisterPostValue() {
@@ -50,17 +50,17 @@ export default {
     },
     hideButton(id) {
       // Set buttonPressed to true for the specific person
-      const index = this.selectedStore.selectedPersons.findIndex(obj => obj.id === id)
-      this.selectedStore.selectedPersons[index].buttonPressed = true;
+      const index = this.selectedStore.selectedPersons.findIndex((obj) => obj.id === id)
+      this.selectedStore.selectedPersons[index].buttonPressed = true
     },
     removePost(ministerPost) {
       const index = this.posts.indexOf(ministerPost)
       this.posts.splice(index, 1)
     },
     handleButtonClick(ministerPost, id) {
-      this.setMinister(ministerPost, id);
-      this.hideButton(id);
-      this.removePost(ministerPost);
+      this.setMinister(ministerPost, id)
+      this.hideButton(id)
+      this.removePost(ministerPost)
     }
   }
 }
@@ -78,15 +78,26 @@ export default {
   <div class="flex items-center justify-center mt-3">
     <div class="w- carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
       <div class="w-72 carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
-        <div v-for="person of selectedStore.selectedPersons" :key="person" class="carousel-item ml-8 l">
+        <div
+          v-for="person of selectedStore.selectedPersons"
+          :key="person"
+          class="carousel-item ml-8 l"
+        >
           <div>
             <img :src="person.imageUrl" alt="politician" class="rounded-box border-2" />
             <div class="block align-bottom">{{ person.firstName }} {{ person.age }}</div>
             <!-- Här ska vi skriva ut vilken ministerpost man valt och ta bort knappen -->
             <p class="flex items-center justify-center content-center">
-              <button class="p-2 rounded border-2" v-if="!person.buttonPressed"
-                @click="handleButtonClick(ministerPost, person.id)">Välj</button>
-            <span class="flex items-center justify-center content-center" v-else>{{ person.ministerPost }}</span>
+              <button
+                class="p-2 rounded border-2"
+                v-if="!person.buttonPressed"
+                @click="handleButtonClick(ministerPost, person.id)"
+              >
+                Välj
+              </button>
+              <span class="flex items-center justify-center content-center" v-else>{{
+                person.ministerPost
+              }}</span>
             </p>
           </div>
         </div>

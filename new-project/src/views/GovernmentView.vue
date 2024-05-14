@@ -5,6 +5,7 @@ import { mapStores } from 'pinia'
 
 <script>
 export default {
+  data() { },
   computed: {
     ...mapStores(useSelectedStore)
   },
@@ -20,6 +21,30 @@ export default {
   <main class="main">
     <h2>Regeringen!</h2>
     <div>Alla har roliga hattar!</div>
+    <div v-for="person of selectedStore.selectedPersons" :key="person">
+      <label class="swap swap-flip text-9xl">
+        <!-- this hidden checkbox controls the state -->
+        <input type="checkbox" />
+
+        <div class="swap-off">
+          <div class="card w-96 bg-base-100 shadow-xl">
+            <figure class="px-10 pt-10">
+              <img :src="person.imageUrl" alt="Politician" class="rounded-xl" />
+            </figure>
+          </div>
+        </div>
+
+        <div class="swap-on">
+          <div class="card w-96 bg-base-100 shadow-xl">
+            <div class="card-body items-center text-center">
+              <h2 class="card-title"></h2>
+              <p>{{ person.firstName }} {{ person.age }} {{ person.party }}</p>
+            </div>
+          </div>
+        </div>
+
+      </label>
+    </div>
     <RouterLink to="/" @click="resetSelectedStore">Start over</RouterLink>
   </main>
 </template>

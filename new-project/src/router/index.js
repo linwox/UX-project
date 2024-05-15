@@ -10,6 +10,11 @@ const router = createRouter({
       component: StartView
     },
     {
+      path: '/instruction',
+      name: 'instruction',
+      component: () => import('../views/InstructionView.vue')
+    },
+    {
       path: '/choice',
       name: 'choice',
       component: () => import('../views/ChoiceView.vue')
@@ -38,6 +43,16 @@ const router = createRouter({
       path: '/government',
       name: 'government',
       component: () => import('../views/GovernmentView.vue')
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/closing',
+      name: 'closing',
+      component: () => import('../views/ClosingView.vue')
     }
   ]
 })

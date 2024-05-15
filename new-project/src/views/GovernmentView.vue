@@ -44,6 +44,7 @@ export default {
         </label>
       </div>
     </div>
-    <RouterLink to="/" @click="resetSelectedStore">Start over</RouterLink>
+    <RouterLink to="/closing">Klar!</RouterLink>
+    <!-- <RouterLink to="/" @click="resetSelectedStore">Start over</RouterLink>  -->
   </div>
 </template>

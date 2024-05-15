@@ -9,10 +9,10 @@ import { RouterLink } from 'vue-router'
   >
     <!-- <img id="background_image" src="../assets/swipe_riks.png" alt="startpage" class="h-screen bg-cover bg-no-repeat" /> -->
     <div class="text-center">
-      <p class="text-center">Ett parti kärlek. För</p>
-      <p class="text-center mb-4">demokratins skull.</p>
+      <!-- <p class="text-center">Ett parti kärlek. För</p>
+      <p class="text-center mb-4">demokratins skull.</p> -->
       <div class="text-center">
-        <RouterLink to="/choice">Start</RouterLink>
+        <RouterLink to="/instruction">Start</RouterLink>
       </div>
     </div>
   </div>

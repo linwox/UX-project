@@ -68,45 +68,47 @@ export default {
 
 <template>
   <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
-
-  <h2 class="flex items-center justify-center ">Ministerpost</h2>
-  <div class="flex items-center justify-center mt-3">Välj vem som ska ha posten</div>
-  <div class="flex items-center justify-center mt-3">
-    <select id="minister_post" v-model="ministerPost" class="select select-bordered w-48 max-w-xs">
-      <option disabled selected>Ministerposter</option>
-      <option v-for="post in posts" :key="post" :value="post">{{ post }}</option>
-    </select>
-  </div>
-  <div class="flex items-center justify-center mt-3">
-    <div class="w- carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
-      <div class="w-72 carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
-        <div
-          v-for="person of selectedStore.selectedPersons"
-          :key="person"
-          class="carousel-item ml-8 l"
-        >
-          <div>
-            <img :src="person.imageUrl" alt="politician" class="rounded-box border-2" />
-            <div class="block align-bottom">{{ person.firstName }} {{ person.age }}</div>
-            <!-- Här ska vi skriva ut vilken ministerpost man valt och ta bort knappen -->
-            <p class="flex items-center justify-center content-center">
-              <button
-                class="p-2 rounded border-2"
-                v-if="!person.buttonPressed"
-                @click="handleButtonClick(ministerPost, person.id)"
-              >
-                Välj
-              </button>
-              <span class="flex items-center justify-center content-center" v-else>{{
-                person.ministerPost
-              }}</span>
-            </p>
+    <h2 class="flex items-center justify-center">Ministerpost</h2>
+    <div class="flex items-center justify-center mt-3">Välj vem som ska ha posten</div>
+    <div class="flex items-center justify-center mt-3">
+      <select
+        id="minister_post"
+        v-model="ministerPost"
+        class="select select-bordered w-48 max-w-xs"
+      >
+        <option disabled selected>Ministerposter</option>
+        <option v-for="post in posts" :key="post" :value="post">{{ post }}</option>
+      </select>
+    </div>
+    <div class="flex items-center justify-center mt-3">
+      <div class="w- carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
+        <div class="w-72 carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
+          <div
+            v-for="person of selectedStore.selectedPersons"
+            :key="person"
+            class="carousel-item ml-8 l"
+          >
+            <div>
+              <img :src="person.imageUrl" alt="politician" class="rounded-box border-2" />
+              <div class="block align-bottom">{{ person.firstName }} {{ person.age }}</div>
+              <!-- Här ska vi skriva ut vilken ministerpost man valt och ta bort knappen -->
+              <p class="flex items-center justify-center content-center">
+                <button
+                  class="p-2 rounded border-2"
+                  v-if="!person.buttonPressed"
+                  @click="handleButtonClick(ministerPost, person.id)"
+                >
+                  Välj
+                </button>
+                <span class="flex items-center justify-center content-center" v-else>{{
+                  person.ministerPost
+                }}</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <RouterLink class="flex items-center justify-center mt-5" to="/result">Vem är vad?</RouterLink>
   </div>
-  <RouterLink class="flex items-center justify-center mt-5" to="/result">Vem är vad?</RouterLink>
-
-</div>
 </template>

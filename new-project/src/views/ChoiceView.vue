@@ -1,14 +1,33 @@
-<script setup></script>
+<script setup>
+import { useChoiceStore } from '@/stores/choice'
+import { mapStores } from 'pinia'
+</script>
 
 <template>
   <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
     <p>Välj din regering utifrån bilder eller citat:</p>
-    <button class="choice" @click="$router.push('card')">Bilder</button>
-    <button class="choice" @click="$router.push('quote')">Citat</button>
+    <button class="choice" @click="handleImageClick">Bilder</button>
+    <button class="choice" @click="handleQuoteClick">Citat</button>
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  computed: {
+    ...mapStores(useChoiceStore)
+  },
+  methods: {
+    handleImageClick() {
+      this.choiceStore.choice = true
+      this.$router.push('card')
+    },
+    handleQuoteClick() {
+      this.choiceStore.choice = false
+      this.$router.push('card')
+    }
+  }
+}
+</script>
 
 <style>
 .main {

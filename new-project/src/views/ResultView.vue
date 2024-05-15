@@ -8,17 +8,14 @@ import { useSelectedStore } from '@/stores/selected'
 <template>
   <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
     <div class="mt-32">
-          <h2 class="text-xl text-center">Resultat</h2>
-            <pie-chart class="w-80 "></pie-chart>
+      <h2 class="text-xl text-center">Resultat</h2>
+      <pie-chart class="w-80"></pie-chart>
       <div v-for="(party, index) in partyPercentages" :key="index">
         <p class="text-lg">{{ party.name }}: {{ party.percentage }}%</p>
       </div>
     </div>
     <RouterLink to="/government">Se din regering</RouterLink>
-
-
   </div>
-
 </template>
 
 <script>
@@ -28,25 +25,18 @@ export default {
 
     partyPercentages() {
       const partyNames = ['V', 'S', 'MP', 'L', 'C', 'KD', 'M', 'SD']
-      return partyNames.map((party) => {
-        const count = this.statsStore[`${party.toLowerCase()}_count`]
-        const percentage = Math.round((count / 12) * 100)
-        return { name: party, percentage: percentage }
-      }).filter(party => party.percentage !== 0)
+      return partyNames
+        .map((party) => {
+          const count = this.statsStore[`${party.toLowerCase()}_count`]
+          const percentage = Math.round((count / 12) * 100)
+          return { name: party, percentage: percentage }
+        })
+        .filter((party) => party.percentage !== 0)
     }
   },
 
   components: {
     PieChart
-  },
+  }
 }
 </script>
-
-<!-- <style>
-.main {
-  width: 30rem;
-  height: 40rem;
-  border: 1px solid black;
-  padding: 1rem;
-}
-</style> -->

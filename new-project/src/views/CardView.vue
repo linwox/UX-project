@@ -2,21 +2,33 @@
 import RiksdagensData from '../services/RiksdagensData'
 import { useSelectedStore } from '@/stores/selected'
 import { useStatsStore } from '@/stores/stats'
+import { useChoiceStore } from '@/stores/choice'
 import { mapStores } from 'pinia'
-import router from '@/router'
+import { generateQuote } from '@/lib/QuoteManager.js'
 </script>
 
 <template>
   <header>
-    <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen wrapper">
-      <h3>Tänk att ta en kaffe med...</h3>
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <figure class="px-10 pt-10">
-          <img :src="imageUrl" alt="Politician" class="rounded-xl" />
+    <div
+      class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen wrapper items-center text-center"
+    >
+      <div class="card w-5/6 bg-base-100 shadow-xl">
+        <figure v-if="choiceStore.choice" class="px-10 pt-10">
+          <div class="card-body items-center text-center">
+            <h3 class="card-title p-bottom-4">Tänk att ta en kaffe med...</h3>
+            <img :src="imageUrl" alt="Politician" class="rounded-xl" />
+            <p>{{ firstName }} {{ age }}</p>
+          </div>
         </figure>
+
+        <div v-else>
+          <div class="card-body items-center text-center">
+            <h3 class="card-title p-bottom-4">Håller du med om...?</h3>
+            <p>{{ quote }}</p>
+          </div>
+        </div>
+
         <div class="card-body items-center text-center">
-          <h2 class="card-title"></h2>
-          <p>{{ firstName }} {{ age }}</p>
           <div class="card-actions">
             <button @answer="handleAnswer" @click="handleYesClick" class="btn btn-primary">
               Ja
@@ -27,10 +39,6 @@ import router from '@/router'
           </div>
         </div>
       </div>
-      <!-- <img alt="politician" id="image" :src="imageUrl" />
-      <p>{{ firstName }}</p>
-      <p>{{ age }}</p> -->
-      <!-- <ButtonComponent @answer="handleAnswer"></ButtonComponent> -->
     </div>
   </header>
 </template>
@@ -45,18 +53,15 @@ export default {
       firstName: undefined,
       age: undefined,
       party: undefined,
+      quote: undefined,
       politicianData: Object
     }
   },
-  components: {
-    // ButtonComponent
-  },
   computed: {
-    ...mapStores(useSelectedStore, useStatsStore)
+    ...mapStores(useSelectedStore, useStatsStore, useChoiceStore)
   },
   methods: {
     async handleYesClick() {
-
       if (this.selectedStore.selectedPersons.includes(this.randomId)) {
         const index = this.listOfIds.indexOf(this.randomId)
         if (index !== -1) {
@@ -73,17 +78,15 @@ export default {
         undefined,
         false
       )
-
       // this.$emit('answer', 'yes') // Emit 'yes' when Yes button is clicked
       await this.loadImageAndData()
 
       this.statsStore.countParty(this.party)
       if (this.selectedStore.selectedPersons.length >= 12) {
-        router.push('pick_minister')
+        this.$router.push('pick_minister')
       }
     },
     async handleNoClick() {
-      // this.$emit('answer', 'no') // Emit 'no' when No button is clicked
       await this.loadImageAndData()
     },
     async preload() {
@@ -110,6 +113,10 @@ export default {
     async getParty() {
       return this.politicianData.parti
     },
+    async getQuote() {
+      this.quote = await generateQuote(this.randomId)
+      return this.quote
+    },
     async loadImageAndData() {
       await this.getRandomId()
       await this.getPoliticianData(this.randomId)
@@ -117,51 +124,8 @@ export default {
       this.firstName = await this.getName()
       this.age = await this.getAge()
       this.party = await this.getParty()
+      this.quote = await this.getQuote()
     }
-    // async handleAnswer(answer) {
-    //   if (answer === 'yes') {
-    //     // Reload image, name, and age
-    //     await this.loadImageAndData()
-
-    //     // Add randomId to the list
-    //     // Assuming you have a list in your data called `selectedIds`
-    //     // this.selectedIds.push(this.randomId)
-    //     this.selectedStore.addSelectedPersonData(
-    //       this.randomId,
-    //       this.firstName,
-    //       this.age,
-    //       this.party,
-    //       this.imageUrl
-    //     )
-    //     this.statsStore.countParty(this.party)
-    //     if (this.selectedStore.selectedPersons.size >= 12) {
-    //       router.push('pick_minister')
-    //     }
-    //   } else if (answer === 'no') {
-    //     // Only reload image, name, and age
-    //     await this.loadImageAndData()
-    //   }
-    // }
-    // Add randomId to the list
-    // Assuming you have a list in your data called `selectedIds`
-    // this.selectedIds.push(this.randomId)
-    //       this.selectedStore.addSelectedPersonData(
-    //         this.randomId,
-    //         this.firstName,
-    //         this.age,
-    //         this.party,
-    //         this.imageUrl
-    //       )
-    //       this.statsStore.countParty(this.party)
-    //       if (this.selectedStore.selectedPersons.size >= 12) {
-    //         this.$router.push('pick_minister')
-    //       }
-    //     } else if (answer === 'no') {
-    //       // Only reload image, name, and age
-    //       await this.loadImageAndData()
-    //     }
-    //   }
-    // },
   },
   async created() {
     // Preload data
@@ -171,30 +135,3 @@ export default {
   }
 }
 </script>
-
-<!-- <style scoped>
-.wrapper {
-  padding: 1rem;
-  display: flexbox;
-  align-items: center;
-  justify-content: center;
-  width: 14rem;
-  margin: auto;
-  margin-top: 10rem;
-  border: 3px solid black;
-  border-radius: 10px;
-}
-
-#image {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-#name {
-  text-align: center;
-  font-size: 200%;
-  font-family: Courier, monospace;
-  margin: auto;
-}
-</style> -->

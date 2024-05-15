@@ -49,7 +49,7 @@ export default {
           datalabels: {
             display: true,
             formatter: (value) => {
-              if (value < 15) return '';
+              if (value < 15) return ''
               return value + '%'
             }
           },

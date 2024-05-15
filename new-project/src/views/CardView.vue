@@ -58,9 +58,9 @@ export default {
     async handleYesClick() {
 
       if (this.selectedStore.selectedPersons.includes(this.randomId)) {
-        const index = this.selectedStore.selectedPersons.indexOf(this.randomId)
+        const index = this.listOfIds.indexOf(this.randomId)
         if (index !== -1) {
-          this.selectedStore.selectedPersons.splice(index, 1)
+          this.listOfIds.splice(index, 1)
         }
       }
 

@@ -56,6 +56,14 @@ export default {
   },
   methods: {
     async handleYesClick() {
+
+      if (this.selectedStore.selectedPersons.includes(this.randomId)) {
+        const index = this.selectedStore.selectedPersons.indexOf(this.randomId)
+        if (index !== -1) {
+          this.selectedStore.selectedPersons.splice(index, 1)
+        }
+      }
+
       this.selectedStore.addSelectedPersonData(
         this.randomId,
         this.firstName,
@@ -65,6 +73,7 @@ export default {
         undefined,
         false
       )
+
       // this.$emit('answer', 'yes') // Emit 'yes' when Yes button is clicked
       await this.loadImageAndData()
 

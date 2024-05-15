@@ -6,15 +6,12 @@ import { useSelectedStore } from '@/stores/selected'
 </script>
 
 <template>
-
   <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
-
-
-    <h2>Resultat</h2>
     <div class="mt-32">
-      <pie-chart></pie-chart>
+          <h2 class="text-xl text-center">Resultat</h2>
+            <pie-chart class="w-80 "></pie-chart>
       <div v-for="(party, index) in partyPercentages" :key="index">
-        <p>{{ party.name }}: {{ party.percentage }}%</p>
+        <p class="text-lg">{{ party.name }}: {{ party.percentage }}%</p>
       </div>
     </div>
     <RouterLink to="/government">Se din regering</RouterLink>
@@ -33,7 +30,7 @@ export default {
       const partyNames = ['V', 'S', 'MP', 'L', 'C', 'KD', 'M', 'SD']
       return partyNames.map((party) => {
         const count = this.statsStore[`${party.toLowerCase()}_count`]
-        const percentage = Math.round((count / 7) * 100)
+        const percentage = Math.round((count / 12) * 100)
         return { name: party, percentage: percentage }
       }).filter(party => party.percentage !== 0)
     }

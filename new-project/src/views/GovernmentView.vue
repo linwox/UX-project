@@ -2,7 +2,6 @@
 import { useSelectedStore } from '@/stores/selected'
 import { mapStores } from 'pinia'
 </script>
-
 <script>
 export default {
   data() { },
@@ -16,8 +15,8 @@ export default {
   }
 }
 </script>
-
 <template>
+
   <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
 
     <h2>Regeringen!</h2>
@@ -29,19 +28,20 @@ export default {
           <!-- this hidden checkbox controls the state -->
           <input type="checkbox" />
           
+
           <div class="swap-off">
-            <div class="card w-40 h-56 bg-base-100 shadow-xl">
-              <img :src="person.imageUrl" alt="Politician" class="p-3 rounded-3xl" />
+            <div class="card w-28 h-36 bg-base-100 shadow-xl">
+              <img :src="person.imageUrl" alt="Politician" class="p-2 rounded-2xl" />
             </div>
           </div>
-          
+
           <div class="swap-on">
-            <div class="card w-40 h-56 bg-base-100 shadow-xl">
+            <div class="card w-28 h-36 bg-base-100 shadow-xl">
               <div class="card-body items-center text-center">
                 <h2 class="card-title"></h2>
-                <p>{{ person.firstName }}</p>
-                <p>{{ person.age }}</p>
-                <p>{{ person.party }}</p>
+                <p class="text-base">{{ person.firstName }}</p>
+                <p class="text-base">{{ person.age }}</p>
+                <p class="text-base">{{ person.party }}</p>
               </div>
             </div>
           </div>
@@ -54,13 +54,6 @@ export default {
     
 </template>
 
-<script></script>
 
-<style>
-.main {
-  width: 30rem;
-  height: 40rem;
-  border: 1px solid black;
-  padding: 1rem;
-}
-</style>
+
+

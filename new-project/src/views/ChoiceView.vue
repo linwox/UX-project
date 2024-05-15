@@ -1,9 +1,11 @@
 <script setup></script>
 
 <template>
+  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
     <p>Välj din regering utifrån bilder eller citat:</p>
     <button class="choice" @click="$router.push('card')">Bilder</button>
     <button class="choice" @click="$router.push('quote')">Citat</button>
+  </div>
 </template>
 
 <script></script>

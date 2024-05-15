@@ -8,7 +8,7 @@ import router from '@/router'
 
 <template>
   <header>
-    <div class="wrapper">
+    <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen wrapper">
       <h3>Tänk att ta en kaffe med...</h3>
       <div class="card w-96 bg-base-100 shadow-xl">
         <figure class="px-10 pt-10">

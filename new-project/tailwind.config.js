@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       backgroundImage:{
-        'swipe-riks': "url('../assets/swipe_riks.png')"
+        'partySwipe': "url('../assets/partySwipeStart.svg')",
+        'header':"url('../assets/headerBakgrund.svg')"
       }
     },
   },

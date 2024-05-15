@@ -18,21 +18,23 @@ export default {
 </script>
 
 <template>
+  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
+
     <h2>Regeringen!</h2>
     <div>Alla har roliga hattar!</div>
     <div class="grid grid-cols-3 gap-4">
-
+      
       <div v-for="person of selectedStore.selectedPersons" :key="person">
         <label class="swap swap-flip text-9xl">
           <!-- this hidden checkbox controls the state -->
           <input type="checkbox" />
-
+          
           <div class="swap-off">
             <div class="card w-40 h-56 bg-base-100 shadow-xl">
               <img :src="person.imageUrl" alt="Politician" class="p-3 rounded-3xl" />
             </div>
           </div>
-
+          
           <div class="swap-on">
             <div class="card w-40 h-56 bg-base-100 shadow-xl">
               <div class="card-body items-center text-center">
@@ -45,9 +47,11 @@ export default {
           </div>
         </label>
       </div>
-
+      
     </div>
     <RouterLink to="/" @click="resetSelectedStore">Start over</RouterLink>
+  </div>
+    
 </template>
 
 <script></script>

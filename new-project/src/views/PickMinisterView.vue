@@ -67,7 +67,9 @@ export default {
 </script>
 
 <template>
-  <h2 class="flex items-center justify-center mt-3">Ministerpost</h2>
+  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
+
+  <h2 class="flex items-center justify-center ">Ministerpost</h2>
   <div class="flex items-center justify-center mt-3">Välj vem som ska ha posten</div>
   <div class="flex items-center justify-center mt-3">
     <select id="minister_post" v-model="ministerPost" class="select select-bordered w-48 max-w-xs">
@@ -105,4 +107,6 @@ export default {
     </div>
   </div>
   <RouterLink class="flex items-center justify-center mt-5" to="/result">Vem är vad?</RouterLink>
+
+</div>
 </template>

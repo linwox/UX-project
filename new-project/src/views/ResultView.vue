@@ -6,9 +6,13 @@ import { useSelectedStore } from '@/stores/selected'
 </script>
 
 <template>
-  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
-    <div class="flex items-center justify-center">
-      <pie-chart class="w-80 mt-40 mb-10"></pie-chart>
+  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen ">
+    
+      <div class="flex items-center justify-center">
+        <pie-chart class="w-80 mt-40 mb-10"></pie-chart>
+      </div>
+      <div v-for="(party, index) in partyPercentages" :key="index">
+        <p class="text-lg flex items-center justify-center mt-1">{{ party.name }}: {{ party.percentage }}%</p>
     </div>
     <div v-for="(party, index) in partyPercentages" :key="index">
       <p class="text-lg flex items-center justify-center mt-1">
@@ -37,7 +41,6 @@ export default {
         .filter((party) => party.percentage !== 0)
     }
   },
-
   components: {
     PieChart
   }

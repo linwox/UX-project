@@ -9,6 +9,9 @@ export default {
       backgroundImage:{
         'partySwipe': "url('../assets/partySwipeStart.svg')",
         'header':"url('../assets/headerBakgrund.svg')"
+      },
+      colors: {
+        'teal': '#3C8493',
       }
     },
   },

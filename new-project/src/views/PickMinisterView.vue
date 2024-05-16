@@ -100,7 +100,7 @@ export default {
               <!-- Här ska vi skriva ut vilken ministerpost man valt och ta bort knappen -->
               <p class="flex items-center justify-center content-center">
                 <button
-                  class="btn btn-m bg-cyan-700 text-white mt-4"
+                  class="btn btn-m bg-teal text-white mt-4"
                   v-if="!person.buttonPressed"
                   @click="handleButtonClick(ministerPost, person.id)"
                 >

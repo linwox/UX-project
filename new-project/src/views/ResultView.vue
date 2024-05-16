@@ -6,10 +6,13 @@ import { useSelectedStore } from '@/stores/selected'
 </script>
 
 <template>
-  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
-    <div class="mt-32">
+  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen ">
+    <div class="">
       <h2 class="text-xl text-center">Resultat</h2>
-      <pie-chart class="w-80"></pie-chart>
+      <div class="flex items-center justify-center">
+
+        <pie-chart class="w-80"></pie-chart>
+      </div>
       <div v-for="(party, index) in partyPercentages" :key="index">
         <p class="text-lg">{{ party.name }}: {{ party.percentage }}%</p>
       </div>

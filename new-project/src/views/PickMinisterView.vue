@@ -7,7 +7,7 @@ import { mapStores } from 'pinia'
 export default {
   data() {
     return {
-      ministerPost: undefined,
+      ministerPost: 'Statsminister', // Set the default selected post
       posts: [
         'Statsminister',
         'Finansminister',
@@ -56,6 +56,8 @@ export default {
     removePost(ministerPost) {
       const index = this.posts.indexOf(ministerPost)
       this.posts.splice(index, 1)
+      // Set ministerPost to the next available option if exists, otherwise set it to undefined
+      this.ministerPost = this.posts[0] || undefined
     },
     handleButtonClick(ministerPost, id) {
       this.setMinister(ministerPost, id)
@@ -76,7 +78,7 @@ export default {
         v-model="ministerPost"
         class="select select-bordered w-48 max-w-xs"
       >
-        <option disabled selected>Ministerposter</option>
+        <option disabled>Ministerposter</option>
         <option v-for="post in posts" :key="post" :value="post">{{ post }}</option>
       </select>
     </div>

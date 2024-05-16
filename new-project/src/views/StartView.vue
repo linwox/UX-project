@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router'
 
 <template>
   <div
-    class="bg-[url('../assets/partySwipeStart.svg')] bg-cover bg-center h-screen flex flex-col justify-end items-center pb-60"
+    class="bg-[url('../assets/partySwipeStart.svg')] bg-cover h-screen flex flex-col justify-end items-center pb-60"
   >
     <!-- <img id="background_image" src="../assets/swipe_riks.png" alt="startpage" class="h-screen bg-cover bg-no-repeat" /> -->
     <div class="text-center">

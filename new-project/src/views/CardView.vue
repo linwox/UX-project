@@ -29,7 +29,7 @@ import { generateQuote } from '@/lib/QuoteManager.js'
         </div>
 
         <div class="card-body items-center text-center">
-          <div class="card-actions">
+          <div class="card-actions space-x-">
             <button @answer="handleAnswer" @click="handleYesClick" class="btn btn-primary">
               Ja
             </button>

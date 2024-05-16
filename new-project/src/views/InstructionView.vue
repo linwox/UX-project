@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 
 <template>
   <div
-    class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen flex flex-col justify-end items-center pb-60">
+    class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex flex-col justify-end items-center pb-60">
     <div class="">
       <div class="p-4">
         <h2 class="text-xl font-semibold">INSTRUKTIONER:</h2>

@@ -66,6 +66,9 @@ export async function generateQuote(randomId) {
 
   const sentences = await speechesToSentences(anforandeTexts)
 
+  const sentencesCorrectLength = sentences.filter((sentence) =>
+    sentence.length > 30 && sentence.length < 180)
+
   const keyPhrases = [
     'jag tycker',
     'tycker jag',
@@ -97,7 +100,7 @@ export async function generateQuote(randomId) {
   let filteredSentences = []
 
   for (const keyPhrase of keyPhrases) {
-    const sentenceWithKeyPhrase = sentences.filter((sentence) =>
+    const sentenceWithKeyPhrase = sentencesCorrectLength.filter((sentence) =>
       sentence.toLowerCase().includes(keyPhrase.toLowerCase())
     )
     filteredSentences = filteredSentences.concat(sentenceWithKeyPhrase)
@@ -107,6 +110,6 @@ export async function generateQuote(randomId) {
     const randomIndex = Math.floor(Math.random() * filteredSentences.length)
     return filteredSentences[randomIndex]
   } else {
-    console.log('No matching quotes')
+    return null
   }
 }

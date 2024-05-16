@@ -70,7 +70,6 @@ export default {
         undefined,
         false
       )
-      // this.$emit('answer', 'yes') // Emit 'yes' when Yes button is clicked
       await this.loadImageAndData()
 
       this.statsStore.countParty(this.party)
@@ -88,6 +87,7 @@ export default {
       const randomIndex = Math.floor(Math.random() * this.listOfIds.length)
       this.randomId = this.listOfIds[randomIndex]
     },
+    // hämta allt, spara in, plocka därifrån
     async getPoliticianData(randomId) {
       this.politicianData = await RiksdagensData.fetchPoliticianData(randomId)
     },
@@ -105,18 +105,30 @@ export default {
     async getParty() {
       return this.politicianData.parti
     },
-    async getQuote() {
-      this.quote = await generateQuote(this.randomId)
-      return this.quote
+    async getGoodQuote(randomId) {
+        const quote = await generateQuote(randomId)
+        if (quote === null) {
+          await this.getRandomId()
+          return this.getGoodQuote(this.randomId)
+        }
+
+        return quote
     },
     async loadImageAndData() {
+      // Hämtar ut ett random id
       await this.getRandomId()
+
+      // Om man valt att välja på citat
+      if (!this.choiceStore.choice) {
+        // Hämta ut ett citat från id
+        this.quote = await this.getGoodQuote(this.randomId)
+      }
+      
       await this.getPoliticianData(this.randomId)
       this.imageUrl = await this.getImage()
       this.firstName = await this.getName()
       this.age = await this.getAge()
       this.party = await this.getParty()
-      this.quote = await this.getQuote()
     }
   },
   async created() {

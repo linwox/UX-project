@@ -9,11 +9,16 @@ import { generateQuote } from '@/lib/QuoteManager.js'
 
 <template>
   <header>
-    <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center">
+    <div
+      class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center"
+    >
       <div class="card w-5/6 md:w-1/2 bg-base-100 shadow-xl">
-        <div class="flex justify-center items-center text-xl font-semibold"> {{ count }} / 12</div>
-        
-        <figure v-if="choiceStore.choice" class="px-10 pt-10 flex justify-center items-center w-full h-full">
+        <div class="flex justify-center items-center text-xl font-semibold">{{ count }} / 12</div>
+
+        <figure
+          v-if="choiceStore.choice"
+          class="px-10 pt-10 flex justify-center items-center w-full h-full"
+        >
           <div class="card-body items-center text-center">
             <h3 class="card-title p-bottom-4">Tänk att ta en kaffe med...</h3>
             <img :src="imageUrl" alt="Politician" class="rounded-xl w-full h-full object-cover" />

@@ -70,16 +70,16 @@ export default {
 
 <template>
   <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
-<div class="">
-    <div class="flex flex-col justify-end items-center">
-      <select
-        id="minister_post"
-        v-model="ministerPost"
-        class="select select-bordered w-48 max-w-xs mt-32 font-semibold text-xl"
-      >
-        <option disabled>Ministerposter</option>
-        <option v-for="post in posts" :key="post" :value="post">{{ post }}</option>
-      </select>
+    <div class="">
+      <div class="flex flex-col justify-end items-center">
+        <select
+          id="minister_post"
+          v-model="ministerPost"
+          class="select select-bordered w-48 max-w-xs mt-32 font-semibold text-xl"
+        >
+          <option disabled>Ministerposter</option>
+          <option v-for="post in posts" :key="post" :value="post">{{ post }}</option>
+        </select>
       </div>
     </div>
     <div class="flex items-center justify-center mt-3">
@@ -92,7 +92,11 @@ export default {
           >
             <div>
               <img :src="person.imageUrl" alt="politician" class="rounded-box border-2" />
-              <div class="block align-bottom font-semibold text-xl flex flex-col justify-end items-center">{{ person.firstName }} {{ person.age }}</div>
+              <div
+                class="block align-bottom font-semibold text-xl flex flex-col justify-end items-center"
+              >
+                {{ person.firstName }} {{ person.age }}
+              </div>
               <!-- Här ska vi skriva ut vilken ministerpost man valt och ta bort knappen -->
               <p class="flex items-center justify-center content-center">
                 <button
@@ -111,6 +115,8 @@ export default {
         </div>
       </div>
     </div>
-    <RouterLink class="flex items-center justify-center mt-5 font-semibold text-xl" to="/result">Vem är vad?</RouterLink>
+    <RouterLink class="flex items-center justify-center mt-5 font-semibold text-xl" to="/result"
+      >Vem är vad?</RouterLink
+    >
   </div>
 </template>

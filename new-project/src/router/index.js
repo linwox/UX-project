@@ -25,11 +25,6 @@ const router = createRouter({
       component: () => import('../views/CardView.vue')
     },
     {
-      path: '/quote',
-      name: 'quote',
-      component: () => import('../views/QuoteView.vue')
-    },
-    {
       path: '/result',
       name: 'result',
       component: () => import('../views/ResultView.vue')

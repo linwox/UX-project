@@ -75,7 +75,7 @@ export default {
       <select
         id="minister_post"
         v-model="ministerPost"
-        class="select select-bordered w-48 max-w-xs mt-32"
+        class="select select-bordered w-48 max-w-xs mt-32 font-semibold text-xl"
       >
         <option disabled>Ministerposter</option>
         <option v-for="post in posts" :key="post" :value="post">{{ post }}</option>
@@ -92,11 +92,11 @@ export default {
           >
             <div>
               <img :src="person.imageUrl" alt="politician" class="rounded-box border-2" />
-              <div class="block align-bottom">{{ person.firstName }} {{ person.age }}</div>
+              <div class="block align-bottom font-semibold text-xl flex flex-col justify-end items-center">{{ person.firstName }} {{ person.age }}</div>
               <!-- Här ska vi skriva ut vilken ministerpost man valt och ta bort knappen -->
               <p class="flex items-center justify-center content-center">
                 <button
-                  class="p-2 rounded border-2"
+                  class="btn btn-m bg-cyan-700 text-white mt-4"
                   v-if="!person.buttonPressed"
                   @click="handleButtonClick(ministerPost, person.id)"
                 >
@@ -111,6 +111,6 @@ export default {
         </div>
       </div>
     </div>
-    <RouterLink class="flex items-center justify-center mt-5" to="/result">Vem är vad?</RouterLink>
+    <RouterLink class="flex items-center justify-center mt-5 font-semibold text-xl" to="/result">Vem är vad?</RouterLink>
   </div>
 </template>

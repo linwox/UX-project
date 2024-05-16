@@ -70,17 +70,17 @@ export default {
 
 <template>
   <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
-    <h2 class="flex items-center justify-center">Ministerpost</h2>
-    <div class="flex items-center justify-center mt-3">Välj vem som ska ha posten</div>
-    <div class="flex items-center justify-center mt-3">
+<div class="">
+    <div class="flex flex-col justify-end items-center">
       <select
         id="minister_post"
         v-model="ministerPost"
-        class="select select-bordered w-48 max-w-xs"
+        class="select select-bordered w-48 max-w-xs mt-32"
       >
         <option disabled>Ministerposter</option>
         <option v-for="post in posts" :key="post" :value="post">{{ post }}</option>
       </select>
+      </div>
     </div>
     <div class="flex items-center justify-center mt-3">
       <div class="w- carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">

@@ -10,13 +10,13 @@ import { generateQuote } from '@/lib/QuoteManager.js'
 <template>
   <header>
     <div
-      class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen wrapper items-center text-center"
+      class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen flex justify-center items-center"
     >
-      <div class="card w-5/6 bg-base-100 shadow-xl">
-        <figure v-if="choiceStore.choice" class="px-10 pt-10">
+      <div class="card w-5/6 md:w-1/2 bg-base-100 shadow-xl">
+        <figure v-if="choiceStore.choice" class="px-10 pt-10 flex justify-center items-center w-full h-full">
           <div class="card-body items-center text-center">
             <h3 class="card-title p-bottom-4">Tänk att ta en kaffe med...</h3>
-            <img :src="imageUrl" alt="Politician" class="rounded-xl" />
+            <img :src="imageUrl" alt="Politician" class="rounded-xl w-full h-full object-cover" />
             <p>{{ firstName }} {{ age }}</p>
           </div>
         </figure>
@@ -135,3 +135,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.card {
+  max-width: 500px;
+}
+</style>

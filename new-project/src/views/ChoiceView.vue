@@ -4,15 +4,23 @@ import { mapStores } from 'pinia'
 </script>
 
 <template>
-  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex items-center justify-center">
+  <div
+    class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex items-center justify-center"
+  >
     <div class="text-center">
-      <p class="text-3xl mb-10">Välj din regering utifrån <br> bilder eller citat</p>
+      <p class="text-3xl mb-10">
+        Välj din regering utifrån <br />
+        bilder eller citat
+      </p>
       <p></p>
       <div class="space-x-10">
         <button class="btn btn-lg bg-cyan-700 text-white" @click="handleImageClick">Bilder</button>
         <button class="btn btn-lg bg-cyan-700 text-white" @click="handleQuoteClick">Citat</button>
       </div>
-      <p class="text-lg mt-10">Din regering kommer att bestå <br> av 12 medlemmar</p>
+      <p class="text-lg mt-10">
+        Din regering kommer att bestå <br />
+        av 12 medlemmar
+      </p>
     </div>
   </div>
 </template>

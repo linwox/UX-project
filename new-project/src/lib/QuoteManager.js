@@ -66,8 +66,7 @@ export async function generateQuote(randomId) {
 
   const sentences = await speechesToSentences(anforandeTexts)
 
-  const sentencesCorrectLength = sentences.filter((sentence) =>
-    sentence.length > 30 && sentence.length < 180)
+  const sentencesCorrectLength = sentences.filter((sentence) => sentence.length > 30 && sentence.length < 180)
 
   const keyPhrases = [
     'jag tycker',

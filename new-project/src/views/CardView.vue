@@ -30,8 +30,16 @@ import { generateQuote } from '@/lib/QuoteManager.js'
 
         <div class="card-body items-center text-center">
           <div class="card-actions space-x-20 flex justify-center items-center">
-            <button @answer="handleAnswer" @click="handleNoClick" class="bg-[url('../assets/no_icon.svg')] bg-cover w-14 h-14"></button>
-            <button @answer="handleAnswer" @click="handleYesClick" class="bg-[url('../assets/yes_icon.svg')] bg-cover w-14 h-14"></button>
+            <button
+              @answer="handleAnswer"
+              @click="handleNoClick"
+              class="bg-[url('../assets/no_icon.svg')] bg-cover w-14 h-14"
+            ></button>
+            <button
+              @answer="handleAnswer"
+              @click="handleYesClick"
+              class="bg-[url('../assets/yes_icon.svg')] bg-cover w-14 h-14"
+            ></button>
           </div>
         </div>
       </div>
@@ -59,9 +67,9 @@ export default {
   },
   methods: {
     async handleYesClick() {
-        const index = this.listOfIds.indexOf(this.randomId)
-        if (index !== -1) {
-          this.listOfIds.splice(index, 1)
+      const index = this.listOfIds.indexOf(this.randomId)
+      if (index !== -1) {
+        this.listOfIds.splice(index, 1)
       }
 
       this.count++
@@ -111,13 +119,13 @@ export default {
       return this.politicianData.parti
     },
     async getGoodQuote(randomId) {
-        const quote = await generateQuote(randomId)
-        if (quote === null) {
-          await this.getRandomId()
-          return this.getGoodQuote(this.randomId)
-        }
+      const quote = await generateQuote(randomId)
+      if (quote === null) {
+        await this.getRandomId()
+        return this.getGoodQuote(this.randomId)
+      }
 
-        return quote
+      return quote
     },
     async loadImageAndData() {
       // Hämtar ut ett random id
@@ -128,7 +136,7 @@ export default {
         // Hämta ut ett citat från id
         this.quote = await this.getGoodQuote(this.randomId)
       }
-      
+
       await this.getPoliticianData(this.randomId)
       this.imageUrl = await this.getImage()
       this.firstName = await this.getName()

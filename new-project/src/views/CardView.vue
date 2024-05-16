@@ -9,9 +9,7 @@ import { generateQuote } from '@/lib/QuoteManager.js'
 
 <template>
   <header>
-    <div
-      class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen flex justify-center items-center"
-    >
+    <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen flex justify-center items-center">
       <div class="card w-5/6 md:w-1/2 bg-base-100 shadow-xl">
         <figure v-if="choiceStore.choice" class="px-10 pt-10 flex justify-center items-center w-full h-full">
           <div class="card-body items-center text-center">
@@ -29,13 +27,9 @@ import { generateQuote } from '@/lib/QuoteManager.js'
         </div>
 
         <div class="card-body items-center text-center">
-          <div class="card-actions space-x-">
-            <button @answer="handleAnswer" @click="handleYesClick" class="btn btn-primary">
-              Ja
-            </button>
-            <button @answer="handleAnswer" @click="handleNoClick" class="btn btn-secondary">
-              Nej
-            </button>
+          <div class="card-actions space-x-20 flex justify-center items-center">
+            <button @answer="handleAnswer" @click="handleNoClick" class="bg-[url('../assets/no_icon.svg')] bg-cover w-14 h-14"></button>
+            <button @answer="handleAnswer" @click="handleYesClick" class="bg-[url('../assets/yes_icon.svg')] bg-cover w-14 h-14"></button>
           </div>
         </div>
       </div>

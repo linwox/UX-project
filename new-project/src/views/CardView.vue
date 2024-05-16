@@ -10,6 +10,7 @@ import { generateQuote } from '@/lib/QuoteManager.js'
 <template>
   <header>
     <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen flex justify-center items-center">
+      <div> {{ count }} / 12</div>
       <div class="card w-5/6 md:w-1/2 bg-base-100 shadow-xl">
         <figure v-if="choiceStore.choice" class="px-10 pt-10 flex justify-center items-center w-full h-full">
           <div class="card-body items-center text-center">
@@ -48,7 +49,8 @@ export default {
       age: undefined,
       party: undefined,
       quote: undefined,
-      politicianData: Object
+      politicianData: Object,
+      count: 0
     }
   },
   computed: {
@@ -60,6 +62,8 @@ export default {
         if (index !== -1) {
           this.listOfIds.splice(index, 1)
       }
+
+      this.count++
 
       this.selectedStore.addSelectedPersonData(
         this.randomId,

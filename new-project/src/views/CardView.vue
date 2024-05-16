@@ -9,22 +9,17 @@ import { generateQuote } from '@/lib/QuoteManager.js'
 
 <template>
   <header>
-    <div
-      class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center"
-    >
+    <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center">
       <div class="card w-5/6 md:w-1/2 bg-base-100 shadow-xl">
         <div class="flex justify-center items-center text-xl font-semibold">{{ count }} / 12</div>
-
-        <figure
-          v-if="choiceStore.choice"
-          class="px-10 pt-10 flex justify-center items-center w-full h-full"
-        >
-          <div class="card-body items-center text-center">
-            <h3 class="card-title p-bottom-4">Tänk att ta en kaffe med...</h3>
-            <img :src="imageUrl" alt="Politician" class="rounded-xl w-full h-full object-cover" />
-            <p class="text-xl font-semibold">{{ firstName }} {{ age }}</p>
-          </div>
-        </figure>
+        
+        <div v-if="choiceStore.choice" class="px-10 pt-10 flex flex-col justify-center items-center w-full h-full">
+          <h3 class="card-title p-bottom-4 justify-center items-center text-center">Tänk att ta en kaffe med...</h3>
+          <!-- <div class="card-body items-center text-center"> -->
+          <img :src="imageUrl" alt="Politician" class="rounded-xl w-full h-full object-cover items-center" />
+          <!-- </div> -->
+          <p class="text-xl font-semibold justify-center items-center text-center">{{ firstName }} {{ age }}</p>
+        </div>
 
         <div v-else>
           <div class="card-body items-center text-center">
@@ -35,16 +30,10 @@ import { generateQuote } from '@/lib/QuoteManager.js'
 
         <div class="card-body items-center text-center">
           <div class="card-actions space-x-20 flex justify-center items-center">
-            <button
-              @answer="handleAnswer"
-              @click="handleNoClick"
-              class="bg-[url('../assets/no_icon.svg')] bg-cover w-14 h-14"
-            ></button>
-            <button
-              @answer="handleAnswer"
-              @click="handleYesClick"
-              class="bg-[url('../assets/yes_icon.svg')] bg-cover w-14 h-14"
-            ></button>
+            <button @answer="handleAnswer" @click="handleNoClick"
+              class="bg-[url('../assets/no_icon.svg')] bg-cover w-14 h-14"></button>
+            <button @answer="handleAnswer" @click="handleYesClick"
+              class="bg-[url('../assets/yes_icon.svg')] bg-cover w-14 h-14"></button>
           </div>
         </div>
       </div>
@@ -110,7 +99,8 @@ export default {
       this.politicianData = await RiksdagensData.fetchPoliticianData(randomId)
     },
     async getImage() {
-      return this.politicianData.bild_url_192
+      // return this.politicianData.bild_url_192
+      return this.politicianData.bild_url_max
     },
     async getName() {
       return this.politicianData.tilltalsnamn
@@ -158,8 +148,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<!-- <style scoped>
 .card {
   max-width: 500px;
+  max-width: 100%;
 }
-</style>
+</style> -->

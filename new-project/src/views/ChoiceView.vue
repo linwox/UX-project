@@ -4,8 +4,9 @@ import { mapStores } from 'pinia'
 </script>
 
 <template>
-  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex items-center justify-center">
-
+  <div
+    class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex items-center justify-center"
+  >
     <div class="text-center">
       <p class="text-3xl mb-10">
         Välj din regering utifrån <br />

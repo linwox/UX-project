@@ -25,7 +25,10 @@ export default {
     }
   },
   computed: {
-    ...mapStores(useSelectedStore)
+    ...mapStores(useSelectedStore),
+    visiblePersons() {
+      return this.selectedStore.selectedPersons.filter(person => !person.buttonPressed)
+    }
   },
   methods: {
     selectMinister() {
@@ -63,6 +66,9 @@ export default {
       this.setMinister(ministerPost, id)
       this.hideButton(id)
       this.removePost(ministerPost)
+      if (this.posts.length === 0) {
+        this.$router.push('result')
+      }
     }
   }
 }
@@ -72,51 +78,59 @@ export default {
   <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
     <div class="">
       <div class="flex flex-col justify-end items-center">
-        <select
-          id="minister_post"
-          v-model="ministerPost"
-          class="select select-bordered w-48 max-w-xs mt-32 font-semibold text-xl"
-        >
+        <select id="minister_post" v-model="ministerPost"
+          class="select select-bordered w-54 max-w-xs mt-32 font-semibold text-xl">
           <option disabled>Ministerposter</option>
           <option v-for="post in posts" :key="post" :value="post">{{ post }}</option>
         </select>
       </div>
     </div>
+
     <div class="flex items-center justify-center mt-3">
-      <div class="w- carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
+
+      <div class="w-72 carousel rounded-box md:w-1/2 bg-base-100 shadow-xl">
+        <div v-for="person of visiblePersons" :key="person.id" class="carousel-item w-full">
+          <div v-if="!person.buttonPressed" class="flex flex-col items-center">
+            <img :src="person.imageUrl" alt="politician" class="w-72" />
+            <div class="block align-bottom font-semibold text-xl flex flex-col justify-end items-center">
+              {{ person.firstName }} {{ person.age }}
+            </div>
+            <p class="flex items-center justify-center content-center">
+              <button class="btn btn-m bg-teal text-white mt-4" @click="handleButtonClick(ministerPost, person.id)">
+                Välj
+              </button>
+              <span class="flex items-center justify-center content-center">{{
+                person.ministerPost
+              }}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- </div> -->
+      <!-- <div class="carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
         <div class="w-72 carousel carousel-center p-4 space-x-4 bg-neutral rounded-box bg-white">
-          <div
-            v-for="person of selectedStore.selectedPersons"
-            :key="person"
-            class="carousel-item ml-8 l"
-          >
+          <div v-for="person of selectedStore.selectedPersons" :key="person" class="carousel-item ml-8 l">
             <div>
-              <img :src="person.imageUrl" alt="politician" class="rounded-box border-2" />
-              <div
-                class="block align-bottom font-semibold text-xl flex flex-col justify-end items-center"
-              >
+              <img :src="person.imageUrl" alt="politician" class="w-72 rounded-box border-2" />
+              <div class="block align-bottom font-semibold text-xl flex flex-col justify-end items-center">
                 {{ person.firstName }} {{ person.age }}
               </div>
-              <!-- Här ska vi skriva ut vilken ministerpost man valt och ta bort knappen -->
               <p class="flex items-center justify-center content-center">
-                <button
-                  class="btn btn-m bg-teal text-white mt-4"
-                  v-if="!person.buttonPressed"
-                  @click="handleButtonClick(ministerPost, person.id)"
-                >
+                <button class="btn btn-m bg-teal text-white mt-4" v-if="!person.buttonPressed"
+                  @click="handleButtonClick(ministerPost, person.id)">
                   Välj
                 </button>
                 <span class="flex items-center justify-center content-center" v-else>{{
                   person.ministerPost
-                }}</span>
+                  }}</span>
               </p>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
-    <RouterLink class="flex items-center justify-center mt-5 font-semibold text-xl" to="/result"
-      >Vem är vad?</RouterLink
-    >
+    <!-- <RouterLink class="flex items-center justify-center mt-5 font-semibold text-xl" to="/result">Vem är vad?
+    </RouterLink> -->
   </div>
 </template>

@@ -14,8 +14,8 @@ import { mapStores } from 'pinia'
       </p>
       <p></p>
       <div class="space-x-10">
-        <button class="btn btn-lg bg-teal text-white" @click="handleImageClick">Bilder</button>
-        <button class="btn btn-lg bg-teal text-white" @click="handleQuoteClick">Citat</button>
+        <button class="btn btn-lg bg-teal text-white w-24" @click="handleImageClick">Bilder</button>
+        <button class="btn btn-lg bg-teal text-white w-24" @click="handleQuoteClick">Citat</button>
       </div>
       <p class="text-lg mt-10">
         Din regering kommer att bestå <br />

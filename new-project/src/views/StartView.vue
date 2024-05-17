@@ -9,9 +9,10 @@ import { RouterLink } from 'vue-router'
   >
     <!-- <img id="background_image" src="../assets/swipe_riks.png" alt="startpage" class="h-screen bg-cover bg-no-repeat" /> -->
     <div class="text-center">
-      <div class="text-center">
-        <RouterLink to="/instruction">Start</RouterLink>
-      </div>
+
+      <button class="btn btn-lg bg-teal text-white w-24">
+          <RouterLink to="/instruction">Start </RouterLink>
+        </button>
     </div>
   </div>
 </template>

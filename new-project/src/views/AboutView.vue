@@ -40,14 +40,14 @@ import { RouterLink } from 'vue-router'
           <p>Vilmer Franzino</p>
           <p>Daniel Malmborg</p>
           <p>Sarah Magnusson</p>
-          <p>Madde EK</p>
+          <p>Madde Ek</p>
           <p>Yvon Lascano</p>
           <p>______________________________________</p>
         </div>
       </div>
 
       <div class="text-center">
-        <button class="btn btn-m bg-teal text-white">
+        <button class="btn btn-lg bg-teal text-white w-36">
           <RouterLink to="/closing">Tillbaka </RouterLink>
         </button>
       </div>

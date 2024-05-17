@@ -6,7 +6,7 @@ import { RouterLink } from 'vue-router'
   <div
     class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex flex-col justify-end items-center pb-60"
   >
-    <div class="">
+    <div class="flex flex-col items-center justify-center">
       <div class="p-4">
         <h2 class="text-xl font-semibold">INSTRUKTIONER:</h2>
         <p class="text-sm">
@@ -33,9 +33,9 @@ import { RouterLink } from 'vue-router'
           </p>
         </div>
       </div>
-      <div class="text-center">
-        <RouterLink to="/choice">Start</RouterLink>
-      </div>
+      <button class="btn btn-lg bg-teal text-white w-24">
+          <RouterLink to="/choice">Start </RouterLink>
+        </button>
     </div>
   </div>
 </template>

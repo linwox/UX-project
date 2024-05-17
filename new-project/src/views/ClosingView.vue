@@ -19,13 +19,16 @@ export default {
 
 <template>
   <div
-    class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen flex flex-col justify-end items-center pb-60"
-  >
-    <p>Här ska det in en annan bild från Figma.<br />Adam, hjälp...</p>
+  class="bg-[url('../assets/partySwipeStart.svg')] bg-cover h-screen flex flex-col justify-end items-center pb-52">
+  <p class="pb-72 text-2xl">Tack för att du spelade!</p>
 
-    <div class="text-center">
-      <RouterLink to="/about">Om oss</RouterLink>
-      <RouterLink to="/" @click="resetSelectedStore">Start over</RouterLink>
+    <div class="text-center space-x-4 ">
+      <button class="btn btn-m bg-teal text-white" @click="resetSelectedStore">
+        <RouterLink to="/" >Start over</RouterLink>
+      </button>
+      <button class=" btn btn-m bg-teal text-white">
+        <RouterLink to="/about">Om oss</RouterLink>
+      </button>
     </div>
   </div>
 </template>

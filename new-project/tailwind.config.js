@@ -8,7 +8,8 @@ export default {
     extend: {
       backgroundImage:{
         'partySwipe': "url('../assets/partySwipeStart.svg')",
-        'header':"url('../assets/headerBakgrund.svg')"
+        'header':"url('../assets/headerBakgrund.svg')",
+        'about':"url('../assets/about.svg')"
       },
       colors: {
         'teal': '#3C8493',

@@ -14,7 +14,6 @@ import { generateQuote } from '@/lib/QuoteManager.js'
     >
       <div class="card w-5/6 md:w-1/2 bg-base-100 shadow-xl">
         <div class="flex justify-center items-center text-xl font-semibold">{{ count }} / 12</div>
-<<<<<<< HEAD
 
         <div
           v-if="choiceStore.choice"
@@ -23,26 +22,18 @@ import { generateQuote } from '@/lib/QuoteManager.js'
           <h3 class="card-title p-bottom-4 justify-center items-center text-center">
             Tänk att ta en kaffe med...
           </h3>
-          <!-- <div class="card-body items-center text-center"> -->
-          <img
-            :src="imageUrl"
-            alt="Politician"
-            class="rounded-xl w-full h-full object-cover items-center"
-          />
-          <!-- </div> -->
+          <div class="w-full h-full flex justify-center items-center">
+            <span v-if="loading" class="loading loading-dots loading-lg"></span>
+            <img
+              v-else
+              :src="imageUrl"
+              alt="Politician"
+              class="rounded-xl w-full h-full object-cover items-center"
+            />
+          </div>
           <p class="text-xl font-semibold justify-center items-center text-center">
             {{ firstName }} {{ age }}
           </p>
-=======
-        
-        <div v-if="choiceStore.choice" class="px-10 pt-10 flex flex-col justify-center items-center w-full h-full">
-          <h3 class="card-title p-bottom-4 justify-center items-center text-center">Tänk att ta en kaffe med...</h3>
-          <div class="w-full h-full flex justify-center items-center">
-            <span v-if="loading" class="loading loading-dots loading-lg"></span>
-            <img v-else :src="imageUrl" alt="Politician" class="rounded-xl w-full h-full object-cover items-center" />
-          </div>
-          <p class="text-xl font-semibold justify-center items-center text-center">{{ firstName }} {{ age }}</p>
->>>>>>> d18522f (loading animation)
         </div>
 
         <div v-else>
@@ -84,7 +75,7 @@ export default {
       quote: undefined,
       politicianData: Object,
       count: 0,
-      loading: true, // New loading state
+      loading: true // New loading state
     }
   },
   computed: {
@@ -130,7 +121,6 @@ export default {
       this.politicianData = await RiksdagensData.fetchPoliticianData(randomId)
     },
     async getImage() {
-      // return this.politicianData.bild_url_192
       return this.politicianData.bild_url_max
     },
     async getName() {
@@ -155,7 +145,7 @@ export default {
     },
 
     delay(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
+      return new Promise((resolve) => setTimeout(resolve, ms))
     },
     async loadImageAndData() {
       this.loading = true // Start loading
@@ -175,7 +165,7 @@ export default {
       this.age = await this.getAge()
       this.party = await this.getParty()
 
-      await this.delay(500); // 500ms delay
+      await this.delay(500) // 500ms delay
       this.loading = false // End loading
     }
   },
@@ -187,13 +177,3 @@ export default {
   }
 }
 </script>
-<<<<<<< HEAD
-
-<!-- <style scoped>
-.card {
-  max-width: 500px;
-  max-width: 100%;
-}
-</style> -->
-=======
->>>>>>> d18522f (loading animation)

@@ -25,7 +25,7 @@ import { RouterLink } from 'vue-router'
         <div class="p-4">
           <div class="flex justify-center space-x-1">
             <h2 class="text-xl">Java</h2>
-            <img src="../assets/Loggor/logos_java.svg" alt="javalogo" class="">
+            <img src="../assets/Loggor/logos_java.svg" alt="javalogo" class="" />
           </div>
           <p>Linnéa Woxinger Sköld</p>
           <p>Adam Johansson</p>
@@ -35,7 +35,7 @@ import { RouterLink } from 'vue-router'
         <div class="p-4">
           <div class="flex justify-center space-x-1">
             <h2 class="text-xl">UX</h2>
-            <img src="../assets/Loggor/tabler_ux-circle.svg" alt="javalogo" class="">
+            <img src="../assets/Loggor/tabler_ux-circle.svg" alt="javalogo" class="" />
           </div>
           <p>Vilmer Franzino</p>
           <p>Daniel Malmborg</p>

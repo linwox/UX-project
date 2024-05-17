@@ -27,7 +27,7 @@ export default {
   computed: {
     ...mapStores(useSelectedStore),
     visiblePersons() {
-      return this.selectedStore.selectedPersons.filter(person => !person.buttonPressed)
+      return this.selectedStore.selectedPersons.filter((person) => !person.buttonPressed)
     }
   },
   methods: {
@@ -78,8 +78,11 @@ export default {
   <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
     <div class="">
       <div class="flex flex-col justify-end items-center">
-        <select id="minister_post" v-model="ministerPost"
-          class="select select-bordered w-54 max-w-xs mt-32 font-semibold text-xl">
+        <select
+          id="minister_post"
+          v-model="ministerPost"
+          class="select select-bordered w-54 max-w-xs mt-32 font-semibold text-xl"
+        >
           <option disabled>Ministerposter</option>
           <option v-for="post in posts" :key="post" :value="post">{{ post }}</option>
         </select>
@@ -87,16 +90,20 @@ export default {
     </div>
 
     <div class="flex items-center justify-center mt-3">
-
       <div class="w-72 carousel rounded-box md:w-1/2 bg-base-100 shadow-xl">
         <div v-for="person of visiblePersons" :key="person.id" class="carousel-item w-full">
           <div v-if="!person.buttonPressed" class="flex flex-col items-center">
             <img :src="person.imageUrl" alt="politician" class="w-72" />
-            <div class="block align-bottom font-semibold text-xl flex flex-col justify-end items-center">
+            <div
+              class="block align-bottom font-semibold text-xl flex flex-col justify-end items-center"
+            >
               {{ person.firstName }} {{ person.age }}
             </div>
             <p class="flex items-center justify-center content-center">
-              <button class="btn btn-m bg-teal text-white mt-4" @click="handleButtonClick(ministerPost, person.id)">
+              <button
+                class="btn btn-m bg-teal text-white mt-4"
+                @click="handleButtonClick(ministerPost, person.id)"
+              >
                 Välj
               </button>
               <span class="flex items-center justify-center content-center">{{

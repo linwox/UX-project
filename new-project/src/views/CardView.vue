@@ -9,56 +9,37 @@ import { generateQuote } from '@/lib/QuoteManager.js'
 
 <template>
   <header>
-    <div
-      class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center"
-    >
-      <div class="card w-5/6 md:w-1/2 bg-base-100 shadow-xl">
-        <div class="flex justify-center items-center text-xl font-semibold">{{ count }} / 12</div>
+    <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center">
 
-        <div
-          v-if="choiceStore.choice"
-          class="px-10 pt-10 flex flex-col justify-center items-center w-full h-full"
-        >
-          <h3 class="card-title p-bottom-4 justify-center items-center text-center">
-            Tänk att ta en kaffe med...
-          </h3>
-          <div class="w-full h-full flex justify-center items-center">
-            <span v-if="loading" class="loading loading-dots loading-lg"></span>
-            <img
-              v-else
-              :src="imageUrl"
-              alt="Politician"
-              class="rounded-xl w-full h-full object-cover items-center"
-            />
-          </div>
-          <p class="text-xl font-semibold justify-center items-center text-center">
+      <div class="flex flex-col justify-center items-center h-screen space-y-4">
+        <div class="text-xl font-semibold">{{ count }} / 12</div>
+
+        <span v-if="loading" class="loading loading-dots loading-lg"></span>
+        <h3 v-else class="text-2xl font-semibold">Tänk att ta en kaffe med...</h3>
+
+        <div v-if="choiceStore.choice"
+          class="card relative w-80 h-2/3 md:w-1/2 flex flex-col shadow-xl border-slate border-2">
+          <p class="text-3xl text-white font-bold absolute bottom-28 left-8 z-20">
             {{ firstName }} {{ age }}
           </p>
-        </div>
 
-        <div v-else>
-          <div class="card-body items-center text-center">
-            <h3 class="card-title p-bottom-4">Håller du med om...?</h3>
-            <p>{{ quote }}</p>
+          <div class="flex items-end justify-center absolute bottom-6 left-6 right-6 z-20">
+            <div class="card-actions space-x-36 flex justify-center">
+              <button @answer="handleAnswer" @click="handleNoClick"
+                class="bg-[url('../assets/no_icon.svg')] bg-cover w-14 h-14"></button>
+              <button @answer="handleAnswer" @click="handleYesClick"
+                class="bg-[url('../assets/yes_icon.svg')] bg-cover w-14 h-14"></button>
+            </div>
           </div>
-        </div>
 
-        <div class="card-body items-center text-center">
-          <div class="card-actions space-x-20 flex justify-center items-center">
-            <button
-              @answer="handleAnswer"
-              @click="handleNoClick"
-              class="bg-[url('../assets/no_icon.svg')] bg-cover w-14 h-14"
-            ></button>
-            <button
-              @answer="handleAnswer"
-              @click="handleYesClick"
-              class="bg-[url('../assets/yes_icon.svg')] bg-cover w-14 h-14"
-            ></button>
-          </div>
+          <div class="w-full h-64 bg-gradient-to-t from-black absolute bottom-0 left-0 right-0 rounded-2xl z-10"></div>
+
+          <img :src="imageUrl" alt="Politician"
+            class="w-full h-full object-cover absolute top-0 left-0 rounded-2xl z-0" />
         </div>
       </div>
-    </div>
+
+      </div>
   </header>
 </template>
 

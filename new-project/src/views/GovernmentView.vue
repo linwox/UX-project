@@ -44,7 +44,7 @@ export default {
       </div>
     </div>
     <div class="text-center">
-      <button class="btn btn-m bg-teal text-white">
+      <button class="btn btn-lg bg-teal text-white">
         <RouterLink to="/closing">Klar!</RouterLink>
       </button>
     </div>

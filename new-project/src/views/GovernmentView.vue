@@ -4,7 +4,7 @@ import { mapStores } from 'pinia'
 </script>
 <script>
 export default {
-  data() { },
+  data() {},
   computed: {
     ...mapStores(useSelectedStore)
   },
@@ -16,40 +16,38 @@ export default {
 }
 </script>
 <template>
-  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
+  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen pt-20">
+    
+    <div class="grid grid-cols-3 gap-2 p-1 pb-10">
+      <div v-for="person of selectedStore.selectedPersons" :key="person.id">
+        <label class="swap swap-flip text-9xl">
+          <!-- this hidden checkbox controls the state -->
+          <input type="checkbox" />
 
-    <div class="flex flex-col items-center justify-center">
+          <div class="swap-off ml-3 pt-4 flex ">
+            <div class="card w-24 shadow-xl rounded">
+              <img :src="person.imageUrl" alt="Politician" class=" rounded" />
+            </div>
+          </div>
 
-      <h2>Regeringen!</h2>
-
-      <div class="grid grid-cols-3 gap-2 p-1">
-        <div v-for="person of selectedStore.selectedPersons" :key="person.id">
-          <label class="swap swap-flip text-9xl">
-            <!-- this hidden checkbox controls the state -->
-            <input type="checkbox" />
-
-            <div class="swap-off">
-              <div class="card w-28 h-36 bg-base-100 shadow-xl">
-                <img :src="person.imageUrl" alt="Politician" class="p-2 rounded-2xl" />
+          <div class="swap-on">
+            <div class="card w-20 h-36 bg-base-100 shadow-xl">
+              <div class="card-body items-center text-center">
+                <h2 class="card-title"></h2>
+                <p class="text-base">{{ person.firstName }}</p>
+                <p class="text-base">{{ person.age }}</p>
+                <p class="text-base">{{ person.party }}</p>
               </div>
             </div>
-
-            <div class="swap-on">
-              <div class="card w-28 h-36 bg-base-100 shadow-xl">
-                <div class="card-body items-center text-center">
-                  <h2 class="card-title"></h2>
-                  <p class="text-base">{{ person.firstName }}</p>
-                  <p class="text-base">{{ person.age }}</p>
-                  <p class="text-base">{{ person.party }}</p>
-                </div>
-              </div>
-            </div>
-          </label>
-        </div>
+          </div>
+        </label>
       </div>
-      <button class="btn btn-lg bg-teal text-white w-24 items-center">
+    </div>
+    <div class="text-center">
+      <button class="btn btn-m bg-teal text-white">
         <RouterLink to="/closing">Klar!</RouterLink>
       </button>
     </div>
+    <!-- <RouterLink to="/" @click="resetSelectedStore">Start over</RouterLink>  -->
   </div>
 </template>

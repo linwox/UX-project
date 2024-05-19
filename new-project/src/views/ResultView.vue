@@ -3,7 +3,19 @@ import { useStatsStore } from '@/stores/stats'
 import { mapStores } from 'pinia'
 import PieChart from '../components/PieChart.vue'
 import { useSelectedStore } from '@/stores/selected'
-import { useLogosStore } from '@/stores/logos'
+
+const logoMapping = {
+  'V': '/src/assets/Loggor/V_logo.svg',
+  'S': '/src/assets/Loggor/S_logo.svg',
+  'MP': '/src/assets/Loggor/MP_logo.svg',
+  'L': '/src/assets/Loggor/L_logo.svg',
+  'C': '/src/assets/Loggor/C_logo.svg',
+  'KD': '/src/assets/Loggor/KD_logo.svg',
+  'M': '/src/assets/Loggor/M_logo.svg',
+  'SD': '/src/assets/Loggor/SD_logo.svg'
+}
+
+const getLogoPath = (partyName) => logoMapping[partyName]
 </script>
 
 <template>
@@ -14,7 +26,8 @@ import { useLogosStore } from '@/stores/logos'
       </div>
       <div v-for="(party, index) in partyPercentages" :key="index">
         <p class="text-lg flex items-center justify-center mt-1">
-          {{ party.name }}: {{ party.percentage }}%
+          <img :src="getLogoPath(party.name)" alt="" class="w-8 h-8">
+          : {{ party.percentage }}% 
         </p>
       </div>
       <button class="btn btn-lg bg-teal text-white w-40 items-center">
@@ -38,6 +51,11 @@ export default {
           return { name: party, percentage: percentage }
         })
         .filter((party) => party.percentage !== 0)
+    }
+  },
+  methods: {
+    getLogoPath(partyName) {
+      return logoMapping[partyName]
     }
   },
   components: {

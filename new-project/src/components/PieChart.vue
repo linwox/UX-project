@@ -32,13 +32,13 @@ export default {
             data: statsStore.partyCounts,
             backgroundColor: [
               'red',
-              'hotpink',
-              'green',
-              'cyan',
-              'purple',
-              'orange',
-              'blue',
-              'yellow'
+              'firebrick',
+              'forestgreen',
+              'steelblue',
+              'deepgreen',
+              'lightblue',
+              'royalblue',
+              'gold'
             ]
           }
         ]

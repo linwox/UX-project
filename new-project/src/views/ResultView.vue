@@ -30,9 +30,7 @@ const getLogoPath = (partyName) => logoMapping[partyName]
           : {{ party.percentage }}% 
         </p>
       </div>
-      <button class="btn btn-lg bg-teal text-white w-40 items-center">
-        <RouterLink to="/government">Se regering</RouterLink>
-      </button>
+      <button class="btn btn-lg bg-teal text-white w-40" @click="this.$router.push('government')">Se regering</button>
     </div>
   </div>
 </template>

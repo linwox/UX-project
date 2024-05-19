@@ -1,6 +1,4 @@
 <script setup>
-import { RouterLink } from 'vue-router'
-// import swipeRiksImage from '../assets/swipe_riks.png';
 </script>
 
 <template>
@@ -16,11 +14,8 @@ import { RouterLink } from 'vue-router'
       </div>
     </section>
 
-    <!-- <img id="background_image" src="../assets/swipe_riks.png" alt="startpage" class="h-screen bg-cover bg-no-repeat" /> -->
     <div class="text-center">
-      <button class="btn btn-lg bg-teal text-white w-24">
-        <RouterLink to="/instruction">Start </RouterLink>
-      </button>
+      <button class="btn btn-lg bg-teal text-white w-24" @click="this.$router.push('instruction')">Start</button>
     </div>
   </div>
 </template>

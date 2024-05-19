@@ -2,6 +2,7 @@
 import { useSelectedStore } from '@/stores/selected'
 import { mapStores } from 'pinia'
 </script>
+
 <script>
 export default {
   data() {},
@@ -43,10 +44,7 @@ export default {
       </div>
     </div>
     <div class="text-center">
-      <button class="btn btn-lg bg-teal text-white">
-        <RouterLink to="/closing">Klar!</RouterLink>
-      </button>
+      <button class="btn btn-lg bg-teal text-white w-24" @click="this.$router.push('closing')">Klar!</button>
     </div>
-    <!-- <RouterLink to="/" @click="resetSelectedStore">Start over</RouterLink>  -->
   </div>
 </template>

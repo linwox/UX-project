@@ -1,5 +1,4 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 </script>
 
 <template>
@@ -38,9 +37,7 @@ import { RouterLink } from 'vue-router'
       </div>
 
       <div class="text-center mt-6">
-        <button class="btn btn-lg bg-teal text-white">
-          <RouterLink to="/choice">Fortsätt</RouterLink>
-        </button>
+        <button class="btn btn-lg bg-teal text-white w-24" @click="this.$router.push('choice')">Start</button>
       </div>
     </div>
   </div>

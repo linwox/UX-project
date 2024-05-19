@@ -20,8 +20,8 @@ import { RouterLink } from 'vue-router'
 
 
       <button class="btn btn-lg bg-teal text-white w-24">
-          <RouterLink to="/instruction">Start </RouterLink>
-        </button>
+        <RouterLink to="/instruction">Start </RouterLink>
+      </button>
         
       </div>
     </div>

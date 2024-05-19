@@ -8,7 +8,6 @@ import { useLogosStore } from '@/stores/logos'
 
 <template>
   <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
-
     <div class="flex flex-col items-center justify-center">
       <div>
         <pie-chart class="w-80 mt-40 mb-10"></pie-chart>

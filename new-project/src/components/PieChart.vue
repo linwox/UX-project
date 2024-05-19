@@ -33,11 +33,11 @@ export default {
             backgroundColor: [
               'red',
               'firebrick',
-              'forestgreen',
-              'steelblue',
-              'deepgreen',
-              'lightblue',
-              'royalblue',
+              'rgb(163 230 53)',
+              'rgb(56 189 248)',
+              'rgb(22 163 74)',
+              'rgb(96 165 250)',
+              'rgb(29 78 216)',
               'gold'
             ]
           }

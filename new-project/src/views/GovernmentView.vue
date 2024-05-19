@@ -5,7 +5,7 @@ import { mapStores } from 'pinia'
 
 <script>
 export default {
-  data() {},
+  data() { },
   computed: {
     ...mapStores(useSelectedStore)
   },
@@ -16,35 +16,52 @@ export default {
   }
 }
 </script>
+
 <template>
   <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen pt-20">
-    <div class="grid grid-cols-3 gap-2 p-1 pb-10">
-      <div v-for="person of selectedStore.selectedPersons" :key="person.id">
-        <label class="swap swap-flip text-9xl">
-          <!-- this hidden checkbox controls the state -->
-          <input type="checkbox" />
 
-          <div class="swap-off ml-3 pt-4 flex">
-            <div class="card w-24 shadow-xl rounded">
+    <div class="flex flex-col items-center justify-center">
+
+      <div class="grid grid-cols-3 gap-2">
+
+        <div v-for="person of selectedStore.selectedPersons" :key="person.id" class="flex flex-col items-center">
+
+          <div class="flex flex-col relative items-center ">
+
+            <img :src="'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDY0OXdzMGllNjYxYXp5ZDc5eTNobmtjcXlrbDJocHNudHlzcTg1MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/fwE6vBUQvweaBQR9zb/giphy.gif'" alt="partyhat" class="partyhat absolute m-1 w-10 h-8 mr-2 z-10">
+            <div class="card w-24 shadow-xl rounded z-0">
               <img :src="person.imageUrl" alt="Politician" class="rounded" />
+              <img :src="'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/1290px-Love_Heart_SVG.svg.png?20081212064102'" alt="partilogga" class="absolute bottom-0 left-0 m-1 w-8 h-8 mr-2 z-10" />
             </div>
+
+
+            <p class="font-semibold"> {{ person.ministerPost }} </p>
+
           </div>
 
-          <div class="swap-on">
-            <div class="card w-20 h-36 bg-base-100 shadow-xl">
-              <div class="card-body items-center text-center">
-                <h2 class="card-title"></h2>
-                <p class="text-base">{{ person.firstName }}</p>
-                <p class="text-base">{{ person.age }}</p>
-                <p class="text-base">{{ person.party }}</p>
-              </div>
-            </div>
-          </div>
-        </label>
+        </div>
+
+        
       </div>
+
     </div>
-    <div class="text-center">
-      <button class="btn btn-lg bg-teal text-white w-24" @click="this.$router.push('closing')">Klar!</button>
+
+    <div class="text-center space-x-4 mt-6">
+      <button class="btn btn-lg bg-teal text-white w-30" @click="this.$router.push('result')">
+        Tillbaka
+      </button>
+      <button class="btn btn-lg bg-teal text-white w-30" @click="this.$router.push('closing')">
+        Avsluta
+      </button>
     </div>
+
   </div>
 </template>
+
+<style scoped>
+.partyhat {
+  bottom: 92%; /* Position the hat outside of the card area */
+  left: 40%;
+  transform: translate(-50%, 50%); /* Center horizontally and adjust vertically */
+}
+</style>

@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <div
@@ -37,7 +36,9 @@
       </div>
 
       <div class="text-center mt-6">
-        <button class="btn btn-lg bg-teal text-white w-24" @click="this.$router.push('choice')">Start</button>
+        <button class="btn btn-lg bg-teal text-white w-24" @click="this.$router.push('choice')">
+          Start
+        </button>
       </div>
     </div>
   </div>

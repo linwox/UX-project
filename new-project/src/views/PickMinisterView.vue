@@ -11,7 +11,7 @@ export default {
       posts: [
         'Statsminister',
         'Finansminister',
-        'Jämställdhetsminister',
+        'Partyminister',
         'Klimatminister',
         'Sjukvårdminister',
         'Kulturminister',
@@ -19,8 +19,8 @@ export default {
         'Justitieminister',
         'Försvarsminister',
         'Utrikesminister',
-        'Migrationsminister',
-        'Landsbygdsminister'
+        'Kompisminister',
+        'Semesterminister'
       ]
     }
   },

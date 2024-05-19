@@ -5,14 +5,14 @@ import PieChart from '../components/PieChart.vue'
 import { useSelectedStore } from '@/stores/selected'
 
 const logoMapping = {
-  'V': '/src/assets/Loggor/V_logo.svg',
-  'S': '/src/assets/Loggor/S_logo.svg',
-  'MP': '/src/assets/Loggor/MP_logo.svg',
-  'L': '/src/assets/Loggor/L_logo.svg',
-  'C': '/src/assets/Loggor/C_logo.svg',
-  'KD': '/src/assets/Loggor/KD_logo.svg',
-  'M': '/src/assets/Loggor/M_logo.svg',
-  'SD': '/src/assets/Loggor/SD_logo.svg'
+  V: '/src/assets/Loggor/V_logo.svg',
+  S: '/src/assets/Loggor/S_logo.svg',
+  MP: '/src/assets/Loggor/MP_logo.svg',
+  L: '/src/assets/Loggor/L_logo.svg',
+  C: '/src/assets/Loggor/C_logo.svg',
+  KD: '/src/assets/Loggor/KD_logo.svg',
+  M: '/src/assets/Loggor/M_logo.svg',
+  SD: '/src/assets/Loggor/SD_logo.svg'
 }
 
 const getLogoPath = (partyName) => logoMapping[partyName]
@@ -21,16 +21,21 @@ const getLogoPath = (partyName) => logoMapping[partyName]
 <template>
   <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
     <div class="flex flex-col items-center justify-center">
+
       <div>
         <pie-chart class="w-80 mt-40 mb-10"></pie-chart>
       </div>
-      <div v-for="(party, index) in partyPercentages" :key="index">
-        <p class="text-lg flex items-center justify-center mt-1">
-          <img :src="getLogoPath(party.name)" alt="" class="w-8 h-8">
-          : {{ party.percentage }}% 
-        </p>
+
+      <div class="flex flex-col items-center justify-center">
+        <div v-for="(party, index) in partyPercentages" :key="index"
+          class="flex items-center justify-between w-full max-w-xs">
+          <img :src="getLogoPath(party.name)" alt="partilogga" class="w-8 h-8 mr-2" />
+          <p class="text-lg">{{ party.percentage }}%</p>
+        </div>
       </div>
+
       <button class="btn btn-lg bg-teal text-white w-40" @click="this.$router.push('government')">Se regering</button>
+      
     </div>
   </div>
 </template>

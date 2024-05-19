@@ -17,16 +17,15 @@ export default {
 </script>
 <template>
   <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen pt-20">
-    
     <div class="grid grid-cols-3 gap-2 p-1 pb-10">
       <div v-for="person of selectedStore.selectedPersons" :key="person.id">
         <label class="swap swap-flip text-9xl">
           <!-- this hidden checkbox controls the state -->
           <input type="checkbox" />
 
-          <div class="swap-off ml-3 pt-4 flex ">
+          <div class="swap-off ml-3 pt-4 flex">
             <div class="card w-24 shadow-xl rounded">
-              <img :src="person.imageUrl" alt="Politician" class=" rounded" />
+              <img :src="person.imageUrl" alt="Politician" class="rounded" />
             </div>
           </div>
 

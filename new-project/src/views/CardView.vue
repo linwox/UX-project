@@ -10,17 +10,17 @@ import { generateQuote } from '@/lib/QuoteManager.js'
 <template>
   <header>
     <div
-      class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center"
+      class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center md:bg-[url('../assets/bakgrundwebb.svg')]"
     >
       <div class="flex flex-col justify-center items-center h-screen space-y-4">
         <div
           v-if="choiceStore.choice"
           class="flex flex-col h-screen w-screen justify-center items-center gap-5"
         >
-          <h3 class="text-2xl font-semibold">Tänk att ta en kaffe med...</h3>
+          <h3 class="text-2xl font-semibold md:text-white">Tänk att ta en kaffe med...</h3>
 
           <div
-            class="card relative w-80 h-2/3 md:w-1/2 flex flex-col shadow-xl border-slate border-2"
+            class="card relative w-80 h-2/3 md:w-1/2 flex flex-col shadow-xl border-slate border-2 md:w-80"
           >
             <div v-if="loading" class="flex justify-center items-center w-full h-full">
               <span class="loading loading-dots loading-lg"></span>

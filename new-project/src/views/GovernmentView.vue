@@ -1,7 +1,6 @@
 <script setup>
 import { useSelectedStore } from '@/stores/selected'
 import { mapStores } from 'pinia'
-
 </script>
 
 <script>

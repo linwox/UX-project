@@ -1,6 +1,6 @@
 <script setup>
 import { useSelectedStore } from '@/stores/selected'
-import { useStatsStore } from '@/stores/stats';
+import { useStatsStore } from '@/stores/stats'
 import { mapStores } from 'pinia'
 </script>
 
@@ -22,7 +22,6 @@ export default {
       this.statsStore.kd_count = 0
       this.statsStore.m_count = 0
       this.statsStore.sd_count = 0
-      
     }
   }
 }

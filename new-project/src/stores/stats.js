@@ -5,8 +5,8 @@ export const useStatsStore = defineStore('stats', {
     v_count: 0,
     s_count: 0,
     mp_count: 0,
-    l_count: 0,
     c_count: 0,
+    l_count: 0,
     kd_count: 0,
     m_count: 0,
     sd_count: 0
@@ -23,11 +23,11 @@ export const useStatsStore = defineStore('stats', {
         case 'MP':
           this.mp_count++
           break
-        case 'L':
-          this.l_count++
-          break
         case 'C':
           this.c_count++
+          break
+        case 'L':
+          this.l_count++
           break
         case 'KD':
           this.kd_count++
@@ -47,8 +47,8 @@ export const useStatsStore = defineStore('stats', {
         this.v_count,
         this.s_count,
         this.mp_count,
-        this.l_count,
         this.c_count,
+        this.l_count,
         this.kd_count,
         this.m_count,
         this.sd_count

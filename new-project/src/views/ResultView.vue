@@ -13,17 +13,26 @@ import { getLogoPath } from '@/lib/LogoMapping'
         <pie-chart class="w-96 mt-40 mb-10"></pie-chart>
       </div>
 
-      <div v-if="partyPercentages.length < 4" class="flex flex-col items-center justify-center mb-4">
-        <div v-for="(party, index) in partyPercentages" :key="index"
-          class="flex items-center justify-between w-full max-w-xs">
+      <div
+        v-if="partyPercentages.length < 4"
+        class="flex flex-col items-center justify-center mb-4"
+      >
+        <div
+          v-for="(party, index) in partyPercentages"
+          :key="index"
+          class="flex items-center justify-between w-full max-w-xs"
+        >
           <img :src="getLogoPath(party.name)" alt="partilogga" class="w-8 h-8 mr-2" />
           <p class="text-lg">{{ party.percentage }}%</p>
         </div>
       </div>
 
       <div v-else class="grid grid-cols-2 gap-x-10 gap-y-1 mb-4">
-        <div v-for="(party, index) in partyPercentages" :key="index"
-          class="flex items-center justify-between w-full max-w-xs">
+        <div
+          v-for="(party, index) in partyPercentages"
+          :key="index"
+          class="flex items-center justify-between w-full max-w-xs"
+        >
           <img :src="getLogoPath(party.name)" alt="partilogga" class="w-8 h-8 mr-2" />
           <p class="text-lg">{{ party.percentage }}%</p>
         </div>

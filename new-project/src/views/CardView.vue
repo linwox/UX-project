@@ -137,12 +137,19 @@ export default {
 
 <template>
   <header>
-    <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center">
+    <div
+      class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center md:bg-[url('../assets/bakgrundwebb.svg')]"
+    >
       <div class="flex flex-col justify-center items-center h-screen space-y-4">
-        <div v-if="choiceStore.choice" class="flex flex-col h-screen w-screen justify-center items-center gap-5">
-          <h3 class="text-2xl font-semibold">Tänk att ta en kaffe med...</h3>
+        <div
+          v-if="choiceStore.choice"
+          class="flex flex-col h-screen w-screen justify-center items-center gap-5"
+        >
+          <h3 class="text-2xl font-semibold md:text-white">Tänk att ta en kaffe med...</h3>
 
-          <div class="card relative w-80 h-2/3 md:w-1/2 flex flex-col shadow-xl border-slate border-2">
+          <div
+            class="card relative w-80 h-2/3 md:w-1/2 flex flex-col shadow-xl border-slate border-2 bg-white md:w-80"
+          >
             <div v-if="loading" class="flex justify-center items-center w-full h-full">
               <span class="loading loading-dots loading-lg"></span>
             </div>
@@ -153,19 +160,30 @@ export default {
               </p>
 
               <div
-                class="w-full h-72 bg-gradient-to-t from-black via-transparent absolute bottom-0 left-0 right-0 rounded-2xl z-10">
-              </div>
+                class="w-full h-72 bg-gradient-to-t from-black via-transparent absolute bottom-0 left-0 right-0 rounded-2xl z-10"
+              ></div>
 
-              <img :src="imageUrl" alt="Politician"
-                class="w-full h-full object-cover absolute top-0 left-0 rounded-2xl z-0" />
+              <img
+                :src="imageUrl"
+                alt="Politician"
+                class="w-full h-full object-cover absolute top-0 left-0 rounded-2xl z-0"
+              />
             </div>
 
             <div class="flex items-end justify-center absolute bottom-6 left-6 right-6 z-20">
               <div class="card-actions space-x-36 flex justify-center">
-                <button @answer="handleAnswer" @click="handleNoClick" :disabled="loading"
-                  class="bg-[url('../assets/no_icon.svg')] bg-cover w-14 h-14"></button>
-                <button @answer="handleAnswer" @click="handleYesClick" :disabled="loading"
-                  class="bg-[url('../assets/yes_icon.svg')] bg-cover w-14 h-14"></button>
+                <button
+                  @answer="handleAnswer"
+                  @click="handleNoClick"
+                  :disabled="loading"
+                  class="bg-[url('../assets/no_icon.svg')] bg-cover w-14 h-14"
+                ></button>
+                <button
+                  @answer="handleAnswer"
+                  @click="handleYesClick"
+                  :disabled="loading"
+                  class="bg-[url('../assets/yes_icon.svg')] bg-cover w-14 h-14"
+                ></button>
               </div>
             </div>
           </div>
@@ -177,7 +195,8 @@ export default {
           <h3 class="text-2xl font-semibold">Håller du med om...?</h3>
 
           <div
-            class="card relative w-80 h-2/3 md:w-1/2 flex flex-col justify-center items-center shadow-xl border-slate border-2">
+            class="card relative w-80 h-2/3 md:w-1/2 flex flex-col justify-center items-center shadow-xl border-slate border-2"
+          >
             <div v-if="loading" class="flex justify-center items-center w-full h-full">
               <span class="loading loading-dots loading-lg"></span>
             </div>
@@ -186,10 +205,18 @@ export default {
 
             <div class="flex items-end justify-center absolute bottom-6 left-6 right-6 z-20">
               <div class="card-actions space-x-36 flex justify-center">
-                <button @answer="handleAnswer" @click="handleNoClick" :disabled="loading"
-                  class="bg-[url('../assets/no_icon.svg')] bg-cover w-14 h-14"></button>
-                <button @answer="handleAnswer" @click="handleYesClick" :disabled="loading"
-                  class="bg-[url('../assets/yes_icon.svg')] bg-cover w-14 h-14"></button>
+                <button
+                  @answer="handleAnswer"
+                  @click="handleNoClick"
+                  :disabled="loading"
+                  class="bg-[url('../assets/no_icon.svg')] bg-cover w-14 h-14"
+                ></button>
+                <button
+                  @answer="handleAnswer"
+                  @click="handleYesClick"
+                  :disabled="loading"
+                  class="bg-[url('../assets/yes_icon.svg')] bg-cover w-14 h-14"
+                ></button>
               </div>
             </div>
           </div>

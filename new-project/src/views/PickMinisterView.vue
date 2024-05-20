@@ -77,6 +77,13 @@ export default {
 <template>
   <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
     <div class="flex flex-col justify-center items-center h-screen space-y-4">
+      <!-- <details class="collapse bg-base-200 mt-28">
+        <summary class="collapse-title text-s font-medium">Info</summary>
+        <div class="collapse-content">
+          <p>Välj ministerpost i menyn och scrolla fram vem som ska ha posten.</p>
+        </div>
+      </details> -->
+
       <div class="flex flex-col h-screen w-screen justify-center items-center gap-5">
         <select
           id="minister_post"

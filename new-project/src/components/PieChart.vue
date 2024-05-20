@@ -26,7 +26,7 @@ export default {
     new Chart(ctx, {
       type: 'pie',
       data: {
-        labels: ['V', 'S', 'MP', 'L', 'C', 'KD', 'M', 'SD'],
+        labels: ['V', 'S', 'MP', 'C', 'L', 'KD', 'M', 'SD'],
         datasets: [
           {
             data: statsStore.partyCounts,
@@ -34,8 +34,8 @@ export default {
               'red',
               'firebrick',
               'rgb(163 230 53)',
-              'rgb(56 189 248)',
               'rgb(22 163 74)',
+              'rgb(56 189 248)',
               'rgb(96 165 250)',
               'rgb(29 78 216)',
               'gold'
@@ -54,7 +54,11 @@ export default {
             }
           },
           legend: {
-            position: 'bottom'
+            display: true,
+            position: 'bottom',
+            labels: {
+              usePointStyle: true
+            }
           },
           title: {
             display: true,

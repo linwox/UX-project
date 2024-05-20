@@ -5,7 +5,6 @@ import { mapStores } from 'pinia'
 
 <script>
 export default {
-  data() {},
   computed: {
     ...mapStores(useSelectedStore)
   },
@@ -28,7 +27,7 @@ export default {
       <button class="btn btn-lg bg-teal text-white w-30" @click="resetSelectedStore">
         Till start
       </button>
-      <button class="btn btn-lg bg-teal text-white w-30" @click="this.$router.push('about')">
+      <button class="btn btn-lg bg-teal text-white w-30" @click="$router.push('about')">
         Om oss
       </button>
     </div>

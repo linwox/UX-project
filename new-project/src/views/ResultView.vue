@@ -3,19 +3,7 @@ import { useStatsStore } from '@/stores/stats'
 import { mapStores } from 'pinia'
 import PieChart from '../components/PieChart.vue'
 import { useSelectedStore } from '@/stores/selected'
-
-const logoMapping = {
-  V: '/src/assets/Loggor/V_logo.svg',
-  S: '/src/assets/Loggor/S_logo.svg',
-  MP: '/src/assets/Loggor/MP_logo.svg',
-  C: '/src/assets/Loggor/C_logo.svg',
-  L: '/src/assets/Loggor/L_logo.svg',
-  KD: '/src/assets/Loggor/KD_logo.svg',
-  M: '/src/assets/Loggor/M_logo.svg',
-  SD: '/src/assets/Loggor/SD_logo.svg'
-}
-
-const getLogoPath = (partyName) => logoMapping[partyName]
+import { getLogoPath } from '@/lib/LogoMapping'
 </script>
 
 <template>
@@ -25,23 +13,17 @@ const getLogoPath = (partyName) => logoMapping[partyName]
         <pie-chart class="w-96 mt-40 mb-10"></pie-chart>
       </div>
 
-      <div v-if="partyPercentages.size > 4" class="flex flex-col items-center justify-center mb-4">
-        <div
-          v-for="(party, index) in partyPercentages"
-          :key="index"
-          class="flex items-center justify-between w-full max-w-xs"
-        >
+      <div v-if="partyPercentages.length < 4" class="flex flex-col items-center justify-center mb-4">
+        <div v-for="(party, index) in partyPercentages" :key="index"
+          class="flex items-center justify-between w-full max-w-xs">
           <img :src="getLogoPath(party.name)" alt="partilogga" class="w-8 h-8 mr-2" />
           <p class="text-lg">{{ party.percentage }}%</p>
         </div>
       </div>
-      
+
       <div v-else class="grid grid-cols-2 gap-x-10 gap-y-1 mb-4">
-        <div
-          v-for="(party, index) in partyPercentages"
-          :key="index"
-          class="flex items-center justify-between w-full max-w-xs"
-        >
+        <div v-for="(party, index) in partyPercentages" :key="index"
+          class="flex items-center justify-between w-full max-w-xs">
           <img :src="getLogoPath(party.name)" alt="partilogga" class="w-8 h-8 mr-2" />
           <p class="text-lg">{{ party.percentage }}%</p>
         </div>
@@ -68,11 +50,6 @@ export default {
           return { name: party, percentage: percentage }
         })
         .filter((party) => party.percentage !== 0)
-    }
-  },
-  methods: {
-    getLogoPath(partyName) {
-      return logoMapping[partyName]
     }
   },
   components: {

@@ -1,6 +1,7 @@
 <script setup>
 import { useSelectedStore } from '@/stores/selected'
 import { mapStores } from 'pinia'
+
 </script>
 
 <script>
@@ -34,10 +35,15 @@ export default {
             <div class="card w-24 shadow-xl rounded z-0">
               <img :src="person.imageUrl" alt="Politician" class="rounded" />
               <img
-                :src="'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/1290px-Love_Heart_SVG.svg.png?20081212064102'"
+                :src="person.logoUrl"
                 alt="partilogga"
                 class="absolute bottom-0 left-0 m-1 w-8 h-8 mr-2 z-10"
               />
+              <!-- <img
+                :src="'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/1290px-Love_Heart_SVG.svg.png?20081212064102'"
+                alt="partilogga"
+                class="absolute bottom-0 left-0 m-1 w-8 h-8 mr-2 z-10"
+              /> -->
             </div>
 
             <p class="font-semibold">{{ person.ministerPost }}</p>

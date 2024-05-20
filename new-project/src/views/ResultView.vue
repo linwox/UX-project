@@ -7,7 +7,7 @@ import { getLogoPath } from '@/lib/LogoMapping'
 </script>
 
 <template>
-  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
+  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center md:bg-[url('../assets/bakgrundwebb.svg')]">
     <div class="flex flex-col items-center justify-center">
       <div>
         <pie-chart class="w-96 mt-40 mb-10"></pie-chart>

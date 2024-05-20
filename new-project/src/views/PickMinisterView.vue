@@ -77,7 +77,7 @@ export default {
 </script>
 
 <template>
-  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg-center h-screen">
+  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center md:bg-[url('../assets/bakgrundwebb.svg')]">
     <div class="flex flex-col justify-center items-center h-screen space-y-4">
       <!-- <details class="collapse bg-base-200 mt-28">
         <summary class="collapse-title text-s font-medium">Info</summary>

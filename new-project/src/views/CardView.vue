@@ -114,7 +114,7 @@ export default {
       quote: undefined,
       politicianData: Object,
       count: 0,
-      loading: true // New loading state
+      loading: true
     }
   },
   computed: {
@@ -140,7 +140,6 @@ export default {
         getLogoPath(this.party),
         undefined
       )
-
       this.statsStore.countParty(this.party)
       if (this.selectedStore.selectedPersons.length === 12) {
         this.$router.push('pick_minister')
@@ -157,7 +156,6 @@ export default {
       const randomIndex = Math.floor(Math.random() * this.listOfIds.length)
       this.randomId = this.listOfIds[randomIndex]
     },
-    // hämta allt, spara in, plocka därifrån
     async getPoliticianData(randomId) {
       this.politicianData = await RiksdagensData.fetchPoliticianData(randomId)
     },
@@ -184,21 +182,17 @@ export default {
         await this.getRandomId()
         return this.getGoodQuote(this.randomId)
       }
-
       return quote
     },
     delay(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms))
     },
     async loadImageAndData() {
-      this.loading = true // Start loading
+      this.loading = true
 
-      // Hämtar ut ett random id
       await this.getRandomId()
 
-      // Om man valt att välja på citat
       if (!this.choiceStore.choice) {
-        // Hämta ut ett citat från id
         this.quote = await this.getGoodQuote(this.randomId)
       }
 
@@ -208,18 +202,15 @@ export default {
       this.age = await this.getAge()
       this.party = await this.getParty()
 
-      // Create a new Image object to load the image
       const img = new Image()
       img.src = this.imageUrl
       img.onload = () => {
-        this.loading = false // End loading when the image is loaded
+        this.loading = false
       }
     }
   },
   async created() {
-    // Preload data
     await this.preload()
-    // Load initial image and data
     await this.loadImageAndData()
   }
 }

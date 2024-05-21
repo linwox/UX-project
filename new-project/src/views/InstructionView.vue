@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
   <div>
     <div
@@ -25,7 +23,7 @@
           <div class="m-3">
             <h3 class="text-lg font-semibold">Bild-spelet:</h3>
             <p class="text-sm">
-              * Du får se 12 bilder, en bild i<br />taget.<br />* Välj genom att swipea/välja Ja<br />eller
+              * Du får se 12 bilder, en bild i<br />taget.<br />* Välj genom att välja Ja<br />eller
               Nej, alltså om du vill<br />matcha med ledamoten.
             </p>
           </div>
@@ -33,7 +31,7 @@
           <div class="m-3">
             <h3 class="text-lg font-semibold">Citat-spelet:</h3>
             <p class="text-sm">
-              * Två citat visas från två<br />slumpmässiga ledamöter.<br />* Välj det citat som du
+              * Ett citat visas från en<br />slumpmässiga ledamot.<br />* Välj citat som du
               vibear<br />med mest. Alla citat är<br />slumpmässigt utvalda, välj det<br />som känns
               bäst.
             </p>
@@ -74,8 +72,8 @@
             <div class="m-3">
               <h3 class="text-lg font-semibold">Bild-spelet:</h3>
               <p class="text-sm">
-                * Du får se 12 bilder, en bild i<br />taget.<br />* Välj genom att swipea/välja
-                Ja<br />eller Nej, alltså om du vill<br />matcha med ledamoten.
+                * Du får se 12 bilder, en bild i<br />taget.<br />* Välj genom att välja Ja<br />eller
+                Nej, alltså om du vill<br />matcha med ledamoten.
               </p>
             </div>
           </div>

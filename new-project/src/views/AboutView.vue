@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
   <div
     class="bg-[url('../assets/about.svg')] bg-cover bg-center h-screen flex flex-col justify-end items-center pb-32"
@@ -8,7 +6,8 @@
       <div>
         <h2 class="text-xl">Om PartySwipe</h2>
         <p>
-          Ta med dig PartySwipe till<br />förfesten och välj regering<br />ihop med dina kompisar!<br />
+          Ta med dig PartySwipe till<br />förfesten och välj regering<br />ihop med dina
+          kompisar!<br />
         </p>
       </div>
       <p>______________________________________</p>

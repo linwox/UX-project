@@ -1,7 +1,7 @@
 <script setup>
 import { useSelectedStore } from '@/stores/selected'
 import { mapStores } from 'pinia'
-import { getHatPath } from '@/lib/HatMapping';
+import { getHatPath } from '@/lib/HatMapping'
 </script>
 
 <template>
@@ -9,7 +9,6 @@ import { getHatPath } from '@/lib/HatMapping';
     class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center md:bg-[url('../assets/bakgrundwebb.svg')]"
   >
     <div class="flex flex-col justify-center items-center h-screen space-y-4">
-      
       <div class="flex flex-col h-screen w-screen justify-center items-center gap-5">
         <select
           id="minister_post"
@@ -48,7 +47,7 @@ import { getHatPath } from '@/lib/HatMapping';
                 <div class="card-actions space-x-36 flex justify-center">
                   <button
                     @click="handleButtonClick(person.id)"
-                    class="bg-[url('../assets/pick_icon.svg')] bg-cover w-14 h-14"
+                    class="bg-[url('../assets/yes_icon.svg')] bg-cover w-14 h-14"
                   ></button>
                 </div>
               </div>
@@ -88,12 +87,6 @@ export default {
     }
   },
   methods: {
-    selectMinister() {
-      const things = document.getElementsByClassName('carousel-item')
-      for (const elem of things) {
-        console.log(elem.getBoundingClientRect(), elem.dataset.item)
-      }
-    },
     setMinister(ministerPost, id) {
       const index = this.selectedStore.selectedPersons.findIndex((obj) => obj.id === id)
       const person = this.selectedStore.selectedPersons[index]
@@ -104,30 +97,21 @@ export default {
       const person = this.selectedStore.selectedPersons[index]
       const ministerPost = person.ministerPost
       person.hat = getHatPath(ministerPost)
-      console.log(ministerPost, person.hat)
     },
     getMinisterPostValue() {
       const e = document.getElementById('minister_post')
       const value = e.value
       return value
     },
-    getMinisterPostText() {
-      const e = document.getElementById('minister_post')
-      const text = e.target.options[e.target.selectedIndex].text
-      return text
-    },
     hideButton(id) {
-      // Set buttonPressed to true for the specific person
       const index = this.selectedStore.selectedPersons.findIndex((obj) => obj.id === id)
       this.selectedStore.selectedPersons[index].buttonPressed = true
     },
     removePost(ministerPost) {
       const index = this.posts.indexOf(ministerPost)
       this.posts.splice(index, 1)
-      // Set ministerPost to the next available option if exists, otherwise set it to undefined
       this.ministerPost = this.posts[0] || undefined
     },
-
     handleButtonClick(personId) {
       const ministerPost = this.getMinisterPostValue()
       this.setMinister(ministerPost, personId)

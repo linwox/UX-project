@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
   <div
     class="bg-[url('../assets/partySwipeStart.svg')] bg-cover h-screen flex flex-col justify-end items-center pb-44 sm:bg-none"

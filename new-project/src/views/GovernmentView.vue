@@ -16,7 +16,6 @@ import { mapStores } from 'pinia'
         >
           <div class="flex flex-col relative items-center">
             <img
-              
               :src="person.hat"
               alt="partyhat"
               class="partyhat absolute m-1 w-10 h-8 mr-2 z-10"
@@ -62,8 +61,8 @@ export default {
 
 <style scoped>
 .partyhat {
-  bottom: 92%; /* Position the hat outside of the card area */
+  bottom: 92%;
   left: 40%;
-  transform: translate(-50%, 50%); /* Center horizontally and adjust vertically */
+  transform: translate(-50%, 50%);
 }
 </style>

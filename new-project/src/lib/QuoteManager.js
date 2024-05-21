@@ -29,7 +29,7 @@ async function collectAnforandeText(url) {
     const result = strHtml.substring(match.index + match[0].length).trim()
     return result
   } else {
-    console.log('Error cleaning text') // Hantera bättre!
+    throw new Error('Error cleaning text: no meta data found')
   }
 }
 

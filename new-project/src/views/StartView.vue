@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-[url('../assets/partySwipeStart.svg')] bg-cover h-screen flex flex-col justify-end items-center pb-44 sm:bg-none space-y-8"
+    class="bg-[url('../assets/partySwipeStart.svg')] bg-cover h-screen flex flex-col justify-end md:justify-center items-center pb-44 sm:bg-none space-y-8"
   >
     <section class="w-full h-screen max-sm:hidden">
       <img src="../assets/Header.svg" class="object-cover w-screen max-sm:hidden" alt=" alt text" />

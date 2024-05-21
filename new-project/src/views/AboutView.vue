@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-[url('../assets/about.svg')] bg-cover bg center h-screen flex flex-col justify-end items-center pb-32"
+    class="bg-[url('../assets/about.svg')] bg-cover bg center h-screen flex flex-col justify-center items-center"
   >
     <div class="md:card md:relative md:p-6 md:flex md:flex-col md:shadow-xl md:border-slate md:border-2 md:bg-white text-center">
       <div>

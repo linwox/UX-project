@@ -20,7 +20,7 @@ import { mapStores } from 'pinia'
               alt="partyhat"
               class="partyhat absolute m-1 w-10 h-8 mr-2 z-10"
             />
-            <div class="card w-24 md:w-40 shadow-xl rounded z-0">
+            <div class="card w-24 md:w-32 shadow-xl rounded z-0">
               <img :src="person.imageUrl" alt="Politician" class="rounded" />
               <img
                 :src="person.logoUrl"

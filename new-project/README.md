@@ -1,19 +1,23 @@
 # new-project
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a Vite project made with Vue for a school assignment. PartySwipe is the ultimate pre-party app if you study political science or if you just have a big interest in Swedish politics. See below instructions for setup and building the project.
+
+## Clone the repo to get your own copy to work on
+
+```sh
+git clone https://github.com/linwox/UX-project.git
+```
 
 ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+[VSCode](https://code.visualstudio.com/) with [VueOfficial](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## If you want to keep building on this project and change stuff run this:
 
 ```sh
 npm install
+npm run format
+npm run dev
 ```
 
 ### Compile and Hot-Reload for Development

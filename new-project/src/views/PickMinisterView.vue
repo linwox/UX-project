@@ -6,7 +6,7 @@ import { getHatPath } from '@/lib/HatMapping'
 
 <template>
   <div
-    class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center md:bg-[url('../assets/bakgrundwebb.svg')]"
+    class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center md:bg-[url('../assets/bakgrundwebb.svg')] pb-40"
   >
     <div class="flex flex-col justify-center items-center h-screen space-y-4">
       <div class="flex flex-col h-screen w-screen justify-center items-center gap-5">
@@ -20,7 +20,7 @@ import { getHatPath } from '@/lib/HatMapping'
         </select>
 
         <div
-          class="carousel relative w-80 h-2/3 md:w-80 rounded-box bg-base-100 shadow-xl border-slate border-2"
+          class="carousel relative w-80 h-2/3 md:w-96 rounded-box bg-base-100 shadow-xl border-slate border-2"
         >
           <div
             v-for="person of visiblePersons"

@@ -8,41 +8,32 @@ import { getLogoPath } from '@/lib/LogoMapping'
 
 <template>
   <div
-    class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center md:bg-[url('../assets/bakgrundwebb.svg')]"
-  >
+    class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center md:bg-[url('../assets/bakgrundwebb.svg')] pb-40">
     <div class="flex flex-col items-center justify-center">
       <div>
-        <pie-chart class="w-96 mt-40 mb-10"></pie-chart>
+        <pie-chart class="w-96 mt-40 mb-6"></pie-chart>
       </div>
 
-      <div
-        v-if="partyPercentages.length < 4"
-        class="flex flex-col items-center justify-center mb-4"
-      >
-        <div
-          v-for="(party, index) in partyPercentages"
-          :key="index"
-          class="flex items-center justify-between w-full max-w-xs"
-        >
+      <div v-if="partyPercentages.length < 4" class="flex flex-col items-center justify-center mb-4">
+        <div v-for="(party, index) in partyPercentages" :key="index"
+          class="flex items-center justify-between w-full max-w-xs">
           <img :src="getLogoPath(party.name)" alt="partilogga" class="w-8 h-8 mr-2" />
           <p class="text-lg">{{ party.percentage }}%</p>
         </div>
       </div>
 
       <div v-else class="grid grid-cols-2 gap-x-10 gap-y-1 mb-4">
-        <div
-          v-for="(party, index) in partyPercentages"
-          :key="index"
-          class="flex items-center justify-between w-full max-w-xs"
-        >
+        <div v-for="(party, index) in partyPercentages" :key="index"
+          class="flex items-center justify-between w-full max-w-xs ">
           <img :src="getLogoPath(party.name)" alt="partilogga" class="w-8 h-8 mr-2" />
           <p class="text-lg">{{ party.percentage }}%</p>
         </div>
       </div>
-
-      <button class="btn btn-lg bg-teal text-white w-40" @click="$router.push('government')">
-        Se regering
-      </button>
+      <div class="pt-4">
+        <button class="btn btn-lg bg-teal text-white w-40 " @click="$router.push('government')">
+          Se regering
+        </button>
+      </div>
     </div>
   </div>
 </template>

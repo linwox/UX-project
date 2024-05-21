@@ -49,15 +49,9 @@
     <!-- Desktop -->
 
     <div
-      class="bg-[url('../assets/Header.svg')] bg-cover w-screen md:flex flex-col justify-end items-center pb-28 sm:bg-none hidden"
+      class="bg-[url('../assets/headerBakgrund.svg')] bg-cover w-screen md:flex flex-col justify-end items-center pb-28 sm:hidden h-screen pb-36"
     >
-      <section class="w-full h-screen">
-        <img
-          src="../assets/Header.svg"
-          class="object-cover w-screen max-sm:hidden"
-          alt=" alt text"
-        />
-      </section>
+     
       <div class="flex flex-col md:flex-row items-center justify-center">
         <div class="p-4">
           <h2 class="text-xl font-semibold">INSTRUKTIONER:</h2>

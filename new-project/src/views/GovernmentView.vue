@@ -5,10 +5,10 @@ import { mapStores } from 'pinia'
 
 <template>
   <div
-    class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg center h-screen flex flex-col justify-center items-center md:bg-[url('../assets/bakgrundwebb.svg')]"
+    class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg center h-screen flex flex-col justify-center items-center md:bg-[url('../assets/bakgrundwebb.svg')] md:pt-40"
   >
     <div class="flex flex-col items-center justify-center">
-      <div class="grid grid-cols-3 gap-2">
+      <div class="grid grid-cols-3 gap-2 md:gap-4 md:grid-cols-6">
         <div
           v-for="person of selectedStore.selectedPersons"
           :key="person.id"
@@ -20,7 +20,7 @@ import { mapStores } from 'pinia'
               alt="partyhat"
               class="partyhat absolute m-1 w-10 h-8 mr-2 z-10"
             />
-            <div class="card w-24 shadow-xl rounded z-0">
+            <div class="card w-24 md:w-40 shadow-xl rounded z-0">
               <img :src="person.imageUrl" alt="Politician" class="rounded" />
               <img
                 :src="person.logoUrl"

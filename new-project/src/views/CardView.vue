@@ -21,7 +21,7 @@ import { getLogoPath } from '@/lib/LogoMapping'
           <h3 class="text-2xl font-semibold md:text-white">Tänk att ta en kaffe med...</h3>
 
           <div
-            class="card relative w-80 h-2/3 md:w-1/2 flex flex-col shadow-xl border-slate border-2 bg-white md:w-80"
+            class="card relative w-80 h-2/3 md:w-96 flex flex-col shadow-xl border-slate border-2 bg-white md:w-80"
           >
             <div v-if="loading" class="flex justify-center items-center w-full h-full">
               <span class="loading loading-dots loading-lg"></span>
@@ -44,7 +44,7 @@ import { getLogoPath } from '@/lib/LogoMapping'
             </div>
 
             <div class="flex items-end justify-center absolute bottom-6 left-6 right-6 z-20">
-              <div class="card-actions space-x-36 flex justify-center">
+              <div class="card-actions space-x-36 md:space-x-48 flex justify-center">
                 <button
                   @answer="handleAnswer"
                   @click="handleNoClick"

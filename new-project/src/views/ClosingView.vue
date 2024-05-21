@@ -6,11 +6,13 @@ import { mapStores } from 'pinia'
 
 <template>
   <div
-    class="bg-[url('../assets/partySwipeStart.svg')] bg-cover h-screen flex flex-col justify-end items-center pb-52"
+    class="bg-[url('../assets/closing.svg')] md:bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex flex-col justify-end items-center pb-52 space-y-20 relative"
   >
-    <p class="pb-72 text-2xl">Tack för att du spelade!</p>
-
-    <div class="text-center space-x-4">
+  
+  <img src="../assets/confetti.gif" alt="confetti" class="z-10 absolute inset-30">
+  <img src="../assets/tack.svg" alt="tack" class="z-0 relative">
+  
+  <div class="text-center space-x-4 relative z-20">
       <button class="btn btn-lg bg-teal text-white w-30" @click="resetSelectedStore">
         Till start
       </button>

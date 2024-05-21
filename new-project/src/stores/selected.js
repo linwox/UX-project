@@ -13,9 +13,10 @@ export const useSelectedStore = defineStore('selected', {
       imageUrl,
       ministerPost,
       buttonPressed,
-      logoUrl
+      logoUrl,
+      hat
     ) {
-      const person = { id, firstName, age, party, imageUrl, ministerPost, buttonPressed, logoUrl }
+      const person = { id, firstName, age, party, imageUrl, ministerPost, buttonPressed, logoUrl, hat }
       this.selectedPersons.push(person)
     }
   }

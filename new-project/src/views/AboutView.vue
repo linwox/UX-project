@@ -6,14 +6,13 @@
   >
     <div class="text-center">
       <div>
-        <h2 class="text-xl">OM OSS</h2>
+        <h2 class="text-xl">Om PartySwipe</h2>
         <p>
-          Lorem ipsum dolor sit amet,<br />consectetur adipiscing elit. Lorem<br />ipsum dolor sit
-          amet, consectetur<br />adipiscing elit.
+          Ta med dig PartySwipe till<br />förfesten och välj regering<br />ihop med dina kompisar!<br />
         </p>
       </div>
-
-      <div>
+      <p>______________________________________</p>
+      <div class="p-4">
         <h2 class="text-xl">API</h2>
         <p>Riksdagens öppna data</p>
       </div>

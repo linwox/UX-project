@@ -1,79 +1,7 @@
 <script setup>
 import { useSelectedStore } from '@/stores/selected'
 import { mapStores } from 'pinia'
-</script>
-
-<script>
-export default {
-  data() {
-    return {
-      ministerPost: 'Statsminister', // Set the default selected post
-      posts: [
-        'Statsminister',
-        'Finansminister',
-        'Partyminister',
-        'Klimatminister',
-        'Sjukvårdminister',
-        'Kulturminister',
-        'Skolminister',
-        'Justitieminister',
-        'Försvarsminister',
-        'Utrikesminister',
-        'Kompisminister',
-        'Semesterminister'
-      ]
-    }
-  },
-  computed: {
-    ...mapStores(useSelectedStore),
-    visiblePersons() {
-      return this.selectedStore.selectedPersons.filter((person) => !person.buttonPressed)
-    }
-  },
-  methods: {
-    selectMinister() {
-      const things = document.getElementsByClassName('carousel-item')
-      for (const elem of things) {
-        console.log(elem.getBoundingClientRect(), elem.dataset.item)
-      }
-    },
-    setMinister(ministerPost, id) {
-      const index = this.selectedStore.selectedPersons.findIndex((obj) => obj.id === id)
-      this.selectedStore.selectedPersons[index].ministerPost = ministerPost
-    },
-    getMinisterPostValue() {
-      const e = document.getElementById('minister_post')
-      const value = e.value
-      return value
-    },
-    getMinisterPostText() {
-      const e = document.getElementById('minister_post')
-      const text = e.target.options[e.target.selectedIndex].text
-      return text
-    },
-    hideButton(id) {
-      // Set buttonPressed to true for the specific person
-      const index = this.selectedStore.selectedPersons.findIndex((obj) => obj.id === id)
-      this.selectedStore.selectedPersons[index].buttonPressed = true
-    },
-    removePost(ministerPost) {
-      const index = this.posts.indexOf(ministerPost)
-      this.posts.splice(index, 1)
-      // Set ministerPost to the next available option if exists, otherwise set it to undefined
-      this.ministerPost = this.posts[0] || undefined
-    },
-
-    handleButtonClick(personId) {
-      const ministerPost = this.getMinisterPostValue()
-      this.setMinister(ministerPost, personId)
-      this.hideButton(personId)
-      this.removePost(ministerPost)
-      if (this.posts.length === 0) {
-        this.$router.push('result')
-      }
-    }
-  }
-}
+import { getHatPath } from '@/lib/HatMapping';
 </script>
 
 <template>
@@ -81,13 +9,7 @@ export default {
     class="bg-[url('../assets/headerBakgrund.svg')] bg-cover h-screen flex justify-center items-center md:bg-[url('../assets/bakgrundwebb.svg')]"
   >
     <div class="flex flex-col justify-center items-center h-screen space-y-4">
-      <!-- <details class="collapse bg-base-200 mt-28">
-        <summary class="collapse-title text-s font-medium">Info</summary>
-        <div class="collapse-content">
-          <p>Välj ministerpost i menyn och scrolla fram vem som ska ha posten.</p>
-        </div>
-      </details> -->
-
+      
       <div class="flex flex-col h-screen w-screen justify-center items-center gap-5">
         <select
           id="minister_post"
@@ -137,3 +59,85 @@ export default {
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      ministerPost: 'Statsminister',
+      posts: [
+        'Statsminister',
+        'Finansminister',
+        'Partyminister',
+        'Klimatminister',
+        'Sjukvårdminister',
+        'Kulturminister',
+        'Skolminister',
+        'Justitieminister',
+        'Försvarsminister',
+        'Utrikesminister',
+        'Kompisminister',
+        'Semesterminister'
+      ]
+    }
+  },
+  computed: {
+    ...mapStores(useSelectedStore),
+    visiblePersons() {
+      return this.selectedStore.selectedPersons.filter((person) => !person.buttonPressed)
+    }
+  },
+  methods: {
+    selectMinister() {
+      const things = document.getElementsByClassName('carousel-item')
+      for (const elem of things) {
+        console.log(elem.getBoundingClientRect(), elem.dataset.item)
+      }
+    },
+    setMinister(ministerPost, id) {
+      const index = this.selectedStore.selectedPersons.findIndex((obj) => obj.id === id)
+      const person = this.selectedStore.selectedPersons[index]
+      person.ministerPost = ministerPost
+    },
+    setHat(id) {
+      const index = this.selectedStore.selectedPersons.findIndex((obj) => obj.id === id)
+      const person = this.selectedStore.selectedPersons[index]
+      const ministerPost = person.ministerPost
+      person.hat = getHatPath(ministerPost)
+      console.log(ministerPost, person.hat)
+    },
+    getMinisterPostValue() {
+      const e = document.getElementById('minister_post')
+      const value = e.value
+      return value
+    },
+    getMinisterPostText() {
+      const e = document.getElementById('minister_post')
+      const text = e.target.options[e.target.selectedIndex].text
+      return text
+    },
+    hideButton(id) {
+      // Set buttonPressed to true for the specific person
+      const index = this.selectedStore.selectedPersons.findIndex((obj) => obj.id === id)
+      this.selectedStore.selectedPersons[index].buttonPressed = true
+    },
+    removePost(ministerPost) {
+      const index = this.posts.indexOf(ministerPost)
+      this.posts.splice(index, 1)
+      // Set ministerPost to the next available option if exists, otherwise set it to undefined
+      this.ministerPost = this.posts[0] || undefined
+    },
+
+    handleButtonClick(personId) {
+      const ministerPost = this.getMinisterPostValue()
+      this.setMinister(ministerPost, personId)
+      this.hideButton(personId)
+      this.removePost(ministerPost)
+      this.setHat(personId)
+      if (this.posts.length === 0) {
+        this.$router.push('result')
+      }
+    }
+  }
+}
+</script>

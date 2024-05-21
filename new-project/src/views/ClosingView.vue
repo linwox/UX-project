@@ -4,6 +4,21 @@ import { useStatsStore } from '@/stores/stats'
 import { mapStores } from 'pinia'
 </script>
 
+<template>
+  <div class="bg-[url('../assets/partySwipeStart.svg')] bg-cover h-screen flex flex-col justify-end items-center pb-52">
+    <p class="pb-72 text-2xl">Tack för att du spelade!</p>
+
+    <div class="text-center space-x-4">
+      <button class="btn btn-lg bg-teal text-white w-30" @click="resetSelectedStore">
+        Till start
+      </button>
+      <button class="btn btn-lg bg-teal text-white w-30" @click="$router.push('about')">
+        Om oss
+      </button>
+    </div>
+  </div>
+</template>
+
 <script>
 export default {
   computed: {
@@ -26,20 +41,3 @@ export default {
   }
 }
 </script>
-
-<template>
-  <div
-    class="bg-[url('../assets/partySwipeStart.svg')] bg-cover h-screen flex flex-col justify-end items-center pb-52"
-  >
-    <p class="pb-72 text-2xl">Tack för att du spelade!</p>
-
-    <div class="text-center space-x-4">
-      <button class="btn btn-lg bg-teal text-white w-30" @click="resetSelectedStore">
-        Till start
-      </button>
-      <button class="btn btn-lg bg-teal text-white w-30" @click="$router.push('about')">
-        Om oss
-      </button>
-    </div>
-  </div>
-</template>

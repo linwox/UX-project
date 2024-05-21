@@ -17,7 +17,9 @@ export default {
 </script>
 
 <template>
-  <div class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg center h-screen flex flex-col justify-center items-center md:bg-[url('../assets/bakgrundwebb.svg')]">
+  <div
+    class="bg-[url('../assets/headerBakgrund.svg')] bg-cover bg center h-screen flex flex-col justify-center items-center md:bg-[url('../assets/bakgrundwebb.svg')]"
+  >
     <div class="flex flex-col items-center justify-center">
       <div class="grid grid-cols-3 gap-2">
         <div
